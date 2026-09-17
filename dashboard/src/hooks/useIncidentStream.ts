@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { Incident, SOCState, ForensicAudit, TimelineEvent } from '@/types/incident';
+import { Incident, SOCState, ForensicAudit, TimelineEvent, IncidentSeverity } from '@/types/incident';
 import { soundEngine } from '@/utils/audio';
 
 export function isInternalProtectedSubnet(ip: string): boolean {
@@ -10,6 +10,91 @@ export function isInternalProtectedSubnet(ip: string): boolean {
     return true;
   }
   return false;
+}
+
+// Normalizador elástico para recibir JSON crudo de n8n, SQLite o LLM de Denis
+function normalizeIncident(raw: Record<string, unknown>): Incident {
+  // Manejo de severidad en español o inglés
+  let severity: IncidentSeverity = 'HIGH';
+  const rawSev = String(raw.severity || raw.severidad || 'CRITICAL').toUpperCase();
+  if (rawSev.includes('BAJ') || rawSev.includes('LOW')) severity = 'LOW';
+  else if (rawSev.includes('MED')) severity = 'MEDIUM';
+  else if (rawSev.includes('ALT') || rawSev.includes('HIGH')) severity = 'HIGH';
+  else if (rawSev.includes('CRI')) severity = 'CRITICAL';
+
+  // Origen
+  const rawSource = (raw.source as Record<string, unknown>) || {};
+  const sourceIp = String(rawSource.ip || raw.source_ip || raw.ip_origen || raw.attacker_ip || '185.220.101.5');
+  const sourceCountry = String(rawSource.country || raw.pais || 'Desconocido');
+
+  // Destino
+  const rawDest = (raw.destination as Record<string, unknown>) || {};
+  const destIp = String(rawDest.ip || raw.destination_ip || raw.ip_destino || raw.target_ip || '192.168.1.50');
+  const destHostname = String(rawDest.hostname || raw.host_destino || 'srv-core-defense.ar');
+
+  // Mitigación
+  const rawMitigation = (raw.suggested_mitigation as Record<string, unknown>) || {};
+  const commandUfw = String(
+    rawMitigation.command_ufw ||
+    raw.comando_mitigacion ||
+    raw.mitigation_command ||
+    `ufw insert 1 deny from ${sourceIp} to any`
+  );
+  const commandIptables = String(
+    rawMitigation.command_iptables ||
+    `iptables -I INPUT 1 -s ${sourceIp} -j DROP`
+  );
+
+  return {
+    id: String(raw.id || raw.incident_id || `INC-${Date.now().toString().slice(-4)}`),
+    scenario_key: String(raw.scenario_key || 'custom'),
+    name: String(raw.name || raw.nombre || raw.titulo || raw.resumen || 'Incidente de Ciberseguridad Detectado'),
+    severity,
+    confidence_score: Number(raw.confidence_score || raw.certeza || 0.96),
+    detected_at: String(raw.detected_at || raw.timestamp || new Date().toISOString()),
+    source: {
+      ip: sourceIp,
+      country: sourceCountry,
+      asn: String(rawSource.asn || 'AS-DYNAMIC'),
+      reputation: String(rawSource.reputation || 'Alerta SOAR'),
+    },
+    destination: {
+      ip: destIp,
+      hostname: destHostname,
+      subnet: String(rawDest.subnet || '192.168.1.0/24'),
+      zone: String(rawDest.zone || 'DMZ Estratégica'),
+    },
+    mitre_attack: Array.isArray(raw.mitre_attack) ? raw.mitre_attack : [
+      {
+        id: String(raw.mitre_id || 'T1110.001'),
+        name: String(raw.mitre_name || 'Intrusión no autorizada'),
+        tactic: 'Credential Access',
+        description: 'Técnica correlacionada por agente de IA.',
+      }
+    ],
+    timeline_events: Array.isArray(raw.timeline_events) ? raw.timeline_events : [
+      {
+        id: 'EVT-01',
+        phase: 'Fase 1: Ingesta n8n',
+        timestamp: new Date().toISOString(),
+        event_type: 'CORRELATED_ALERT',
+        mitre_id: String(raw.mitre_id || 'T1110.001'),
+        source_ip: sourceIp,
+        destination_ip: destIp,
+        port: 22,
+        protocol: 'TCP',
+        message: String(raw.resumen || 'Telemetría correlacionada por el agente de n8n.'),
+      }
+    ],
+    suggested_mitigation: {
+      action_type: 'FIREWALL_ISOLATION',
+      target_ip: sourceIp,
+      command_ufw: commandUfw,
+      command_iptables: commandIptables,
+      estimated_impact: String(rawMitigation.estimated_impact || 'Aislamiento perimetral del vector atacante.'),
+      risk_level: 'ZERO_COLLATERAL',
+    },
+  };
 }
 
 export function useIncidentStream() {
@@ -31,7 +116,6 @@ export function useIncidentStream() {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const streamIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Inicializar demoMode
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const envDemo = process.env.NEXT_PUBLIC_DEMO_MODE;
@@ -41,7 +125,6 @@ export function useIncidentStream() {
     }
   }, []);
 
-  // Verificar subred protegida
   useEffect(() => {
     if (incident?.suggested_mitigation?.target_ip) {
       setIsProtectedIp(isInternalProtectedSubnet(incident.suggested_mitigation.target_ip));
@@ -50,7 +133,6 @@ export function useIncidentStream() {
     }
   }, [incident]);
 
-  // Contador en vivo de paquetes bloqueados al mitigar
   useEffect(() => {
     if (socState === 'CONTAINED') {
       timerRef.current = setInterval(() => {
@@ -70,13 +152,13 @@ export function useIncidentStream() {
     setIsMuted(muted);
   };
 
-  // Carga instantánea de incidente
+  // Carga instantánea con normalización elástica
   const loadIncident = useCallback(async (scenarioKey: string = selectedScenario) => {
     if (streamIntervalRef.current) clearInterval(streamIntervalRef.current);
     setIsStreaming(false);
 
     try {
-      let data: Incident | null = null;
+      let rawData: Record<string, unknown> | null = null;
       if (!demoMode) {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 1000);
@@ -84,27 +166,28 @@ export function useIncidentStream() {
           const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000/api/incident/latest';
           const res = await fetch(`${backendUrl}?scenario=${scenarioKey}`, { signal: controller.signal });
           clearTimeout(timeoutId);
-          if (res.ok) data = await res.json();
+          if (res.ok) rawData = await res.json();
         } catch {
-          console.warn('Fallback local activado');
+          console.warn('Backend n8n no respondió en <1s. Fallback a datos locales.');
         }
       }
 
-      if (!data) {
+      if (!rawData) {
         const res = await fetch('/mock_incidents.json');
         if (res.ok) {
-          const incidents: Incident[] = await res.json();
-          data = incidents.find((i) => i.scenario_key === scenarioKey) || incidents[0];
+          const incidents: Record<string, unknown>[] = await res.json();
+          rawData = incidents.find((i) => i.scenario_key === scenarioKey) || incidents[0];
         }
       }
 
-      if (data) {
-        setIncident(data);
-        setDisplayedEvents(data.timeline_events);
+      if (rawData) {
+        const normalized = normalizeIncident(rawData);
+        setIncident(normalized);
+        setDisplayedEvents(normalized.timeline_events);
         setSocState('INCIDENT_DETECTED');
         setDefenseStartTime(Date.now());
         setResponseDurationSec(null);
-        setStatusMessage(`ALERTA DEFCON 2: ${data.name}`);
+        setStatusMessage(`ALERTA DEFCON 2: ${normalized.name}`);
         soundEngine.playCriticalAlarm();
       }
     } catch (err) {
@@ -124,8 +207,9 @@ export function useIncidentStream() {
     try {
       const res = await fetch('/mock_incidents.json');
       if (!res.ok) return;
-      const incidents: Incident[] = await res.json();
-      const targetIncident = incidents.find((i) => i.scenario_key === scenarioKey) || incidents[0];
+      const incidents: Record<string, unknown>[] = await res.json();
+      const raw = incidents.find((i) => i.scenario_key === scenarioKey) || incidents[0];
+      const targetIncident = normalizeIncident(raw);
 
       let currentIndex = 0;
       setIncident(targetIncident);
