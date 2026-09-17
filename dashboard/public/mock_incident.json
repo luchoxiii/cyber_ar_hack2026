@@ -1,0 +1,86 @@
+{
+  "id": "INC-2026-AR-089",
+  "scenario_key": "c2_multistage",
+  "name": "Ataque Coordinado de Movimiento Lateral y Exfiltración C2",
+  "severity": "CRITICAL",
+  "confidence_score": 0.98,
+  "detected_at": "2026-09-17T17:44:05Z",
+  "source": {
+    "ip": "198.51.100.42",
+    "country": "Desconocido (Nodo Tor / Proxy Anónimo)",
+    "asn": "AS39351",
+    "reputation": "Maliciosa Conocida"
+  },
+  "destination": {
+    "ip": "10.0.1.15",
+    "hostname": "srv-core-defense.ar",
+    "subnet": "10.0.1.0/24",
+    "zone": "DMZ Estratégica"
+  },
+  "mitre_attack": [
+    {
+      "id": "T1046",
+      "name": "Network Service Scanning",
+      "tactic": "Reconnaissance",
+      "description": "Escaneo previo masivo de puertos en busca de servicios expuestos."
+    },
+    {
+      "id": "T1110.001",
+      "name": "Password Spraying / Brute Force",
+      "tactic": "Credential Access",
+      "description": "Ráfaga de 15 intentos fallidos de autenticación SSH sobre puerto 22."
+    },
+    {
+      "id": "T1071.001",
+      "name": "Web Protocols: C2 Communication",
+      "tactic": "Command and Control",
+      "description": "Conexión saliente periódica cifrada hacia baliza externa C2 sobre puerto 8443."
+    }
+  ],
+  "timeline_events": [
+    {
+      "id": "EVT-01",
+      "phase": "Fase 1: Reconocimiento",
+      "timestamp": "2026-09-17T17:42:05Z",
+      "event_type": "FIREWALL_DROP",
+      "mitre_id": "T1046",
+      "source_ip": "198.51.100.42",
+      "destination_ip": "10.0.1.15",
+      "port": 22,
+      "protocol": "TCP",
+      "message": "Sondeo agresivo de puertos 22, 80, 443, 8080 detectado en firewall perimetral."
+    },
+    {
+      "id": "EVT-02",
+      "phase": "Fase 2: Intrusión SSH",
+      "timestamp": "2026-09-17T17:43:18Z",
+      "event_type": "AUTH_FAILURE",
+      "mitre_id": "T1110.001",
+      "source_ip": "198.51.100.42",
+      "destination_ip": "10.0.1.15",
+      "port": 22,
+      "protocol": "TCP",
+      "message": "Fuerza bruta SSH: 15 logins fallidos consecutivos para usuarios root, admin y operador."
+    },
+    {
+      "id": "EVT-03",
+      "phase": "Fase 3: Conexión Anómala C2",
+      "timestamp": "2026-09-17T17:44:02Z",
+      "event_type": "C2_BEACON",
+      "mitre_id": "T1071.001",
+      "source_ip": "10.0.1.15",
+      "destination_ip": "198.51.100.42",
+      "port": 8443,
+      "protocol": "TLS/HTTPS",
+      "message": "Baliza saliente detectada enviando telemetría hacia servidor de mando y control (C2)."
+    }
+  ],
+  "suggested_mitigation": {
+    "action_type": "FIREWALL_ISOLATION",
+    "target_ip": "198.51.100.42",
+    "command_ufw": "ufw insert 1 deny from 198.51.100.42 to any",
+    "command_iptables": "iptables -I INPUT 1 -s 198.51.100.42 -j DROP",
+    "estimated_impact": "Neutralización inmediata del canal C2 y corte del vector de intrusión.",
+    "risk_level": "LOW_COLLATERAL"
+  }
+}
