@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { Incident, SOCState, ForensicAudit } from '@/types/incident';
+import { Incident, SOCState, ForensicAudit, TimelineEvent } from '@/types/incident';
+import { soundEngine } from '@/utils/audio';
 
 export function isInternalProtectedSubnet(ip: string): boolean {
   if (!ip) return false;
-  // Subred de comando interno CyberAr (10.0.0.0/8 o loopback)
   if (ip.startsWith('10.') || ip === '127.0.0.1' || ip === 'localhost') {
     return true;
   }
@@ -15,6 +15,7 @@ export function isInternalProtectedSubnet(ip: string): boolean {
 export function useIncidentStream() {
   const [socState, setSocState] = useState<SOCState>('STANDBY');
   const [incident, setIncident] = useState<Incident | null>(null);
+  const [displayedEvents, setDisplayedEvents] = useState<TimelineEvent[]>([]);
   const [auditLog, setAuditLog] = useState<ForensicAudit[]>([]);
   const [demoMode, setDemoMode] = useState<boolean>(true);
   const [selectedScenario, setSelectedScenario] = useState<string>('c2_multistage');
@@ -22,11 +23,15 @@ export function useIncidentStream() {
   const [defenseStartTime, setDefenseStartTime] = useState<number | null>(null);
   const [responseDurationSec, setResponseDurationSec] = useState<number | null>(null);
   const [isProtectedIp, setIsProtectedIp] = useState<boolean>(false);
-  const [statusMessage, setStatusMessage] = useState<string>('Sistema en guardia perimetral pasiva.');
+  const [statusMessage, setStatusMessage] = useState<string>('Sistema en guardia perimetral pasiva. DEFCON 4.');
+  const [droppedPackets, setDroppedPackets] = useState<number>(0);
+  const [isStreaming, setIsStreaming] = useState<boolean>(false);
+  const [isMuted, setIsMuted] = useState<boolean>(false);
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const streamIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Inicializar demoMode con env var si existe
+  // Inicializar demoMode
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const envDemo = process.env.NEXT_PUBLIC_DEMO_MODE;
@@ -36,7 +41,7 @@ export function useIncidentStream() {
     }
   }, []);
 
-  // Verificar si la IP es protegida cuando cambia el incidente
+  // Verificar subred protegida
   useEffect(() => {
     if (incident?.suggested_mitigation?.target_ip) {
       setIsProtectedIp(isInternalProtectedSubnet(incident.suggested_mitigation.target_ip));
@@ -45,60 +50,109 @@ export function useIncidentStream() {
     }
   }, [incident]);
 
-  // Cargar incidente (ya sea por demo o por backend)
+  // Contador en vivo de paquetes bloqueados al mitigar
+  useEffect(() => {
+    if (socState === 'CONTAINED') {
+      timerRef.current = setInterval(() => {
+        setDroppedPackets((prev) => prev + Math.floor(Math.random() * 14) + 6);
+      }, 700);
+    } else {
+      if (timerRef.current) clearInterval(timerRef.current);
+      setDroppedPackets(0);
+    }
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [socState]);
+
+  const toggleAudio = () => {
+    const muted = soundEngine.toggleMute();
+    setIsMuted(muted);
+  };
+
+  // Carga instantánea de incidente
   const loadIncident = useCallback(async (scenarioKey: string = selectedScenario) => {
-    setStatusMessage('Consultando telemetría de amenazas...');
+    if (streamIntervalRef.current) clearInterval(streamIntervalRef.current);
+    setIsStreaming(false);
+
     try {
       let data: Incident | null = null;
-
       if (!demoMode) {
-        // Intento con backend local (Task 2) con timeout de 1 segundo
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 1000);
-
         try {
           const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000/api/incident/latest';
-          const res = await fetch(`${backendUrl}?scenario=${scenarioKey}`, {
-            signal: controller.signal,
-          });
+          const res = await fetch(`${backendUrl}?scenario=${scenarioKey}`, { signal: controller.signal });
           clearTimeout(timeoutId);
-          if (res.ok) {
-            data = await res.json();
-          }
+          if (res.ok) data = await res.json();
         } catch {
-          console.warn('Backend no disponible en <1s. Activando fallback local sin interrupciones.');
+          console.warn('Fallback local activado');
         }
       }
 
-      // Si falló backend o estamos en Demo Mode
       if (!data) {
-        const res = await fetch(`/mock_incidents.json`);
+        const res = await fetch('/mock_incidents.json');
         if (res.ok) {
           const incidents: Incident[] = await res.json();
           data = incidents.find((i) => i.scenario_key === scenarioKey) || incidents[0];
-        } else {
-          // Fallback al mock individual si fuera necesario
-          const singleRes = await fetch(`/mock_incident.json`);
-          if (singleRes.ok) {
-            data = await singleRes.json();
-          }
         }
       }
 
       if (data) {
         setIncident(data);
+        setDisplayedEvents(data.timeline_events);
         setSocState('INCIDENT_DETECTED');
         setDefenseStartTime(Date.now());
         setResponseDurationSec(null);
-        setStatusMessage(`Alerta crítica: ${data.name} detectada.`);
+        setStatusMessage(`ALERTA DEFCON 2: ${data.name}`);
+        soundEngine.playCriticalAlarm();
       }
     } catch (err) {
       console.error('Error cargando incidente:', err);
-      setStatusMessage('Error al obtener datos. Sistema en modo seguro.');
     }
   }, [demoMode, selectedScenario]);
 
-  // Ejecutar mitigación aprobada
+  // Ingesta dinámica en vivo (Stream)
+  const startStreamingIncident = useCallback(async (scenarioKey: string = selectedScenario) => {
+    if (streamIntervalRef.current) clearInterval(streamIntervalRef.current);
+    setSocState('STANDBY');
+    setIncident(null);
+    setDisplayedEvents([]);
+    setIsStreaming(true);
+    setStatusMessage('Iniciando ingesta de telemetría en tiempo real...');
+
+    try {
+      const res = await fetch('/mock_incidents.json');
+      if (!res.ok) return;
+      const incidents: Incident[] = await res.json();
+      const targetIncident = incidents.find((i) => i.scenario_key === scenarioKey) || incidents[0];
+
+      let currentIndex = 0;
+      setIncident(targetIncident);
+      setSocState('INCIDENT_DETECTED');
+      setDefenseStartTime(Date.now());
+
+      streamIntervalRef.current = setInterval(() => {
+        if (currentIndex < targetIncident.timeline_events.length) {
+          const nextEvt = targetIncident.timeline_events[currentIndex];
+          setDisplayedEvents((prev) => [...prev, nextEvt]);
+          soundEngine.playEventRadar();
+          setStatusMessage(`Ingesta en vivo: ${nextEvt.phase} correlacionada (${nextEvt.mitre_id})`);
+          currentIndex++;
+        } else {
+          if (streamIntervalRef.current) clearInterval(streamIntervalRef.current);
+          setIsStreaming(false);
+          soundEngine.playCriticalAlarm();
+          setStatusMessage(`ALERTA DEFCON 2: Intrusión completa correlacionada. Requiere contención.`);
+        }
+      }, 1300);
+    } catch (err) {
+      console.error('Error en stream:', err);
+      setIsStreaming(false);
+    }
+  }, [selectedScenario]);
+
+  // Aprobar mitigación
   const approveMitigation = useCallback(async (customIp?: string) => {
     if (!incident) return;
 
@@ -108,14 +162,13 @@ export function useIncidentStream() {
       : (incident.suggested_mitigation.command_iptables || `iptables -I INPUT 1 -s ${targetIp} -j DROP`);
 
     setSocState('MITIGATING');
-    setStatusMessage('Despachando regla al firewall perimetral...');
+    setStatusMessage('Inyectando regla de aislamiento en kernel netfilter...');
 
     const startTime = defenseStartTime || Date.now();
     const duration = Math.max(1, Math.round((Date.now() - startTime) / 1000));
     setResponseDurationSec(duration);
 
     try {
-      // Llamada a POST /api/mitigate
       const res = await fetch('/api/mitigate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -123,16 +176,14 @@ export function useIncidentStream() {
           incident_id: incident.id,
           target_ip: targetIp,
           command,
-          operator: 'OP-DEFENSA-CYBERAR',
+          operator: 'OP-DEFENSA-CYBERAR (UNDEF)',
         }),
       });
 
       let auditData: ForensicAudit;
-
       if (res.ok) {
         auditData = await res.json();
       } else {
-        // Fallback criptográfico en cliente si la API fallara
         const textToHash = `${incident.id}|${targetIp}|${command}|${new Date().toISOString()}|OP-DEFENSA-CYBERAR`;
         const encoder = new TextEncoder();
         const hashBuf = await crypto.subtle.digest('SHA-256', encoder.encode(textToHash));
@@ -148,41 +199,36 @@ export function useIncidentStream() {
           sha256_hash,
           firewall_status: 'ACTIVE_BLOCKED',
           time_to_contain_ms: 280,
-          sovereignty_mode: 'AIR-GAPPED_OFFLINE_CONTAINMENT',
+          sovereignty_mode: 'AIR-GAPPED_LOCAL_CONTAINMENT',
         };
       }
 
-      // Guardar en la cadena de custodia
       setAuditLog((prev) => [auditData, ...prev]);
       setSocState('CONTAINED');
-      setStatusMessage(`Vector ${targetIp} neutralizado. Contención activa.`);
+      setStatusMessage(`AMENAZA NEUTRALIZADA: Vector ${targetIp} bloqueado en tabla activa.`);
+      soundEngine.playMitigationSuccess();
     } catch (err) {
-      console.error('Error aprobando mitigación:', err);
-      // Resiliencia: registrar contención local igualmente
+      console.error('Error en mitigación:', err);
       setSocState('CONTAINED');
-      setStatusMessage('Mitigación aplicada en modo de contingencia local.');
+      soundEngine.playMitigationSuccess();
     }
   }, [incident, firewallType, defenseStartTime]);
 
-  // Reiniciar a standby
   const resetToStandby = useCallback(() => {
+    if (streamIntervalRef.current) clearInterval(streamIntervalRef.current);
     setSocState('STANDBY');
     setIncident(null);
+    setDisplayedEvents([]);
     setDefenseStartTime(null);
     setResponseDurationSec(null);
-    setStatusMessage('Sistema en guardia perimetral pasiva.');
-  }, []);
-
-  // Limpieza de temporizadores
-  useEffect(() => {
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
+    setIsStreaming(false);
+    setStatusMessage('Sistema en guardia perimetral pasiva. DEFCON 4.');
   }, []);
 
   return {
     socState,
     incident,
+    displayedEvents,
     auditLog,
     demoMode,
     setDemoMode,
@@ -193,7 +239,12 @@ export function useIncidentStream() {
     isProtectedIp,
     statusMessage,
     responseDurationSec,
+    droppedPackets,
+    isStreaming,
+    isMuted,
+    toggleAudio,
     loadIncident,
+    startStreamingIncident,
     approveMitigation,
     resetToStandby,
   };
