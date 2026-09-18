@@ -278,9 +278,10 @@ CyberSOAR-AR está diseñado para operar en **redes air-gapped**:
 | 2 | **Prototipo funcional, demo y código** | [`dashboard/`](dashboard/), [`attack_simulator.py`](attack_simulator.py), [`guardrails.py`](guardrails.py) | Consola táctica militar, simulador de telemetría hostil y guardrails |
 | 3 | **Arquitectura, diagramas e instalación** | [`README.md`](README.md#arquitectura-de-componentes), [`n8n/`](n8n/) | Diagrama de flujo de datos, despliegue en 2 minutos y workflow n8n |
 | 4 | **Modelo de amenazas (Threat Modeling)** | [`docs/THREAT_MODEL.md`](docs/THREAT_MODEL.md) | STRIDE, MITRE ATT&CK, OWASP Top 10 for LLM y controles preventivos |
-| 5 | **Pruebas, evidencias y datos sintéticos** | [`docs/TESTS_Y_EVIDENCIAS.md`](docs/TESTS_Y_EVIDENCIAS.md) | Pruebas unitarias, dataset reproducible y verificación SHA-256 |
+| 5 | **Pruebas, evidencias y datos sintéticos** | [`docs/TESTS_Y_EVIDENCIAS.md`](docs/TESTS_Y_EVIDENCIAS.md), [`data/`](data/dataset_sintetico.json) | Pruebas unitarias, dataset reproducible y verificación SHA-256 |
 | 6 | **Privacidad, ética, accesibilidad y continuidad** | [`docs/SOBERANIA_Y_ETICA.md`](docs/SOBERANIA_Y_ETICA.md) | Soberanía air-gapped, WCAG 2.1 AA, modo fail-safe y declaración de IA |
-| 7 | **Pitch deck, guion de demo y herramientas** | [`docs/PITCH_Y_GUION_DEMO.md`](docs/PITCH_Y_GUION_DEMO.md) | 8 diapositivas, guion de 3 minutos cronometrado y banco de preguntas |
+| 7 | **Pitch deck, guion de demo y herramientas** | [`docs/PITCH_Y_GUION_DEMO.md`](docs/PITCH_Y_GUION_DEMO.md), [`docs/slides.html`](docs/slides.html) | 8 diapositivas interactivas, guion de 3 min y banco de preguntas |
+| 📄 | **Ficha Ejecutiva de Entrega (One-Pager)** | [`docs/FICHA_ENTREGA.md`](docs/FICHA_ENTREGA.md) | Resumen oficial para el jurado, datos de equipo, ROI y verificación en 60s |
 
 ---
 
