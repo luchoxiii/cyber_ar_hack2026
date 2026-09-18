@@ -148,7 +148,7 @@ Para que no te agarre la ansiedad con el reloj, dividí tu cabeza en 4 bloques:
 ## 📌 6. "Tarjetas de Bolsillo" (3 Frases que te Salvan Cualquier Duda)
 
 1. Si te hacen una pregunta técnica ultra-específica que no sabés el detalle exacto de código:  
-   > *"Ese aspecto específico de la arquitectura fue implementado por Dennis en la telemetría / Gabriel en el dashboard / Luciano en los guardrails; en términos doctrinarios, el control garantiza que ningún dato salga del perímetro air-gapped."*
+   > *"Ese aspecto específico de la arquitectura fue implementado por Dennis en la telemetría / Gabriel en el dashboard / Luciano Lisachi en los guardrails; en términos doctrinarios, el control garantiza que ningún dato salga del perímetro air-gapped."*
 2. Si te preguntan sobre licencias o costos:  
    > *"Cero dólares en licencias privativas. Toda la pila es código abierto (Python, Docker, Ollama, n8n self-hosted) lista para operar en servidores de defensa."*
 3. Si te preguntan si la IA se equivoca:  

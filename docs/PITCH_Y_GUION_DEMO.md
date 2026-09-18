@@ -79,7 +79,7 @@
 * **Nómina Oficial del Equipo (Orden alfabético por apellido):**
   - **Ricardo Gabriel Díaz** (Consola Táctica SOC Next.js)
   - **Dennis Ferraro** (Telemetría Hostil & Pipeline n8n)
-  - **Luciano (Lucho)** (Guardrails OWASP & Threat Modeling)
+  - **Luciano Lisachi** (Guardrails OWASP & Threat Modeling)
   - **Marco Ungaro** (Pitcher & Estrategia de Defensa)
 * **Repositorio Oficial:** `github.com/luchoxiii/cyber_ar_hack2026`
 * **Transición:** Marco invita al jurado a la ronda de preguntas y respuestas (1 minuto).
