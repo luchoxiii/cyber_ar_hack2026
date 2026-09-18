@@ -30,6 +30,17 @@ Los Centros de Operaciones de Seguridad (SOC) de la defensa argentina enfrentan 
 3. **Propone** mitigaciones parametrizadas (bloqueo de IP, revocación de credenciales) sin ejecutar comandos libres.
 4. **Garantiza** que ninguna acción automatizada pueda impactar infraestructura crítica gracias a 4 guardrails deterministas.
 
+### Usuarios Destinatarios y Supuestos Operativos (Entregable 1)
+
+- **Usuarios Destinatarios:**
+  - **Operadores de Guardia SOC (24/7):** Personal militar y técnico encargado de la vigilancia de red que requiere reducir la fatiga cognitiva y recibir propuestas de contención pre-validadas.
+  - **Oficiales de Respuesta a Incidentes (CSIRT de Defensa / CCCD):** Analistas que necesitan reconstrucción forense inmediata con evidencia inmutable (hash SHA-256) para la toma de decisiones y peritaje.
+  - **Mandos de Ciberdefensa:** Supervisores que auditan la cadena de custodia y la aplicación de políticas perimetrales.
+- **Supuestos Operativos:**
+  - **Entorno Air-Gapped:** Operación 100% desconectada de Internet y sin envío de telemetría a nubes extranjeras.
+  - **Telemetría Segregada:** Los logs provienen de sensores locales (Syslog, iptables, webhooks de host/red) y se tratan como datos hostiles no confiables.
+  - **Activos Críticos Definidos:** Las IPs de mando, gateways y DNS corporativo están preconfiguradas en una whitelist inmutable.
+
 ### Alineación con el Eje 2
 
 | Requisito del Eje 2 | Implementación en CyberSOAR-AR |
@@ -161,37 +172,47 @@ El operador SOC debe presionar **Confirmar** en la consola antes de que cualquie
 
 ---
 
-## Instalación y Uso Rápido
+## Instalación y Uso Rápido (Entregable 3)
 
 ### Prerrequisitos
 
 - Python 3.11+
-- n8n self-hosted (Docker o npm)
+- Node.js 18+ y npm
+- Docker (opcional, para n8n self-hosted y Ollama)
 - Git
 
 ### Ejecución en 2 minutos
 
 ```bash
-# 1. Clonar el repositorio
+# 1. Clonar el repositorio y acceder
 git clone https://github.com/luchoxiii/cyber_ar_hack2026.git
 cd cyber_ar_hack2026
 
-# 2. Instalar dependencias
+# 2. Instalar dependencias Python
 pip install requests
 
-# 3. Ejecutar el simulador de ataques
-python attack_simulator.py --scenario ssh     # Fuerza bruta SSH
-python attack_simulator.py --scenario scan    # Escaneo de puertos
-python attack_simulator.py --scenario web     # Web exploit / Path Traversal
+# 3. Probar Guardrails deterministas
+python guardrails.py
+
+# 4. Generar dataset de ataque y verificar integridad SHA-256
+python attack_simulator.py --scenario all --no-send --output dataset_sintetico.json
+
+# 5. Iniciar la Consola SOC Táctica (Dashboard Next.js)
+cd dashboard
+npm install
+npm run dev
+# Acceder a http://localhost:3000
 ```
 
-### Con Docker (n8n)
+### Con Orquestador n8n (Opcional / Modo Integrado)
 
 ```bash
-# Levantar n8n en modo local
+# Levantar n8n localmente
 docker run -it --rm --name n8n -p 5678:5678 n8nio/n8n
 
-# En otra terminal, lanzar el simulador
+# Importar el flujo táctico desde n8n/cyber_soar_workflow.json en http://localhost:5678
+
+# Disparar eventos hacia el webhook de n8n
 python attack_simulator.py --scenario ssh --webhook http://localhost:5678/webhook-test/security-events
 ```
 
@@ -201,12 +222,13 @@ python attack_simulator.py --scenario ssh --webhook http://localhost:5678/webhoo
 
 ### Viabilidad Técnica
 
-| Aspecto | Estado |
-|---|---|
-| Simulador de telemetría | ✅ Funcional (`rama-1-all-task-1`) |
-| Guardrails OWASP LLM | ✅ Documentados y con código de referencia (`rama-4-all-task-4`) |
-| Motor de correlación n8n | 🔄 En desarrollo (`rama-2-all-task-2`) |
-| Consola SOC (Dashboard Next.js) | ✅ Funcional (`rama-3-all-task-3`) |
+| Componente | Estado | Ubicación en el Repositorio |
+|---|---|---|
+| Simulador de telemetría | ✅ Funcional y con verificación de corte | [`attack_simulator.py`](attack_simulator.py) |
+| Guardrails OWASP LLM | ✅ Funcional con tests unitarios | [`guardrails.py`](guardrails.py) |
+| Motor de correlación n8n | ✅ Funcional y exportado | [`n8n/cyber_soar_workflow.json`](n8n/cyber_soar_workflow.json) |
+| Consola SOC (Dashboard Next.js) | ✅ Funcional y 100% air-gapped | [`dashboard/`](dashboard/) |
+| Pitch Deck y Guion de Demo | ✅ 3 minutos cronometrados | [`docs/PITCH_Y_GUION_DEMO.md`](docs/PITCH_Y_GUION_DEMO.md) |
 
 ### Despliegue en Enclaves de Defensa
 
@@ -224,14 +246,17 @@ CyberSOAR-AR está diseñado para operar en **redes air-gapped**:
 
 ---
 
-## Documentación Detallada
+## Matriz de Entregables Oficiales (Reglamento CyberAr 2026)
 
-| Documento | Entregable | Contenido |
-|---|---|---|
-| [`docs/THREAT_MODEL.md`](docs/THREAT_MODEL.md) | Entregable 4 | Modelo de amenazas STRIDE + MITRE ATT&CK, análisis de riesgos y controles |
-| [`docs/TESTS_Y_EVIDENCIAS.md`](docs/TESTS_Y_EVIDENCIAS.md) | Entregable 5 | Pruebas reproducibles, dataset sintético, verificación SHA-256 |
-| [`docs/SOBERANIA_Y_ETICA.md`](docs/SOBERANIA_Y_ETICA.md) | Entregable 6 | Soberanía tecnológica, declaración de IA, herramientas de terceros |
-| [`docs/PITCH_Y_GUION_DEMO.md`](docs/PITCH_Y_GUION_DEMO.md) | Entregable 7 | Pitch Deck (diapositivas), Guion de Demo cronometrado (3 min) y FAQ de jurado |
+| # | Entregable Oficial | Ubicación en el Proyecto | Contenido |
+|---|---|---|---|
+| 1 | **Descripción del problema, usuarios y supuestos** | [`README.md`](README.md#problema-y-pertinencia) | Fatiga en SOC de defensa, perfil de operadores 24/7 y enclaves air-gapped |
+| 2 | **Prototipo funcional, demo y código** | [`dashboard/`](dashboard/), [`attack_simulator.py`](attack_simulator.py), [`guardrails.py`](guardrails.py) | Consola táctica militar, simulador de telemetría hostil y guardrails |
+| 3 | **Arquitectura, diagramas e instalación** | [`README.md`](README.md#arquitectura-de-componentes), [`n8n/`](n8n/) | Diagrama de flujo de datos, despliegue en 2 minutos y workflow n8n |
+| 4 | **Modelo de amenazas (Threat Modeling)** | [`docs/THREAT_MODEL.md`](docs/THREAT_MODEL.md) | STRIDE, MITRE ATT&CK, OWASP Top 10 for LLM y controles preventivos |
+| 5 | **Pruebas, evidencias y datos sintéticos** | [`docs/TESTS_Y_EVIDENCIAS.md`](docs/TESTS_Y_EVIDENCIAS.md) | Pruebas unitarias, dataset reproducible y verificación SHA-256 |
+| 6 | **Privacidad, ética, accesibilidad y continuidad** | [`docs/SOBERANIA_Y_ETICA.md`](docs/SOBERANIA_Y_ETICA.md) | Soberanía air-gapped, WCAG 2.1 AA, modo fail-safe y declaración de IA |
+| 7 | **Pitch deck, guion de demo y herramientas** | [`docs/PITCH_Y_GUION_DEMO.md`](docs/PITCH_Y_GUION_DEMO.md) | 8 diapositivas, guion de 3 minutos cronometrado y banco de preguntas |
 
 ---
 

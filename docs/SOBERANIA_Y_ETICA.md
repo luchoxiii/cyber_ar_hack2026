@@ -160,6 +160,22 @@ CyberSOAR-AR implementa el principio de **proporcionalidad**:
 
 El agente LLM analiza patrones de red objetivos (IPs, puertos, payloads) y no toma decisiones basadas en la identidad, ubicación geográfica o afiliación de los usuarios.
 
+### 4.5 Accesibilidad Táctica e Inclusividad (WCAG 2.1)
+
+El diseño de la Consola SOC (`dashboard/`) contempla los estándares de accesibilidad para operadores de guardia en turnos continuos 24/7:
+
+- **Modo Oscuro de Alto Contraste:** Esquema de colores pizarra profundo (`#090d16`) con tipografía en escala de grises y acentos contrastados (esmeralda, rojo carmesí, ámbar) que superan el ratio 4.5:1 exigido por **WCAG 2.1 nivel AA**.
+- **Alertas Redundantes (Visuales y Sonoras):** Los incidentes críticos emiten avisos combinados (parpadeo visual, badges de texto de severidad y alertas acústicas sintetizadas en audio Web API) para no depender exclusivamente de la percepción del color (apto para operadores con daltonismo / deuteranopía).
+- **Navegación por Teclado y Foco:** Los botones de mitigación y selección de pestañas cuentan con estados de foco visibles y pueden operarse íntegramente mediante atajos de teclado sin requerir mouse.
+
+### 4.6 Continuidad Operativa y Resiliencia (Disaster Recovery)
+
+Para garantizar la disponibilidad ininterrumpida del centro de operaciones ante fallas o ataques adversariales:
+
+- **Degradación Elegante (Fallback Standalone):** Si el motor de inferencia LLM (Ollama) pierde conectividad o sufre saturación de recursos, el sistema entra en modo fail-safe. La consola SOC activa el modo de buffer local determinista (`NEXT_PUBLIC_DEMO_MODE=true`), permitiendo al operador seguir visualizando telemetría y ejecutando comandos manuales preconfigurados sin interrupción del servicio.
+- **Persistencia Desacoplada y Estado Efímero:** El estado de las reglas y las alertas no depende de bases de datos centralizadas de terceros. Cada acción se audita con hash SHA-256 inmutable exportable en formato JSON, asegurando que ante un reinicio del sistema la cadena de custodia no se degrade.
+- **Tolerancia a Partición de Red:** Si se corta el enlace entre los sensores de telemetría y el nodo n8n, el simulador y los emisores acumulan los eventos en memoria para retransmitirlos tan pronto se restablece la comunicación, evitando la pérdida de registros forenses.
+
 ---
 
 ## 5. Licencias y Cumplimiento
