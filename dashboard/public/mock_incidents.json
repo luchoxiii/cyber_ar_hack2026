@@ -1,0 +1,310 @@
+[
+  {
+    "id": "INC-2026-AR-089",
+    "scenario_key": "c2_multistage",
+    "name": "Ataque Coordinado de Movimiento Lateral y Exfiltración C2",
+    "severity": "CRITICAL",
+    "confidence_score": 0.98,
+    "detected_at": "2026-09-17T17:44:05Z",
+    "source": {
+      "ip": "198.51.100.42",
+      "country": "Desconocido (Nodo Tor / Proxy Anónimo)",
+      "asn": "AS39351",
+      "reputation": "Maliciosa Conocida"
+    },
+    "destination": {
+      "ip": "10.0.1.15",
+      "hostname": "srv-core-defense.ar",
+      "subnet": "10.0.1.0/24",
+      "zone": "DMZ Estratégica"
+    },
+    "mitre_attack": [
+      {
+        "id": "T1046",
+        "name": "Network Service Scanning",
+        "tactic": "Reconnaissance",
+        "description": "Escaneo previo masivo de puertos en busca de servicios expuestos."
+      },
+      {
+        "id": "T1110.001",
+        "name": "Password Spraying / Brute Force",
+        "tactic": "Credential Access",
+        "description": "Ráfaga de 15 intentos fallidos de autenticación SSH sobre puerto 22."
+      },
+      {
+        "id": "T1071.001",
+        "name": "Web Protocols: C2 Communication",
+        "tactic": "Command and Control",
+        "description": "Conexión saliente periódica cifrada hacia baliza externa C2 sobre puerto 8443."
+      }
+    ],
+    "timeline_events": [
+      {
+        "id": "EVT-01",
+        "phase": "Fase 1: Reconocimiento",
+        "timestamp": "2026-09-17T17:42:05Z",
+        "event_type": "FIREWALL_DROP",
+        "mitre_id": "T1046",
+        "source_ip": "198.51.100.42",
+        "destination_ip": "10.0.1.15",
+        "port": 22,
+        "protocol": "TCP",
+        "message": "Sondeo agresivo de puertos 22, 80, 443, 8080 detectado en firewall perimetral."
+      },
+      {
+        "id": "EVT-02",
+        "phase": "Fase 2: Intrusión SSH",
+        "timestamp": "2026-09-17T17:43:18Z",
+        "event_type": "AUTH_FAILURE",
+        "mitre_id": "T1110.001",
+        "source_ip": "198.51.100.42",
+        "destination_ip": "10.0.1.15",
+        "port": 22,
+        "protocol": "TCP",
+        "message": "Fuerza bruta SSH: 15 logins fallidos consecutivos para usuarios root, admin y operador."
+      },
+      {
+        "id": "EVT-03",
+        "phase": "Fase 3: Conexión Anómala C2",
+        "timestamp": "2026-09-17T17:44:02Z",
+        "event_type": "C2_BEACON",
+        "mitre_id": "T1071.001",
+        "source_ip": "10.0.1.15",
+        "destination_ip": "198.51.100.42",
+        "port": 8443,
+        "protocol": "TLS/HTTPS",
+        "message": "Baliza saliente detectada enviando telemetría hacia servidor de mando y control (C2)."
+      }
+    ],
+    "suggested_mitigation": {
+      "action_type": "FIREWALL_ISOLATION",
+      "target_ip": "198.51.100.42",
+      "command_ufw": "ufw insert 1 deny from 198.51.100.42 to any",
+      "command_iptables": "iptables -I INPUT 1 -s 198.51.100.42 -j DROP",
+      "estimated_impact": "Neutralización inmediata del canal C2 y corte del vector de intrusión.",
+      "risk_level": "LOW_COLLATERAL"
+    }
+  },
+  {
+    "id": "INC-2026-AR-090",
+    "scenario_key": "ssh_bruteforce",
+    "name": "Ataque Ráfaga de Fuerza Bruta SSH (Escenario A Denis)",
+    "severity": "HIGH",
+    "confidence_score": 0.95,
+    "detected_at": "2026-09-17T17:45:10Z",
+    "source": {
+      "ip": "185.220.101.5",
+      "country": "Alemania (Host de salida anónimo)",
+      "asn": "AS200052",
+      "reputation": "Botnet SSH Scanner"
+    },
+    "destination": {
+      "ip": "192.168.1.50",
+      "hostname": "srv-internal-defense.ar",
+      "subnet": "192.168.1.0/24",
+      "zone": "LAN Operativa"
+    },
+    "mitre_attack": [
+      {
+        "id": "T1110.001",
+        "name": "Password Guessing / SSH Brute Force",
+        "tactic": "Credential Access",
+        "description": "Ráfaga de 15 intentos contra usuarios root, admin, ubuntu, postgres."
+      }
+    ],
+    "timeline_events": [
+      {
+        "id": "EVT-10",
+        "phase": "Fase 1: Pulverización de Credenciales",
+        "timestamp": "2026-09-17T17:45:01Z",
+        "event_type": "AUTH_FAILURE",
+        "mitre_id": "T1110.001",
+        "source_ip": "185.220.101.5",
+        "destination_ip": "192.168.1.50",
+        "port": 22,
+        "protocol": "TCP",
+        "message": "Failed password for invalid user root from 185.220.101.5 port 48291 ssh2"
+      },
+      {
+        "id": "EVT-11",
+        "phase": "Fase 2: Ráfaga Automatizada",
+        "timestamp": "2026-09-17T17:45:03Z",
+        "event_type": "AUTH_FAILURE",
+        "mitre_id": "T1110.001",
+        "source_ip": "185.220.101.5",
+        "destination_ip": "192.168.1.50",
+        "port": 22,
+        "protocol": "TCP",
+        "message": "Failed password for invalid user admin from 185.220.101.5 port 48294 ssh2"
+      },
+      {
+        "id": "EVT-12",
+        "phase": "Fase 3: Umbral de Alerta Superado",
+        "timestamp": "2026-09-17T17:45:05Z",
+        "event_type": "AUTH_FAILURE",
+        "mitre_id": "T1110.001",
+        "source_ip": "185.220.101.5",
+        "destination_ip": "192.168.1.50",
+        "port": 22,
+        "protocol": "TCP",
+        "message": "Superado umbral de 15 intentos en 5 segundos. Telemetría despachada a n8n."
+      }
+    ],
+    "suggested_mitigation": {
+      "action_type": "FIREWALL_ISOLATION",
+      "target_ip": "185.220.101.5",
+      "command_ufw": "ufw insert 1 deny from 185.220.101.5 to any",
+      "command_iptables": "iptables -I INPUT 1 -s 185.220.101.5 -j DROP",
+      "estimated_impact": "Bloqueo perimetral y desconexión inmediata de sockets SSH activos.",
+      "risk_level": "ZERO_COLLATERAL"
+    }
+  },
+  {
+    "id": "INC-2026-AR-091",
+    "scenario_key": "port_scan",
+    "name": "Escaneo Masivo de Puertos SYN Stealth (Escenario B Denis)",
+    "severity": "MEDIUM",
+    "confidence_score": 0.91,
+    "detected_at": "2026-09-17T17:46:00Z",
+    "source": {
+      "ip": "45.154.255.89",
+      "country": "Rusia (Servidor de hosting no verificado)",
+      "asn": "AS49870",
+      "reputation": "Escáner Activo de Redes"
+    },
+    "destination": {
+      "ip": "192.168.1.50",
+      "hostname": "srv-internal-defense.ar",
+      "subnet": "192.168.1.0/24",
+      "zone": "LAN Operativa"
+    },
+    "mitre_attack": [
+      {
+        "id": "T1046",
+        "name": "Network Service Scanning",
+        "tactic": "Reconnaissance",
+        "description": "Barrido SYN en 15 puertos comunes (21, 22, 80, 443, 3306, 5432, 8080, etc.)."
+      }
+    ],
+    "timeline_events": [
+      {
+        "id": "EVT-20",
+        "phase": "Fase 1: Reconocimiento Horizontal",
+        "timestamp": "2026-09-17T17:45:50Z",
+        "event_type": "FIREWALL_DROP",
+        "mitre_id": "T1046",
+        "source_ip": "45.154.255.89",
+        "destination_ip": "192.168.1.50",
+        "port": 21,
+        "protocol": "TCP",
+        "message": "Firewall DROP: IN=eth0 SRC=45.154.255.89 DST=192.168.1.50 DPT=21 FLAGS=SYN"
+      },
+      {
+        "id": "EVT-21",
+        "phase": "Fase 2: Sondeo de Bases de Datos",
+        "timestamp": "2026-09-17T17:45:52Z",
+        "event_type": "FIREWALL_DROP",
+        "mitre_id": "T1046",
+        "source_ip": "45.154.255.89",
+        "destination_ip": "192.168.1.50",
+        "port": 3306,
+        "protocol": "TCP",
+        "message": "Firewall DROP: IN=eth0 SRC=45.154.255.89 DST=192.168.1.50 DPT=3306 FLAGS=SYN"
+      },
+      {
+        "id": "EVT-22",
+        "phase": "Fase 3: Mapeo de Servicios Administrativos",
+        "timestamp": "2026-09-17T17:45:55Z",
+        "event_type": "FIREWALL_DROP",
+        "mitre_id": "T1046",
+        "source_ip": "45.154.255.89",
+        "destination_ip": "192.168.1.50",
+        "port": 8443,
+        "protocol": "TCP",
+        "message": "Firewall DROP: IN=eth0 SRC=45.154.255.89 DST=192.168.1.50 DPT=8443 FLAGS=SYN"
+      }
+    ],
+    "suggested_mitigation": {
+      "action_type": "FIREWALL_ISOLATION",
+      "target_ip": "45.154.255.89",
+      "command_ufw": "ufw insert 1 deny from 45.154.255.89 to any",
+      "command_iptables": "iptables -I INPUT 1 -s 45.154.255.89 -j DROP",
+      "estimated_impact": "Corte de reconocimiento de servicios perimetrales.",
+      "risk_level": "ZERO_COLLATERAL"
+    }
+  },
+  {
+    "id": "INC-2026-AR-092",
+    "scenario_key": "web_exploit",
+    "name": "Infiltración Web, LFI y Path Traversal (Escenario C Denis)",
+    "severity": "HIGH",
+    "confidence_score": 0.94,
+    "detected_at": "2026-09-17T17:47:00Z",
+    "source": {
+      "ip": "194.26.29.112",
+      "country": "Países Bajos (VPS Bulletproof)",
+      "asn": "AS44592",
+      "reputation": "Atacante de Aplicaciones Web"
+    },
+    "destination": {
+      "ip": "192.168.1.50",
+      "hostname": "srv-internal-defense.ar",
+      "subnet": "192.168.1.0/24",
+      "zone": "LAN Operativa"
+    },
+    "mitre_attack": [
+      {
+        "id": "T1190",
+        "name": "Exploit Public-Facing Application",
+        "tactic": "Initial Access",
+        "description": "Peticiones maliciosas GET ../../../../etc/passwd e inyecciones SQL."
+      }
+    ],
+    "timeline_events": [
+      {
+        "id": "EVT-30",
+        "phase": "Fase 1: Intento de Path Traversal",
+        "timestamp": "2026-09-17T17:46:40Z",
+        "event_type": "WEB_ATTACK",
+        "mitre_id": "T1190",
+        "source_ip": "194.26.29.112",
+        "destination_ip": "192.168.1.50",
+        "port": 80,
+        "protocol": "HTTP",
+        "message": "HTTP/1.1 403 Forbidden - Request: 'GET /../../../../etc/passwd' - Alert: Path Traversal"
+      },
+      {
+        "id": "EVT-31",
+        "phase": "Fase 2: Extracción de Credenciales .env",
+        "timestamp": "2026-09-17T17:46:45Z",
+        "event_type": "WEB_ATTACK",
+        "mitre_id": "T1190",
+        "source_ip": "194.26.29.112",
+        "destination_ip": "192.168.1.50",
+        "port": 80,
+        "protocol": "HTTP",
+        "message": "HTTP/1.1 403 Forbidden - Request: 'GET /.env' - Alert: Sensitive environment config probe"
+      },
+      {
+        "id": "EVT-32",
+        "phase": "Fase 3: Intento de Carga de Web Shell",
+        "timestamp": "2026-09-17T17:46:50Z",
+        "event_type": "WEB_ATTACK",
+        "mitre_id": "T1190",
+        "source_ip": "194.26.29.112",
+        "destination_ip": "192.168.1.50",
+        "port": 80,
+        "protocol": "HTTP",
+        "message": "HTTP/1.1 403 Forbidden - Request: 'POST /upload.php?file=shell.php.jpg' - Alert: Malicious upload"
+      }
+    ],
+    "suggested_mitigation": {
+      "action_type": "FIREWALL_ISOLATION",
+      "target_ip": "194.26.29.112",
+      "command_ufw": "ufw insert 1 deny from 194.26.29.112 to any",
+      "command_iptables": "iptables -I INPUT 1 -s 194.26.29.112 -j DROP",
+      "estimated_impact": "Bloqueo perimetral para detener la explotación de la aplicación web.",
+      "risk_level": "ZERO_COLLATERAL"
+    }
+  }
+]
