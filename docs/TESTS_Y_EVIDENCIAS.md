@@ -1,4 +1,4 @@
-<![CDATA[# 🧪 Pruebas y Evidencias — CyberSOAR-AR
+# 🧪 Pruebas y Evidencias — CyberSOAR-AR
 
 > **Entregable 5** — Pruebas de ejecución reproducibles, dataset de logs sintéticos y verificación de cadena de custodia forense.
 
@@ -329,11 +329,11 @@ python attack_simulator.py --scenario web
 - [x] Eventos JSON generados con formato estándar
 - [x] Tests del guardrail de whitelist pasando al 100%
 - [x] JSON Schema documentado para validación de salida del LLM
-- [x] Procedimiento de hash SHA-256 documentado
-- [ ] Captura de flujo completo n8n (pendiente Rama 2)
-- [ ] Captura de consola SOC con Human-in-the-Loop (pendiente Rama 3)
+- [x] Procedimiento de hash SHA-256 documentado y verificado
+- [x] Definición completa de flujo n8n exportada (`n8n/cyber_soar_workflow.json`)
+- [x] Consola SOC táctica funcional con Human-in-the-Loop (`dashboard/`)
+- [x] Guion de presentación en vivo (3 min) y Pitch Deck (`docs/PITCH_Y_GUION_DEMO.md`)
 
 ---
 
 *Documento generado para el Entregable 5 del Hackathon de CyberDefensa Argentina 2026.*
-]]>

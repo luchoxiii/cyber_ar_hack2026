@@ -1,0 +1,495 @@
+{
+  "batch_size": 35,
+  "events": [
+    {
+      "timestamp": "2026-09-18T03:15:12.075423+00:00",
+      "event_type": "AUTH_FAILURE",
+      "network": {
+        "source_ip": "185.220.101.5",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 22,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Failed password for invalid user admin from 185.220.101.5 port 46184 ssh2",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:12.100695+00:00",
+      "event_type": "AUTH_FAILURE",
+      "network": {
+        "source_ip": "185.220.101.5",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 22,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Failed password for invalid user root from 185.220.101.5 port 53941 ssh2",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:12.125750+00:00",
+      "event_type": "AUTH_FAILURE",
+      "network": {
+        "source_ip": "185.220.101.5",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 22,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Failed password for invalid user admin from 185.220.101.5 port 50383 ssh2",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:12.150792+00:00",
+      "event_type": "AUTH_FAILURE",
+      "network": {
+        "source_ip": "185.220.101.5",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 22,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Failed password for invalid user postgres from 185.220.101.5 port 50948 ssh2",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:12.175830+00:00",
+      "event_type": "AUTH_FAILURE",
+      "network": {
+        "source_ip": "185.220.101.5",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 22,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Failed password for invalid user test from 185.220.101.5 port 45801 ssh2",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:12.200864+00:00",
+      "event_type": "AUTH_FAILURE",
+      "network": {
+        "source_ip": "185.220.101.5",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 22,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Failed password for invalid user root from 185.220.101.5 port 41920 ssh2",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:12.225889+00:00",
+      "event_type": "AUTH_FAILURE",
+      "network": {
+        "source_ip": "185.220.101.5",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 22,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Failed password for invalid user ubuntu from 185.220.101.5 port 55948 ssh2",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:12.250915+00:00",
+      "event_type": "AUTH_FAILURE",
+      "network": {
+        "source_ip": "185.220.101.5",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 22,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Failed password for invalid user root from 185.220.101.5 port 47726 ssh2",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:12.275941+00:00",
+      "event_type": "AUTH_FAILURE",
+      "network": {
+        "source_ip": "185.220.101.5",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 22,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Failed password for invalid user test from 185.220.101.5 port 53833 ssh2",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:12.301012+00:00",
+      "event_type": "AUTH_FAILURE",
+      "network": {
+        "source_ip": "185.220.101.5",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 22,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Failed password for invalid user root from 185.220.101.5 port 40608 ssh2",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:12.322656+00:00",
+      "event_type": "AUTH_FAILURE",
+      "network": {
+        "source_ip": "185.220.101.5",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 22,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Failed password for invalid user admin from 185.220.101.5 port 42392 ssh2",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:12.346095+00:00",
+      "event_type": "AUTH_FAILURE",
+      "network": {
+        "source_ip": "185.220.101.5",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 22,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Failed password for invalid user admin from 185.220.101.5 port 53438 ssh2",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:12.371180+00:00",
+      "event_type": "AUTH_FAILURE",
+      "network": {
+        "source_ip": "185.220.101.5",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 22,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Failed password for invalid user root from 185.220.101.5 port 64954 ssh2",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:12.395310+00:00",
+      "event_type": "AUTH_FAILURE",
+      "network": {
+        "source_ip": "185.220.101.5",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 22,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Failed password for invalid user admin from 185.220.101.5 port 55334 ssh2",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:12.420468+00:00",
+      "event_type": "AUTH_FAILURE",
+      "network": {
+        "source_ip": "185.220.101.5",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 22,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Failed password for invalid user admin from 185.220.101.5 port 42156 ssh2",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:12.947287+00:00",
+      "event_type": "FIREWALL_DROP",
+      "network": {
+        "source_ip": "45.154.255.89",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 21,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Firewall DROP: IN=eth0 SRC=45.154.255.89 DST=192.168.1.50 PROTO=TCP SPT=47652 DPT=21 FLAGS=SYN",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:12.959926+00:00",
+      "event_type": "FIREWALL_DROP",
+      "network": {
+        "source_ip": "45.154.255.89",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 22,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Firewall DROP: IN=eth0 SRC=45.154.255.89 DST=192.168.1.50 PROTO=TCP SPT=43110 DPT=22 FLAGS=SYN",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:12.971094+00:00",
+      "event_type": "FIREWALL_DROP",
+      "network": {
+        "source_ip": "45.154.255.89",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 23,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Firewall DROP: IN=eth0 SRC=45.154.255.89 DST=192.168.1.50 PROTO=TCP SPT=58982 DPT=23 FLAGS=SYN",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:12.983669+00:00",
+      "event_type": "FIREWALL_DROP",
+      "network": {
+        "source_ip": "45.154.255.89",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 25,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Firewall DROP: IN=eth0 SRC=45.154.255.89 DST=192.168.1.50 PROTO=TCP SPT=58774 DPT=25 FLAGS=SYN",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:12.996247+00:00",
+      "event_type": "FIREWALL_DROP",
+      "network": {
+        "source_ip": "45.154.255.89",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 80,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Firewall DROP: IN=eth0 SRC=45.154.255.89 DST=192.168.1.50 PROTO=TCP SPT=41925 DPT=80 FLAGS=SYN",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:13.008830+00:00",
+      "event_type": "FIREWALL_DROP",
+      "network": {
+        "source_ip": "45.154.255.89",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 110,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Firewall DROP: IN=eth0 SRC=45.154.255.89 DST=192.168.1.50 PROTO=TCP SPT=41759 DPT=110 FLAGS=SYN",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:13.021407+00:00",
+      "event_type": "FIREWALL_DROP",
+      "network": {
+        "source_ip": "45.154.255.89",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 139,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Firewall DROP: IN=eth0 SRC=45.154.255.89 DST=192.168.1.50 PROTO=TCP SPT=42537 DPT=139 FLAGS=SYN",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:13.033993+00:00",
+      "event_type": "FIREWALL_DROP",
+      "network": {
+        "source_ip": "45.154.255.89",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 443,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Firewall DROP: IN=eth0 SRC=45.154.255.89 DST=192.168.1.50 PROTO=TCP SPT=58473 DPT=443 FLAGS=SYN",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:13.046560+00:00",
+      "event_type": "FIREWALL_DROP",
+      "network": {
+        "source_ip": "45.154.255.89",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 445,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Firewall DROP: IN=eth0 SRC=45.154.255.89 DST=192.168.1.50 PROTO=TCP SPT=52827 DPT=445 FLAGS=SYN",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:13.059144+00:00",
+      "event_type": "FIREWALL_DROP",
+      "network": {
+        "source_ip": "45.154.255.89",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 1433,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Firewall DROP: IN=eth0 SRC=45.154.255.89 DST=192.168.1.50 PROTO=TCP SPT=48255 DPT=1433 FLAGS=SYN",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:13.070828+00:00",
+      "event_type": "FIREWALL_DROP",
+      "network": {
+        "source_ip": "45.154.255.89",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 3306,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Firewall DROP: IN=eth0 SRC=45.154.255.89 DST=192.168.1.50 PROTO=TCP SPT=40195 DPT=3306 FLAGS=SYN",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:13.082574+00:00",
+      "event_type": "FIREWALL_DROP",
+      "network": {
+        "source_ip": "45.154.255.89",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 3389,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Firewall DROP: IN=eth0 SRC=45.154.255.89 DST=192.168.1.50 PROTO=TCP SPT=54414 DPT=3389 FLAGS=SYN",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:13.095152+00:00",
+      "event_type": "FIREWALL_DROP",
+      "network": {
+        "source_ip": "45.154.255.89",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 5432,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Firewall DROP: IN=eth0 SRC=45.154.255.89 DST=192.168.1.50 PROTO=TCP SPT=55435 DPT=5432 FLAGS=SYN",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:13.105850+00:00",
+      "event_type": "FIREWALL_DROP",
+      "network": {
+        "source_ip": "45.154.255.89",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 8080,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Firewall DROP: IN=eth0 SRC=45.154.255.89 DST=192.168.1.50 PROTO=TCP SPT=59673 DPT=8080 FLAGS=SYN",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:13.118448+00:00",
+      "event_type": "FIREWALL_DROP",
+      "network": {
+        "source_ip": "45.154.255.89",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 8443,
+        "protocol": "TCP"
+      },
+      "payload": {
+        "raw_message": "Firewall DROP: IN=eth0 SRC=45.154.255.89 DST=192.168.1.50 PROTO=TCP SPT=46573 DPT=8443 FLAGS=SYN",
+        "user_agent": "OpenSSH_8.9p1"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:13.636242+00:00",
+      "event_type": "WEB_ATTACK",
+      "network": {
+        "source_ip": "194.26.29.112",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 80,
+        "protocol": "HTTP"
+      },
+      "payload": {
+        "raw_message": "HTTP/1.1 403 Forbidden - Request: \"GET /../../../../etc/passwd\" - Alert: Path Traversal attempt on system files",
+        "user_agent": "curl/8.4.0"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:13.690864+00:00",
+      "event_type": "WEB_ATTACK",
+      "network": {
+        "source_ip": "194.26.29.112",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 80,
+        "protocol": "HTTP"
+      },
+      "payload": {
+        "raw_message": "HTTP/1.1 403 Forbidden - Request: \"POST /api/login?user=admin'--\" - Alert: SQL Injection detected in auth query",
+        "user_agent": "curl/8.4.0"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:13.745935+00:00",
+      "event_type": "WEB_ATTACK",
+      "network": {
+        "source_ip": "194.26.29.112",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 80,
+        "protocol": "HTTP"
+      },
+      "payload": {
+        "raw_message": "HTTP/1.1 403 Forbidden - Request: \"GET /cgi-bin/test.sh?cmd=cat%20/etc/shadow\" - Alert: Command Injection vulnerability probe",
+        "user_agent": "curl/8.4.0"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:13.799857+00:00",
+      "event_type": "WEB_ATTACK",
+      "network": {
+        "source_ip": "194.26.29.112",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 80,
+        "protocol": "HTTP"
+      },
+      "payload": {
+        "raw_message": "HTTP/1.1 403 Forbidden - Request: \"GET /.env\" - Alert: Sensitive environment configuration disclosure attempt",
+        "user_agent": "curl/8.4.0"
+      }
+    },
+    {
+      "timestamp": "2026-09-18T03:15:13.854434+00:00",
+      "event_type": "WEB_ATTACK",
+      "network": {
+        "source_ip": "194.26.29.112",
+        "destination_ip": "192.168.1.50",
+        "destination_port": 80,
+        "protocol": "HTTP"
+      },
+      "payload": {
+        "raw_message": "HTTP/1.1 403 Forbidden - Request: \"POST /upload.php?file=shell.php.jpg\" - Alert: Malicious file upload attempt",
+        "user_agent": "curl/8.4.0"
+      }
+    }
+  ]
+}

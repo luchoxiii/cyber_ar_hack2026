@@ -1,4 +1,4 @@
-<![CDATA[# 🛡️ CyberSOAR-AR — Agente SOAR con IA para Ciberdefensa Soberana
+# 🛡️ CyberSOAR-AR — Agente SOAR con IA para Ciberdefensa Soberana
 
 > **Hackathon de CyberDefensa Argentina 2026 — Eje 2: Ciberdefensa e Inteligencia Artificial**
 >
@@ -230,7 +230,8 @@ CyberSOAR-AR está diseñado para operar en **redes air-gapped**:
 |---|---|---|
 | [`docs/THREAT_MODEL.md`](docs/THREAT_MODEL.md) | Entregable 4 | Modelo de amenazas STRIDE + MITRE ATT&CK, análisis de riesgos y controles |
 | [`docs/TESTS_Y_EVIDENCIAS.md`](docs/TESTS_Y_EVIDENCIAS.md) | Entregable 5 | Pruebas reproducibles, dataset sintético, verificación SHA-256 |
-| [`docs/SOBERANIA_Y_ETICA.md`](docs/SOBERANIA_Y_ETICA.md) | Entregables 6 y 7 | Soberanía tecnológica, declaración de IA, herramientas de terceros |
+| [`docs/SOBERANIA_Y_ETICA.md`](docs/SOBERANIA_Y_ETICA.md) | Entregable 6 | Soberanía tecnológica, declaración de IA, herramientas de terceros |
+| [`docs/PITCH_Y_GUION_DEMO.md`](docs/PITCH_Y_GUION_DEMO.md) | Entregable 7 | Pitch Deck (diapositivas), Guion de Demo cronometrado (3 min) y FAQ de jurado |
 
 ---
 
@@ -243,4 +244,3 @@ CyberSOAR-AR está diseñado para operar en **redes air-gapped**:
 ## Licencia
 
 Este proyecto está licenciado bajo los términos definidos en el archivo [`LICENSE`](LICENSE).
-]]>

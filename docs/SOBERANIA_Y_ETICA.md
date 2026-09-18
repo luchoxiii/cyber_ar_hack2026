@@ -1,4 +1,4 @@
-<![CDATA[# 🇦🇷 Soberanía Tecnológica y Ética — CyberSOAR-AR
+# 🇦🇷 Soberanía Tecnológica y Ética — CyberSOAR-AR
 
 > **Entregables 6 y 7** — Declaración de herramientas de terceros, componentes asistidos/generados por IA, y justificación de soberanía tecnológica.
 
@@ -176,4 +176,3 @@ El agente LLM analiza patrones de red objetivos (IPs, puertos, payloads) y no to
 ---
 
 *Documento generado para los Entregables 6 y 7 del Hackathon de CyberDefensa Argentina 2026.*
-]]>

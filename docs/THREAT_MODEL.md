@@ -1,4 +1,4 @@
-<![CDATA[# 🔍 Modelo de Amenazas — CyberSOAR-AR
+# 🔍 Modelo de Amenazas — CyberSOAR-AR
 
 > **Entregable 4** — Modelo de amenazas formal, análisis de riesgos, controles implementados y limitaciones conocidas.
 
@@ -216,4 +216,3 @@ Un actor malicioso utiliza `attack_simulator.py` para generar tráfico real cont
 ---
 
 *Documento generado para el Entregable 4 del Hackathon de CyberDefensa Argentina 2026.*
-]]>
