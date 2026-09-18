@@ -6,6 +6,7 @@
 > **Pitcher / Orador:** Marco Ungaro  
 > **Diapositivas Proyectables (100% Offline):** [`docs/slides.html`](slides.html)  
 > **Guía de Estudio y Defensa Oral para Marco:** [`docs/GUIA_DEFENSA_MARCO.md`](GUIA_DEFENSA_MARCO.md)  
+> **Video Demo Oficial en YouTube:** [https://youtu.be/AmBrMdtl2VQ](https://youtu.be/AmBrMdtl2VQ)  
 > **Duración total:** 3 minutos de presentación y demo + 1 minuto de preguntas del jurado.
 
 ---
@@ -57,6 +58,7 @@
 ---
 
 ### 📊 Diapositiva 6: Demostración en Vivo (Coreografía de 3 Minutos)
+* **Video Demo Oficial (YouTube):** [https://youtu.be/AmBrMdtl2VQ](https://youtu.be/AmBrMdtl2VQ)
 * **Paso 1:** Simulación de ataque coordinado (Fuerza bruta SSH + Escaneo de puertos + Path Traversal).
 * **Paso 2:** Ingesta y correlación temporal instantánea en el motor n8n.
 * **Paso 3:** Alerta táctica en la Consola SOC con visualización de técnica MITRE (T1110 / T1046).

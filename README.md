@@ -6,6 +6,7 @@
   <img src="https://img.shields.io/badge/Entorno-100%25_Air--Gapped-emerald?style=for-the-badge" alt="Air-Gapped" />
   <img src="https://img.shields.io/badge/Guardrails-OWASP_Top_10_LLM-amber?style=for-the-badge" alt="OWASP" />
   <img src="https://img.shields.io/badge/Consola-Next.js_16_React-cyan?style=for-the-badge" alt="Next.js" />
+  <a href="https://youtu.be/AmBrMdtl2VQ" target="_blank"><img src="https://img.shields.io/badge/YouTube-Video_Demo_Oficial-red?style=for-the-badge&logo=youtube" alt="Video Demo YouTube" /></a>
 </p>
 
 > **Hackathon de CyberDefensa Argentina 2026 — Eje 2: Ciberdefensa e Inteligencia Artificial**
@@ -278,7 +279,7 @@ Si estás explorando o evaluando este repositorio dentro del entorno de **Google
 > **Documento de ejecución en vivo a prueba de fallos para Marco Ungaro (Pitcher) o evaluadores del jurado.**  
 > Diseñado para ejecutarse con máxima fluidez durante los **3 minutos cronometrados** de exposición ante el Comité Evaluador de CyberAr 2026.
 > 📹 **Demostración Operativa en Video:**
-> * 📺 **[Video Demo Oficial en YouTube (1 Minuto Explicado)](https://youtu.be/...):** Demostración guiada con la Consola SOC táctica a la izquierda y el panel sincronizado paso a paso a la derecha (5 fases operativas, guardrails OWASP, clasificación MITRE, corte en kernel y acta SHA-256).
+> * 📺 **[Video Demo Oficial en YouTube (60s Guiado y Explicado)](https://youtu.be/AmBrMdtl2VQ):** Demostración interactiva guiada con la Consola SOC táctica en vivo a la izquierda y el panel explicativo paso a paso a la derecha (5 fases operativas, guardrails OWASP, clasificación MITRE, corte en kernel y acta SHA-256).
 > * ⚡ **Generación local automatizada:** Los videos se generan en Full HD 1080p con `python3 scripts/record_demo_explained.py` (60s) y `python3 scripts/record_demo.py` (22s) para reproducción offline sin conexión.
 
 ```
