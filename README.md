@@ -269,7 +269,7 @@ Si estás explorando o evaluando este repositorio dentro del entorno de **Google
 
 #### 4. 🛡️ Auditoría de Guardrails y Entrenamiento Oral
 * **Tests de Guardrails:** Pídele *"Ejecutá las pruebas unitarias de los 4 guardrails OWASP"* para correr `python3 guardrails.py`.
-* **Simulación de Defensa (Q&A Jurado):** Podés usar el comando `/grill-me` o pedirle *"Tomame examen técnico para defender el proyecto ante el jurado"* basándose en los apuntes de [`docs/GUIA_DEFENSA_LUCIANO.md`](docs/GUIA_DEFENSA_LUCIANO.md).
+* **Simulación de Defensa (Q&A Jurado):** Podés usar el comando `/grill-me` o pedirle *"Tomame examen técnico para defender el proyecto ante el jurado"* basándose en los apuntes de [`docs/GUIA_DEFENSA.md`](docs/GUIA_DEFENSA.md).
 
 ---
 
@@ -285,7 +285,7 @@ Si estás explorando o evaluando este repositorio dentro del entorno de **Google
 
 1. 📊 **[Diapositivas Oficiales del Pitch (`docs/slides.html`)](docs/slides.html)**  
    *Presentación interactiva de 8 diapositivas proyectable en pantalla completa (`F11` o tecla `F`), con cronómetro militar de 3 minutos integrado (`T`) y reproductor de video conmutable.*
-2. 🧠 **[Apuntes de Estudio y Defensa Oral para Luciano (`docs/GUIA_DEFENSA_LUCIANO.md`)](docs/GUIA_DEFENSA_LUCIANO.md)**  
+2. 🧠 **[Apuntes de Estudio y Defensa Oral ante el Jurado (`docs/GUIA_DEFENSA.md`)](docs/GUIA_DEFENSA.md)**  
    *La analogía clave de 30 segundos, el glosario táctico militar esencial, el desglose de los 4 guardrails OWASP y las **10 respuestas blindadas** para las preguntas trampa del jurado.*
 3. ⏱️ **[Guion Cronometrado Segundo a Segundo (`docs/PITCH_Y_GUION_DEMO.md`)](docs/PITCH_Y_GUION_DEMO.md)**  
    *Coreografía exacta de 180 segundos: qué decir en cada diapositiva, en qué segundo cambiar de pantalla y cuándo hacer clic.*
@@ -387,8 +387,8 @@ python3 attack_simulator.py --scenario all --no-send --output data/dataset_sinte
 
 ### 🛡️ 4. Guía de Estudio y Defensa Oral para Preguntas del Jurado
 
-Para preparar a Luciano en las preguntas difíciles que puedan realizar los evaluadores (mandos militares, especialistas en IA o ingenieros de redes/criptografía):  
-👉 **Consultar la guía completa de respuestas en:** [`docs/GUIA_DEFENSA_LUCIANO.md`](docs/GUIA_DEFENSA_LUCIANO.md)  
+Para preparar la defensa ante las preguntas difíciles que puedan realizar los evaluadores (mandos militares, especialistas en IA o ingenieros de redes/criptografía):  
+👉 **Consultar la guía completa de respuestas en:** [`docs/GUIA_DEFENSA.md`](docs/GUIA_DEFENSA.md)  
 *(Incluye la analogía de 30 segundos, el glosario táctico militar y las 10 preguntas trampa simuladas con respuestas exactas).*
 
 ---
@@ -433,7 +433,7 @@ CyberSOAR-AR está diseñado para operar en **redes air-gapped**:
 | 6 | **Privacidad, ética, accesibilidad y continuidad** | [`docs/SOBERANIA_Y_ETICA.md`](docs/SOBERANIA_Y_ETICA.md) | Soberanía air-gapped, WCAG 2.1 AA, modo fail-safe y declaración de IA |
 | 7 | **Pitch deck, guion de demo y herramientas** | [`docs/PITCH_Y_GUION_DEMO.md`](docs/PITCH_Y_GUION_DEMO.md), [`docs/slides.html`](docs/slides.html) | 8 diapositivas interactivas, guion de 3 min y banco de preguntas |
 | 📄 | **Ficha Ejecutiva de Entrega (One-Pager)** | [`docs/FICHA_ENTREGA.md`](docs/FICHA_ENTREGA.md) | Resumen oficial para el jurado, datos de equipo, ROI y verificación en 60s |
-| 🎖️ | **Guía de Defensa Oral y Glosario para el Pitcher** | [`docs/GUIA_DEFENSA_LUCIANO.md`](docs/GUIA_DEFENSA_LUCIANO.md) | Cheat-sheet para Luciano Lisachi: glosario táctico militar y 10 preguntas trampa del jurado |
+| 🎖️ | **Guía de Defensa Oral y Glosario para el Pitcher** | [`docs/GUIA_DEFENSA.md`](docs/GUIA_DEFENSA.md) | Cheat-sheet para el pitcher / orador: glosario táctico militar y 10 preguntas trampa del jurado |
 
 ---
 

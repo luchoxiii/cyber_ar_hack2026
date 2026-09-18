@@ -5,7 +5,7 @@
 > **Presentación Oficial para el Jurado (Pitch y Demostración Operativa)**  
 > **Pitcher / Orador:** Luciano Lisachi  
 > **Diapositivas Proyectables (100% Offline):** [`docs/slides.html`](slides.html)  
-> **Guía de Estudio y Defensa Oral para Luciano:** [`docs/GUIA_DEFENSA_LUCIANO.md`](GUIA_DEFENSA_LUCIANO.md)  
+> **Guía de Estudio y Defensa Oral ante el Jurado:** [`docs/GUIA_DEFENSA.md`](GUIA_DEFENSA.md)  
 > **Video Demo Oficial en YouTube:** [https://youtu.be/AmBrMdtl2VQ](https://youtu.be/AmBrMdtl2VQ)  
 > **Duración total:** 3 minutos de presentación y demo + 1 minuto de preguntas del jurado.
 
