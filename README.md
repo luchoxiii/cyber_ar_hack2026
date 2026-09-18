@@ -12,6 +12,7 @@
 - [Arquitectura de Componentes](#arquitectura-de-componentes)
 - [Guardrails Defensivos (OWASP LLM)](#guardrails-defensivos-owasp-llm)
 - [Instalación y Uso Rápido (Entregable 3)](#instalación-y-uso-rápido-entregable-3)
+  - [Ejecución Asistida con Google Antigravity](#-ejecución-asistida-con-google-antigravity)
 - [Guía Operativa para la Demo en Vivo (3 min - Pitch Marco)](#demo-en-vivo)
 - [Estrategia de Adopción y Soberanía Air-Gapped](#estrategia-de-adopción)
 - [Matriz de Entregables Oficiales (CyberAr 2026)](#matriz-de-entregables-oficiales-reglamento-cyberar-2026)
@@ -217,6 +218,46 @@ docker run -it --rm --name n8n -p 5678:5678 n8nio/n8n
 # Disparar eventos hacia el webhook de n8n
 python attack_simulator.py --scenario ssh --webhook http://localhost:5678/webhook-test/security-events
 ```
+
+### 🤖 Ejecución Asistida con Google Antigravity
+
+Si estás explorando o evaluando este repositorio dentro del entorno de **Google Antigravity** (IDE, CLI o chat asistido por agentes), podés solicitarle al agente que orqueste, ejecute y verifique todo en lenguaje natural:
+
+#### 1. 🌐 Ver la Consola SOC Táctica (Sitio Web en Vivo)
+* **Prompt para el agente:**
+  ```text
+  "Iniciá el servidor de desarrollo y mostrame la consola SOC"
+  ```
+  *(o simplemente: `run dev`)*
+* **Qué hace el agente de Antigravity:**
+  Inicia el servidor Next.js en segundo plano dentro de [`dashboard/`](dashboard/) (usando el motor Webpack estable) y te entrega el acceso directo en **[http://localhost:3000](http://localhost:3000)**.
+* **Inspección en el agente:** Podés usar el slash command `/browser` para que el agente navegue visualmente la consola e interactúe con los incidentes.
+
+#### 2. 📊 Ver las Diapositivas de la Presentación Oficial
+* **Prompt para el agente:**
+  ```text
+  "Levantá un servidor local para ver la presentación slides.html en el navegador"
+  ```
+* **Qué hace el agente de Antigravity:**
+  Inicia un servidor HTTP liviano (`python3 -m http.server 8080 --directory docs`) o te proporciona la URL local de [`docs/slides.html`](docs/slides.html) para visualizar la presentación interactiva de 8 diapositivas a pantalla completa (`F11` o tecla `F`).
+
+#### 3. ⚔️ Ejecutar la Simulación de Ataque y Verificación de Corte
+* **Inyección de Ataque:**
+  ```text
+  "Simulá una ráfaga hostil de fuerza bruta SSH de 15 intentos"
+  ```
+  *(El agente ejecuta en terminal: `python3 attack_simulator.py --scenario ssh --count 15`)*
+* **Verificación de Bloqueo Perimetral:**
+  ```text
+  "Verificá que la IP hostil 185.220.101.5 esté bloqueada en el firewall"
+  ```
+  *(El agente ejecuta: `python3 attack_simulator.py --verify-blocked --ip 185.220.101.5` y te reporta el descarte de paquetes `Connection Refused` en el kernel Netfilter)*.
+
+#### 4. 🛡️ Auditoría de Guardrails y Entrenamiento Oral
+* **Tests de Guardrails:** Pídele *"Ejecutá las pruebas unitarias de los 4 guardrails OWASP"* para correr `python3 guardrails.py`.
+* **Simulación de Defensa (Q&A Jurado):** Podés usar el comando `/grill-me` o pedirle *"Tomame examen técnico para defender el proyecto ante el jurado"* basándose en la guía [`docs/GUIA_DEFENSA_MARCO.md`](docs/GUIA_DEFENSA_MARCO.md).
+
+---
 
 <a id="demo-en-vivo"></a>
 ## 🎬 Guía Operativa para la Demo en Vivo (3 Minutos - Pitch Marco)
