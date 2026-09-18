@@ -568,50 +568,101 @@
       </div>
     </div>
 
-    <!-- SLIDE 6: Demostración en Vivo (Hero Layout) -->
+    <!-- SLIDE 6: Demostración en Vivo (Opción A: Flujo Operativo + Lanzador en Vivo) -->
     <div class="slide" id="slide-6">
       <div class="slide-header">
-        <div class="slide-meta">DEMOSTRACIÓN TÁCTICA // FLUJO OPERATIVO EN VIVO (3 MINUTOS)</div>
-        <h1 class="slide-title">Neutralización Hostil en Tiempo Real</h1>
-        <p class="slide-subtitle">De la agresión perimetral a la contención verificada con Human-in-the-Loop</p>
+        <div class="slide-meta">DEMOSTRACIÓN TÁCTICA // PROTOCOLO OPERATIVO EN VIVO (3 MINUTOS)</div>
+        <h1 class="slide-title">Protocolo de Neutralización en Tiempo Real</h1>
+        <p class="slide-subtitle">Flujo coordinado: desde la agresión perimetral hostil hasta la contención criptográfica con Human-in-the-Loop</p>
       </div>
-      <div class="slide-body" style="gap: 12px; align-items: center;">
+      <div class="slide-body" style="gap: 14px;">
         
-        <!-- Progression Bar -->
-        <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; width: 100%;">
-          <span style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; padding: 4px 10px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.78rem;">1. Ráfaga SSH (185.220.101.5)</span>
-          <span style="color: var(--text-muted); font-size: 0.8rem;">➔</span>
-          <span style="background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.4); color: #93c5fd; padding: 4px 10px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.78rem;">2. Buffer n8n & Correlación</span>
-          <span style="color: var(--text-muted); font-size: 0.8rem;">➔</span>
-          <span style="background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); color: #fde68a; padding: 4px 10px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.78rem;">3. Ollama + 4 Guardrails OWASP</span>
-          <span style="color: var(--text-muted); font-size: 0.8rem;">➔</span>
-          <span style="background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: #86efac; padding: 4px 10px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.78rem; font-weight: bold;">4. Clic Human-in-the-Loop</span>
-          <span style="color: var(--text-muted); font-size: 0.8rem;">➔</span>
-          <span style="background: rgba(16, 185, 129, 0.25); border: 1px solid #10b981; color: #ffffff; padding: 4px 10px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.78rem; font-weight: bold;">5. Corte Kernel Netfilter (184ms)</span>
+        <!-- Pipeline Visual de 5 Pasos -->
+        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; width: 100%;">
+          <div class="box danger" style="padding: 10px 12px; text-align: center;">
+            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #f87171; font-weight: bold; margin-bottom: 4px;">PASO 1: ATAQUE</div>
+            <h4 style="font-size: 0.85rem; color: #ffffff; margin-bottom: 4px;">Sensor Hostil</h4>
+            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.3;">15 intentos SSH desde <code>185.220.101.5</code></p>
+            <div style="margin-top: 6px; font-family: var(--font-mono); font-size: 0.68rem; color: #fca5a5; background: rgba(239, 68, 68, 0.1); padding: 2px 4px; border-radius: 4px;">attack_simulator.py</div>
+          </div>
+
+          <div class="box" style="padding: 10px 12px; text-align: center; border-color: rgba(59, 130, 246, 0.4); background: rgba(59, 130, 246, 0.05);">
+            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #60a5fa; font-weight: bold; margin-bottom: 4px;">PASO 2: INGESTA</div>
+            <h4 style="font-size: 0.85rem; color: #ffffff; margin-bottom: 4px;">Buffer Temporal</h4>
+            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.3;">Ventana de 5-10s en n8n sin saturar al modelo</p>
+            <div style="margin-top: 6px; font-family: var(--font-mono); font-size: 0.68rem; color: #93c5fd; background: rgba(59, 130, 246, 0.1); padding: 2px 4px; border-radius: 4px;">&lt;raw_logs&gt; (G1)</div>
+          </div>
+
+          <div class="box" style="padding: 10px 12px; text-align: center; border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.05);">
+            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #fbbf24; font-weight: bold; margin-bottom: 4px;">PASO 3: ANÁLISIS</div>
+            <h4 style="font-size: 0.85rem; color: #ffffff; margin-bottom: 4px;">LLM + Guardrails</h4>
+            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.3;">MITRE T1110.001 (95%) + Whitelist Anti-DoS</p>
+            <div style="margin-top: 6px; font-family: var(--font-mono); font-size: 0.68rem; color: #fde68a; background: rgba(245, 158, 11, 0.1); padding: 2px 4px; border-radius: 4px;">guardrails.py (G2/G3)</div>
+          </div>
+
+          <div class="box highlight" style="padding: 10px 12px; text-align: center; border-width: 2px;">
+            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #34d399; font-weight: bold; margin-bottom: 4px;">PASO 4: MANDO</div>
+            <h4 style="font-size: 0.85rem; color: #ffffff; margin-bottom: 4px;">Human-in-the-Loop</h4>
+            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.3;">Oficial autoriza con 1 clic en Consola SOC</p>
+            <div style="margin-top: 6px; font-family: var(--font-mono); font-size: 0.68rem; color: #86efac; background: rgba(16, 185, 129, 0.15); padding: 2px 4px; border-radius: 4px; font-weight: bold;">[APROBAR MITIGACIÓN]</div>
+          </div>
+
+          <div class="box highlight" style="padding: 10px 12px; text-align: center; border-color: #10b981; background: rgba(16, 185, 129, 0.1);">
+            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #10b981; font-weight: bold; margin-bottom: 4px;">PASO 5: CORTE</div>
+            <h4 style="font-size: 0.85rem; color: #ffffff; margin-bottom: 4px;">Kernel Netfilter</h4>
+            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.3;">Paquetes hostiles descartados en 184 ms</p>
+            <div style="margin-top: 6px; font-family: var(--font-mono); font-size: 0.68rem; color: #6ee7b7; background: rgba(16, 185, 129, 0.2); padding: 2px 4px; border-radius: 4px; font-weight: bold;">Acta SHA-256</div>
+          </div>
         </div>
 
-        <!-- Large Crisp Demo Showcase -->
-        <div style="width: 100%; max-width: 900px; background: #000000; border: 2px solid var(--accent); border-radius: 8px; overflow: hidden; box-shadow: 0 12px 30px var(--accent-glow);">
-          <div style="background: #111827; padding: 6px 14px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1f2937; font-family: var(--font-mono); font-size: 0.78rem;">
-            <span style="color: #10b981; font-weight: 700; display: flex; align-items: center; gap: 6px;">
-              <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10b981;"></span>
-              SIMULACIÓN OPERATIVA EN VIVO // TERMINAL Y CONSOLA SOC TÁCTICA
+        <!-- Panel Central Operativo (Live Action Panel) -->
+        <div style="width: 100%; background: #020617; border: 2px solid var(--accent); border-radius: 8px; padding: 20px 24px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);">
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #10b981; box-shadow: 0 0 10px #10b981;"></span>
+              <span style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 700; color: #ffffff;">
+                CONSOLA TÁCTICA SOC (NEXT.JS 16) — OPERACIÓN EN VIVO
+              </span>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #34d399; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; padding: 4px 10px; border-radius: 20px;">
+              DEFCON 4 // NODO SOBERANO AIR-GAPPED
             </span>
-            <span style="color: #9ca3af;">LOOP CONTINUO (WebP)</span>
           </div>
-          <img src="assets/cyber_soar_demo.webp" alt="Demostración Animada CyberSOAR-AR" style="width: 100%; max-height: 44vh; object-fit: contain; display: block; margin: 0 auto;">
+
+          <!-- Comandos Operativos -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div style="background: rgba(0, 0, 0, 0.5); border: 1px solid var(--card-border); border-radius: 6px; padding: 10px 14px; font-family: var(--font-mono);">
+              <div style="font-size: 0.72rem; color: #f87171; margin-bottom: 4px;"># TERMINAL: Disparo de ataque hostil</div>
+              <div style="font-size: 0.84rem; color: #e2e8f0;">python3 attack_simulator.py --scenario ssh --count 15</div>
+            </div>
+            <div style="background: rgba(0, 0, 0, 0.5); border: 1px solid var(--card-border); border-radius: 6px; padding: 10px 14px; font-family: var(--font-mono);">
+              <div style="font-size: 0.72rem; color: #34d399; margin-bottom: 4px;"># TERMINAL: Verificación forense de corte activo</div>
+              <div style="font-size: 0.84rem; color: #e2e8f0;">python3 attack_simulator.py --verify-blocked --ip 185.220.101.5</div>
+            </div>
+          </div>
+
+          <!-- Big Action Button -->
+          <div style="display: flex; justify-content: center; align-items: center; padding: 6px 0;">
+            <button 
+              class="nav-btn primary" 
+              style="font-size: 1.05rem; padding: 14px 36px; border-radius: 8px; font-weight: 800; letter-spacing: 0.5px; box-shadow: 0 0 25px rgba(16, 185, 129, 0.4); display: flex; align-items: center; gap: 10px; cursor: pointer;"
+              onclick="window.open('http://localhost:3000', '_blank')"
+            >
+              <span>🚀 ABRIR CONSOLA SOC TÁCTICA EN VIVO (:3000)</span>
+            </button>
+          </div>
         </div>
 
         <!-- Quick Summary Bar -->
-        <div style="display: flex; gap: 14px; align-items: center; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); flex-wrap: wrap; justify-content: center;">
-          <span>⏱️ Ciclo SOAR: <strong style="color: #10b981;">&lt; 15 s</strong> (-99.4%)</span>
+        <div style="display: flex; gap: 16px; align-items: center; font-family: var(--font-mono); font-size: 0.84rem; color: var(--text-muted); flex-wrap: wrap; justify-content: center;">
+          <span>⏱️ Ciclo SOAR: <strong style="color: #10b981;">&lt; 15 seg</strong> (-99.4%)</span>
           <span>•</span>
           <span>⚡ Latencia Kernel: <strong style="color: #10b981;">184 ms</strong></span>
           <span>•</span>
-          <span>🛡️ Mando: <strong style="color: #ffffff;">Human-in-the-Loop</strong></span>
+          <span>🛡️ Mando: <strong style="color: #ffffff;">Human-in-the-Loop Obligatorio</strong></span>
           <span>•</span>
-          <span>📜 Evidencia: <strong style="color: #facc15;">SHA-256 Inmutable</strong></span>
-          <button class="nav-btn" style="padding: 4px 12px; font-size: 0.75rem; margin-left: 8px;" onclick="window.open('http://localhost:3000', '_blank')">🚀 Abrir Consola SOC (:3000)</button>
+          <span>📜 Evidencia Legal: <strong style="color: #facc15;">Hash SHA-256 Inmutable</strong></span>
         </div>
 
       </div>

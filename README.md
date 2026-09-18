@@ -224,9 +224,18 @@ python attack_simulator.py --scenario ssh --webhook http://localhost:5678/webhoo
 > **Documento de ejecución en vivo a prueba de fallos para Marco Ungaro (Pitcher) o evaluadores del jurado.**  
 > Diseñado para ejecutarse con máxima fluidez durante los **3 minutos cronometrados** de exposición ante el Comité Evaluador de CyberAr 2026.
 
-<p align="center">
-  <img src="docs/assets/cyber_soar_demo.webp" alt="Demostración Operativa CyberSOAR-AR en Vivo" width="850" />
-</p>
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────┐
+│               CyberSOAR-AR — Pipeline Operativo de la Demo en Vivo (3 Minutos)             │
+└─────────────────────────────────────────────────────────────────────────────────────────────┘
+  [1. Sensor Hostil]          [2. Ingesta Segura]          [3. Análisis IA Local]
+  attack_simulator.py  ───▶   Buffer n8n (5-10s)    ───▶   Ollama (Llama 3.1)
+  (15 intentos SSH)           delimitado <raw_logs>        + 4 Guardrails OWASP
+                                                                  │
+  [5. Aislamiento Kernel]     [4. Mando y Control]                │
+  Kernel Netfilter (UFW) ◀─── Consola SOC :3000     ◀─────────────┘
+  (DROP en 184ms + SHA-256)   [APROBAR MITIGACIÓN] (Human-in-the-Loop)
+```
 
 ---
 
@@ -278,11 +287,11 @@ Si el tiempo apremia o la pantalla del proyector no permite alternar ventanas:
 4. Ver los eventos entrar en tiempo real en la topología de red y el timeline forense.
 5. Hacer clic en **`[ APROBAR MITIGACIÓN AUTOMÁTICA ]`** y abrir el acta pericial con su hash SHA-256.
 
-#### Modo C: Modo Contingencia Offline en Diapositivas (Plan B sin terminales)
-Si la notebook del congreso no permite ejecutar código o no dispone de Node.js/Python:
+#### Modo C: Modo Presentación en Diapositivas (Plan B sin terminales)
+Si la notebook del congreso no permite alternar terminales o se pide exponer 100% desde las diapositivas:
 1. Abrir `docs/slides.html`.
-2. Avanzar a la **Diapositiva 6 ("Demostración Operativa en Vivo")**.
-3. La diapositiva reproduce automáticamente en bucle de alta resolución el video demo animado (`cyber_soar_demo.webp`) con el ciclo operativo completo: ingesta, alerta roja MITRE, clic de mitigación y neutralización pericial.
+2. Avanzar a la **Diapositiva 6 ("Protocolo de Neutralización en Tiempo Real")**.
+3. La diapositiva presenta la arquitectura operativa de los 5 pasos con los comandos exactos y el botón de acceso directo `[ABRIR CONSOLA SOC TÁCTICA EN VIVO (:3000)]`.
 
 #### Modo D: Auditoría y Verificación Técnica de Código (Para el Jurado Evaluador)
 Si el jurado técnico solicita verificar la solidez algorítmica y los artefactos de código:
