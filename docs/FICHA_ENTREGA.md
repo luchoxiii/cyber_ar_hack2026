@@ -66,7 +66,7 @@ El control final permanece siempre en el operador militar mediante una **Consola
 | **E4: Modelo de amenazas** | [`docs/THREAT_MODEL.md`](THREAT_MODEL.md) | STRIDE, MITRE ATT&CK y OWASP Top 10 for LLM |
 | **E5: Pruebas y evidencias** | [`docs/TESTS_Y_EVIDENCIAS.md`](TESTS_Y_EVIDENCIAS.md) | Tests unitarios, verificación de corte y `data/dataset_sintetico.json` |
 | **E6: Soberanía, ética y accesibilidad** | [`docs/SOBERANIA_Y_ETICA.md`](SOBERANIA_Y_ETICA.md) | Protocolo air-gapped, WCAG 2.1 AA y declaración de IA |
-| **E7: Pitch deck y guion de demo** | [`docs/PITCH_Y_GUION_DEMO.md`](PITCH_Y_GUION_DEMO.md) | 8 diapositivas, guion 180s y diapositivas proyectables [`docs/slides.html`](slides.html) |
+| **E7: Pitch deck, demo y video** | [`docs/PITCH_Y_GUION_DEMO.md`](PITCH_Y_GUION_DEMO.md) | Diapositivas [`docs/slides.html`](slides.html), guion 180s y Video Demo Oficial en YouTube (60s) |
 
 ---
 

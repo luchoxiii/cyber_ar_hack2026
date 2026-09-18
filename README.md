@@ -277,6 +277,9 @@ Si estás explorando o evaluando este repositorio dentro del entorno de **Google
 
 > **Documento de ejecución en vivo a prueba de fallos para Marco Ungaro (Pitcher) o evaluadores del jurado.**  
 > Diseñado para ejecutarse con máxima fluidez durante los **3 minutos cronometrados** de exposición ante el Comité Evaluador de CyberAr 2026.
+> 📹 **Demostración Operativa en Video:**
+> * 📺 **[Video Demo Oficial en YouTube (1 Minuto Explicado)](https://youtu.be/...):** Demostración guiada con la Consola SOC táctica a la izquierda y el panel sincronizado paso a paso a la derecha (5 fases operativas, guardrails OWASP, clasificación MITRE, corte en kernel y acta SHA-256).
+> * ⚡ **Generación local automatizada:** Los videos se generan en Full HD 1080p con `python3 scripts/record_demo_explained.py` (60s) y `python3 scripts/record_demo.py` (22s) para reproducción offline sin conexión.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────────────┐

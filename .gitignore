@@ -1,0 +1,16 @@
+# Videos (guardados localmente / subidos a YouTube, excluidos de Git)
+*.mp4
+*.mov
+*.avi
+*.webm
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+
+# Operating System
+.DS_Store
+Thumbs.db

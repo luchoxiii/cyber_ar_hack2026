@@ -615,42 +615,57 @@
           </div>
         </div>
 
-        <!-- Panel Central Operativo (Live Action Panel) -->
-        <div style="width: 100%; background: #020617; border: 2px solid var(--accent); border-radius: 8px; padding: 20px 24px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);">
-          
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #10b981; box-shadow: 0 0 10px #10b981;"></span>
-              <span style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 700; color: #ffffff;">
-                CONSOLA TÁCTICA SOC (NEXT.JS 16) — OPERACIÓN EN VIVO
+        <!-- Video Demo Oficial MP4 (Grabación Real 1080p) -->
+        <div style="width: 100%; max-width: 860px; background: #020617; border: 1.5px solid var(--accent); border-radius: 8px; overflow: hidden; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.2);">
+          <div style="background: #0f172a; padding: 6px 14px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; font-family: var(--font-mono); font-size: 0.76rem; flex-wrap: wrap; gap: 8px;">
+            <span style="color: #10b981; font-weight: bold; display: flex; align-items: center; gap: 6px;">
+              <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10b981;"></span>
+              <span id="demoVideoLabel">DEMOSTRACIÓN EXPLICADA PASO A PASO (1 MIN • PANEL TÁCTICO)</span>
+            </span>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <button id="btnVidExp" onclick="switchDemoVideo('cyber_soar_demo_explicado.mp4', 'DEMOSTRACIÓN EXPLICADA PASO A PASO (1 MIN • PANEL TÁCTICO)', '1080p • 61s • Explicada', true)" style="background: #10b981; color: #020617; border: none; border-radius: 4px; padding: 3px 10px; font-size: 0.72rem; font-weight: bold; cursor: pointer; transition: all 0.2s;">
+                1 Min (Explicada)
+              </button>
+              <button id="btnVidFast" onclick="switchDemoVideo('cyber_soar_demo.mp4', 'DEMOSTRACIÓN RÁPIDA DE CONSOLA (22s)', '1080p • 22s • Rápida', false)" style="background: #1e293b; color: #94a3b8; border: 1px solid #334155; border-radius: 4px; padding: 3px 10px; font-size: 0.72rem; cursor: pointer; transition: all 0.2s;">
+                22s (Rápida)
+              </button>
+              <span id="demoVideoMeta" style="color: #94a3b8; font-size: 0.72rem;">1080p • 61s</span>
+            </div>
+          </div>
+          <video id="mainDemoVideo" controls autoplay loop muted playsinline style="width: 100%; max-height: 36vh; display: block; background: #000000; outline: none;">
+            <source id="mainDemoVideoSource" src="cyber_soar_demo_explicado.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video HTML5.
+          </video>
+        </div>
+
+        <!-- Panel de Control Operativo y Lanzador en Vivo -->
+        <div style="width: 100%; max-width: 860px; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--card-border); border-radius: 8px; padding: 12px 18px; display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981;"></span>
+              <span style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: #ffffff;">
+                CONSOLA SOC TÁCTICA ACTIVA (NEXT.JS 16)
               </span>
             </div>
-            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #34d399; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; padding: 4px 10px; border-radius: 20px;">
-              DEFCON 4 // NODO SOBERANO AIR-GAPPED
-            </span>
-          </div>
-
-          <!-- Comandos Operativos -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-            <div style="background: rgba(0, 0, 0, 0.5); border: 1px solid var(--card-border); border-radius: 6px; padding: 10px 14px; font-family: var(--font-mono);">
-              <div style="font-size: 0.72rem; color: #f87171; margin-bottom: 4px;"># TERMINAL: Disparo de ataque hostil</div>
-              <div style="font-size: 0.84rem; color: #e2e8f0;">python3 attack_simulator.py --scenario ssh --count 15</div>
-            </div>
-            <div style="background: rgba(0, 0, 0, 0.5); border: 1px solid var(--card-border); border-radius: 6px; padding: 10px 14px; font-family: var(--font-mono);">
-              <div style="font-size: 0.72rem; color: #34d399; margin-bottom: 4px;"># TERMINAL: Verificación forense de corte activo</div>
-              <div style="font-size: 0.84rem; color: #e2e8f0;">python3 attack_simulator.py --verify-blocked --ip 185.220.101.5</div>
-            </div>
-          </div>
-
-          <!-- Big Action Button -->
-          <div style="display: flex; justify-content: center; align-items: center; padding: 6px 0;">
             <button 
               class="nav-btn primary" 
-              style="font-size: 1.05rem; padding: 14px 36px; border-radius: 8px; font-weight: 800; letter-spacing: 0.5px; box-shadow: 0 0 25px rgba(16, 185, 129, 0.4); display: flex; align-items: center; gap: 10px; cursor: pointer;"
+              style="font-size: 0.88rem; padding: 8px 20px; border-radius: 6px; font-weight: 700; letter-spacing: 0.3px; box-shadow: 0 0 15px rgba(16, 185, 129, 0.35); cursor: pointer;"
               onclick="window.open('http://localhost:3000', '_blank')"
             >
               <span>🚀 ABRIR CONSOLA SOC TÁCTICA EN VIVO (:3000)</span>
             </button>
+          </div>
+
+          <!-- Comandos Operativos -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div style="background: rgba(0, 0, 0, 0.5); border: 1px solid var(--card-border); border-radius: 6px; padding: 8px 12px; font-family: var(--font-mono);">
+              <div style="font-size: 0.7rem; color: #f87171; margin-bottom: 2px;"># TERMINAL: Disparo de ataque hostil</div>
+              <div style="font-size: 0.78rem; color: #e2e8f0;">python3 attack_simulator.py --scenario ssh --count 15</div>
+            </div>
+            <div style="background: rgba(0, 0, 0, 0.5); border: 1px solid var(--card-border); border-radius: 6px; padding: 8px 12px; font-family: var(--font-mono);">
+              <div style="font-size: 0.7rem; color: #34d399; margin-bottom: 2px;"># TERMINAL: Verificación forense de corte activo</div>
+              <div style="font-size: 0.78rem; color: #e2e8f0;">python3 attack_simulator.py --verify-blocked --ip 185.220.101.5</div>
+            </div>
           </div>
         </div>
 
@@ -887,6 +902,43 @@
       timerRemaining = timerDuration;
       updateTimerDisplay();
       document.getElementById('timerBtn').textContent = 'Iniciar Cronómetro';
+    }
+
+    function switchDemoVideo(src, label, meta, isExplained) {
+      const vid = document.getElementById('mainDemoVideo');
+      const srcEl = document.getElementById('mainDemoVideoSource');
+      const labelEl = document.getElementById('demoVideoLabel');
+      const metaEl = document.getElementById('demoVideoMeta');
+      const btnExp = document.getElementById('btnVidExp');
+      const btnFast = document.getElementById('btnVidFast');
+
+      if (srcEl && vid) {
+        srcEl.src = src;
+        vid.load();
+        vid.play().catch(() => {});
+      }
+      if (labelEl) labelEl.textContent = label;
+      if (metaEl) metaEl.textContent = meta;
+
+      if (isExplained) {
+        btnExp.style.background = '#10b981';
+        btnExp.style.color = '#020617';
+        btnExp.style.border = 'none';
+        btnExp.style.fontWeight = 'bold';
+        btnFast.style.background = '#1e293b';
+        btnFast.style.color = '#94a3b8';
+        btnFast.style.border = '1px solid #334155';
+        btnFast.style.fontWeight = 'normal';
+      } else {
+        btnFast.style.background = '#10b981';
+        btnFast.style.color = '#020617';
+        btnFast.style.border = 'none';
+        btnFast.style.fontWeight = 'bold';
+        btnExp.style.background = '#1e293b';
+        btnExp.style.color = '#94a3b8';
+        btnExp.style.border = '1px solid #334155';
+        btnExp.style.fontWeight = 'normal';
+      }
     }
   </script>
 </body>
