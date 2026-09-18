@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CyberSOAR-AR — Pitch Deck Oficial | Hackathon CyberAr 2026</title>
+  <title>CyberSOAR-AR — Presentación Oficial | Hackathon CyberAr 2026</title>
   <style>
     :root {
-      --bg: #090d16;
-      --card-bg: #111827;
-      --card-border: #1f2937;
+      --bg: #070a12;
+      --card-bg: #0f172a;
+      --card-border: #1e293b;
       --accent: #10b981;
-      --accent-glow: rgba(16, 185, 129, 0.2);
+      --accent-hover: #059669;
+      --accent-glow: rgba(16, 185, 129, 0.25);
       --danger: #ef4444;
-      --text: #f3f4f6;
-      --text-muted: #9ca3af;
+      --warning: #f59e0b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
       --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
@@ -24,72 +26,73 @@
       padding: 0;
     }
 
-    body {
+    html, body {
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
       background-color: var(--bg);
       color: var(--text);
       font-family: var(--font-sans);
-      overflow: hidden;
-      height: 100vh;
-      width: 100vw;
       display: flex;
       flex-direction: column;
       user-select: none;
     }
 
-    /* Header bar */
+    /* Top Bar */
     header {
+      height: 52px;
+      flex-shrink: 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 24px;
+      padding: 0 24px;
       border-bottom: 1px solid var(--card-border);
-      background: rgba(9, 13, 22, 0.95);
+      background: #0b1120;
       font-family: var(--font-mono);
       font-size: 0.85rem;
+      z-index: 50;
     }
 
-    .badge {
+    .brand-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
+      gap: 8px;
+      padding: 5px 12px;
       border-radius: 4px;
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
       color: var(--accent);
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: 0.05em;
     }
 
-    .badge.red {
-      background: rgba(239, 68, 68, 0.1);
-      border-color: rgba(239, 68, 68, 0.3);
-      color: var(--danger);
-    }
-
-    /* Presentation viewport */
+    /* Main Viewport */
     main {
       flex: 1;
+      min-height: 0;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 30px;
+      padding: 14px 24px;
+      overflow: hidden;
     }
 
     .slide {
       display: none;
       width: 100%;
-      max-width: 1100px;
-      height: 85vh;
-      max-height: 720px;
+      max-width: 1220px;
+      height: 100%;
+      max-height: calc(100vh - 130px);
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 12px;
-      padding: 48px;
+      padding: 24px 36px;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
-      animation: fadeIn 0.25s ease-out;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7);
+      animation: fadeIn 0.2s ease-out;
+      overflow-y: auto;
     }
 
     .slide.active {
@@ -97,12 +100,13 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
+      from { opacity: 0; transform: translateY(4px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .slide-header {
-      margin-bottom: 24px;
+      flex-shrink: 0;
+      margin-bottom: 16px;
     }
 
     .slide-meta {
@@ -110,36 +114,39 @@
       font-size: 0.8rem;
       color: var(--accent);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 8px;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      margin-bottom: 4px;
     }
 
     .slide-title {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 800;
       letter-spacing: -0.02em;
       color: #ffffff;
-      line-height: 1.2;
+      line-height: 1.15;
     }
 
     .slide-subtitle {
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       color: var(--text-muted);
-      margin-top: 8px;
+      margin-top: 4px;
     }
 
     .slide-body {
       flex: 1;
+      min-height: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 20px;
+      gap: 16px;
     }
 
+    /* Grids */
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      gap: 20px;
     }
 
     .grid-3 {
@@ -151,45 +158,46 @@
     .grid-4 {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+      gap: 14px;
     }
 
+    /* Cards and Boxes */
     .box {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--card-border);
       border-radius: 8px;
-      padding: 20px;
+      padding: 16px 20px;
     }
 
     .box.highlight {
       border-color: rgba(16, 185, 129, 0.4);
-      background: rgba(16, 185, 129, 0.04);
+      background: rgba(16, 185, 129, 0.05);
     }
 
     .box.danger {
       border-color: rgba(239, 68, 68, 0.4);
-      background: rgba(239, 68, 68, 0.04);
+      background: rgba(239, 68, 68, 0.05);
     }
 
     .box h3 {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: #ffffff;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
     .box p, .box li {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--text-muted);
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
     .stat-huge {
       font-family: var(--font-mono);
-      font-size: 3.5rem;
+      font-size: 3.2rem;
       font-weight: 900;
       color: var(--accent);
       line-height: 1;
@@ -200,28 +208,29 @@
     }
 
     .stat-desc {
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
       margin-top: 6px;
+      line-height: 1.35;
     }
 
     .quote-box {
       border-left: 4px solid var(--accent);
-      background: rgba(16, 185, 129, 0.05);
-      padding: 16px 20px;
+      background: rgba(16, 185, 129, 0.06);
+      padding: 12px 18px;
       border-radius: 0 8px 8px 0;
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-style: italic;
       color: #ffffff;
     }
 
     .diagram {
-      background: #000000;
+      background: #020617;
       border: 1px solid var(--card-border);
       border-radius: 8px;
-      padding: 16px;
+      padding: 14px;
       font-family: var(--font-mono);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: #34d399;
       white-space: pre;
       overflow-x: auto;
@@ -229,103 +238,181 @@
 
     .team-pills {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
-      margin-top: 16px;
+      margin-top: 12px;
     }
 
     .team-pill {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--card-border);
-      padding: 8px 14px;
+      padding: 6px 12px;
       border-radius: 20px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
     }
 
     .team-pill strong {
       color: #ffffff;
     }
 
-    /* Footer / Controls */
+    /* Bottom Control Bar */
     footer {
+      height: 60px;
+      flex-shrink: 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 24px;
+      padding: 0 24px;
       border-top: 1px solid var(--card-border);
-      background: rgba(9, 13, 22, 0.95);
+      background: #0b1120;
       font-family: var(--font-mono);
       font-size: 0.85rem;
+      z-index: 50;
     }
 
-    .controls {
-      display: flex;
+    .nav-btn {
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
-    }
-
-    button {
-      background: rgba(255, 255, 255, 0.06);
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.08);
       border: 1px solid var(--card-border);
-      color: var(--text);
-      padding: 6px 14px;
+      color: #ffffff;
+      padding: 8px 20px;
       border-radius: 6px;
       font-family: var(--font-mono);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .nav-btn.primary {
+      background: var(--accent);
+      color: #022c22;
+      border-color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .nav-btn.primary:hover {
+      background: #34d399;
+    }
+
+    /* Slide Pills Selector */
+    .slide-indicators {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .slide-dot {
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
       font-size: 0.85rem;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.15s;
     }
 
-    button:hover {
-      background: rgba(255, 255, 255, 0.12);
+    .slide-dot:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
       border-color: var(--accent);
     }
 
-    button.primary {
+    .slide-dot.active {
       background: var(--accent);
-      color: #052e16;
+      color: #022c22;
       border-color: var(--accent);
-      font-weight: 700;
+      font-weight: 800;
     }
 
-    .timer {
+    /* Timer */
+    .timer-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       font-family: var(--font-mono);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: #facc15;
       background: rgba(250, 204, 21, 0.1);
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 4px;
       border: 1px solid rgba(250, 204, 21, 0.3);
     }
+
+    /* Floating Side Navigation Arrows */
+    .side-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 70px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      z-index: 40;
+      border-radius: 6px;
+      backdrop-filter: blur(4px);
+    }
+
+    .side-nav:hover {
+      background: rgba(16, 185, 129, 0.2);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    .side-nav.prev { left: 8px; }
+    .side-nav.next { right: 8px; }
   </style>
 </head>
 <body>
 
+  <!-- Floating Side Clickers -->
+  <div class="side-nav prev" onclick="prevSlide()" title="Diapositiva Anterior (◀)">◀</div>
+  <div class="side-nav next" onclick="nextSlide()" title="Diapositiva Siguiente (▶)">▶</div>
+
   <!-- Header -->
   <header>
     <div>
-      <span class="badge">⚔️ CYBERSOAR-AR</span>
-      <span style="margin-left: 12px; color: var(--text-muted);">Hackathon CyberAr 2026 — FIE / UNDEF</span>
+      <span class="brand-badge">⚔️ CYBERSOAR-AR</span>
+      <span style="margin-left: 12px; color: var(--text-muted);">I Congreso de Ciberdefensa Argentina 2026 // FIE - UNDEF</span>
     </div>
-    <div style="display: flex; align-items: center; gap: 16px;">
-      <div class="timer" id="timerDisplay">⏱️ 03:00</div>
-      <button onclick="toggleTimer()" id="timerBtn">Iniciar Cronómetro</button>
-      <button onclick="resetTimer()">Reset</button>
-      <button onclick="toggleFullScreen()">⛶ Pantalla Completa</button>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <div class="timer-badge" id="timerDisplay">⏱️ 03:00</div>
+      <button class="nav-btn" style="padding: 4px 10px; font-size: 0.8rem;" onclick="toggleTimer()" id="timerBtn">Iniciar Cronómetro</button>
+      <button class="nav-btn" style="padding: 4px 10px; font-size: 0.8rem;" onclick="resetTimer()">Reset</button>
+      <button class="nav-btn" style="padding: 4px 10px; font-size: 0.8rem;" onclick="toggleFullScreen()">⛶ Pantalla Completa</button>
     </div>
   </header>
 
   <!-- Presentation Viewport -->
   <main>
 
-    <!-- SLIDE 1 -->
+    <!-- SLIDE 1: Portada -->
     <div class="slide active" id="slide-1">
       <div class="slide-header">
-        <div class="slide-meta">I Congreso de Ciberdefensa Argentina 2026 | Eje 2: IA y Ciberdefensa</div>
+        <div class="slide-meta">HACKATHON NACIONAL DE CIBERDEFENSA 2026 // EJE 2: IA Y CIBERDEFENSA</div>
         <h1 class="slide-title">CyberSOAR-AR</h1>
         <p class="slide-subtitle">Orquestación, Detección e Inferencia con IA Soberana para la Ciberdefensa</p>
       </div>
@@ -333,92 +420,95 @@
         <div class="quote-box">
           “La IA propone y asiste; el operador de defensa decide y comanda.”
         </div>
-        <div class="grid-2" style="margin-top: 10px;">
+        <div class="grid-2">
           <div class="box highlight">
-            <h3>🎯 Objetivo de la Misión</h3>
-            <p>Neutralización de intrusiones hostiles en segundos mediante agentes LLM locales, guardrails deterministas alineados a OWASP 2025 y mitigación activa con Human-in-the-Loop.</p>
+            <h3>🎯 Misión Operativa</h3>
+            <p>Neutralización de intrusiones hostiles en segundos mediante agentes LLM locales, 4 guardrails deterministas alineados a OWASP 2025 y contención perimetral con Human-in-the-Loop.</p>
           </div>
           <div class="box">
-            <h3>🇦🇷 Principio Soberano</h3>
-            <p>100% On-Premise y Air-Gapped. Cero telemetría externa. Cero dependencia de nubes comerciales extranjeras. Inmutabilidad pericial con SHA-256.</p>
+            <h3>🇦🇷 Doctrina de Soberanía Tecnológica</h3>
+            <p>100% On-Premise y Air-Gapped. Cero telemetría externa. Cero dependencia de nubes comerciales extranjeras. Cadena de custodia pericial inmutable mediante SHA-256.</p>
           </div>
         </div>
-        <div class="team-pills">
-          <span class="team-pill">💻 <strong>Ricardo Gabriel Díaz</strong> (Consola Táctica SOC)</span>
-          <span class="team-pill">⚙️ <strong>Dennis Ferraro</strong> (Telemetría & n8n)</span>
-          <span class="team-pill">🛡️ <strong>Luciano</strong> (Seguridad & Guardrails LLM)</span>
-          <span class="team-pill">🗣️ <strong>Marco Ungaro</strong> (Pitcher & Estrategia)</span>
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); margin-bottom: 6px;">EQUIPO OPERATIVO (ORDEN ALFABÉTICO):</div>
+          <div class="team-pills">
+            <span class="team-pill">💻 <strong>Ricardo Gabriel Díaz</strong> (Consola Táctica SOC)</span>
+            <span class="team-pill">⚙️ <strong>Dennis Ferraro</strong> (Telemetría & Pipeline n8n)</span>
+            <span class="team-pill">🛡️ <strong>Luciano</strong> (Seguridad & Modelos LLM)</span>
+            <span class="team-pill">🗣️ <strong>Marco Ungaro</strong> (Pitcher & Estrategia de Defensa)</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 2 -->
+    <!-- SLIDE 2: El Problema -->
     <div class="slide" id="slide-2">
       <div class="slide-header">
-        <div class="slide-meta">Entregable 1 | El Problema</div>
+        <div class="slide-meta">DIAGNÓSTICO OPERATIVO // EL FACTOR TIEMPO EN EL SOC DE DEFENSA</div>
         <h1 class="slide-title">La Asimetría del Tiempo en el SOC</h1>
-        <p class="slide-subtitle">La brecha insostenible entre la velocidad del ataque y el triaje manual</p>
+        <p class="slide-subtitle">La brecha insostenible entre la velocidad del adversario y el triaje manual</p>
       </div>
       <div class="slide-body">
         <div class="grid-3">
           <div class="box danger">
             <div class="stat-huge red">50 / h</div>
-            <div class="stat-desc">Capacidad promedio de un analista humano militar para investigar alertas.</div>
+            <div class="stat-desc">Capacidad media de un analista humano militar para clasificar e investigar alertas.</div>
           </div>
           <div class="box danger">
             <div class="stat-huge red">5.000</div>
-            <div class="stat-desc">Eventos hostiles coordinados disparados por un adversario en menos de 3 minutos.</div>
+            <div class="stat-desc">Eventos hostiles coordinados disparados por un atacante en menos de 3 minutos.</div>
           </div>
           <div class="box danger">
             <div class="stat-huge red">45 min</div>
-            <div class="stat-desc">Tiempo Medio de Respuesta (MTTR) manual para correlacionar y aplicar reglas firewall.</div>
+            <div class="stat-desc">Tiempo Medio de Respuesta (MTTR) manual para correlacionar y aplicar reglas de firewall.</div>
           </div>
         </div>
-        <div class="box" style="margin-top: 10px;">
-          <h3>⚠️ Consecuencias Operativas</h3>
-          <p>• <strong>Fatiga de Alertas:</strong> El 70% del tiempo se desperdicia en correlación manual y triaje de falsos positivos.</p>
-          <p>• <strong>Ventana del Adversario:</strong> En los 45 minutos de respuesta manual, el atacante completa el movimiento lateral o establece canales C2.</p>
+        <div class="box">
+          <h3>⚠️ Consecuencias Críticas para la Infraestructura</h3>
+          <p>• <strong>Fatiga Cognitiva:</strong> El 70% del tiempo de guardia se consume en clasificar eventos dispersos y falsos positivos.</p>
+          <p>• <strong>Ventana de Exfiltración:</strong> Durante los 45 minutos de respuesta manual, el adversario completa el movimiento lateral, compromete credenciales o establece canales C2.</p>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 3 -->
+    <!-- SLIDE 3: La Solución -->
     <div class="slide" id="slide-3">
       <div class="slide-header">
-        <div class="slide-meta">Entregable 2 & 3 | La Solución</div>
-        <h1 class="slide-title">CyberSOAR-AR: Respuesta en Segundos</h1>
-        <p class="slide-subtitle">Agente inteligente de correlación temporal y contención guiada</p>
+        <div class="slide-meta">ARQUITECTURA DE RESPUESTA // CYBERSOAR-AR</div>
+        <h1 class="slide-title">Respuesta Guiada en Segundos</h1>
+        <p class="slide-subtitle">Correlación temporal inteligente y mitigación activa con mando y control humano</p>
       </div>
       <div class="slide-body">
         <div class="grid-2">
           <div class="box highlight">
             <h3>🧠 Correlación Temporal por Lotes</h3>
-            <p>No evalúa alertas aisladas. Agrupa ventanas de eventos de 5 a 10 segundos, identifica patrones de ataque y los clasifica contra <strong>MITRE ATT&CK</strong> (T1110.001, T1046, T1190).</p>
+            <p>No evalúa eventos aislados: agrupa ventanas de 5 a 10 segundos, reconstruye la cadena del ataque y mapea las técnicas a <strong>MITRE ATT&CK</strong> (T1110.001, T1046, T1190).</p>
           </div>
           <div class="box highlight">
             <h3>👨‍✈️ Human-in-the-Loop Obligatorio</h3>
-            <p>La IA no ejecuta comandos a ciegas. Ensambla la propuesta exacta de remediación perimetral y el operador la autoriza con un solo clic táctico.</p>
+            <p>La IA no ejecuta comandos a ciegas. Genera la propuesta exacta de contención perimetral y el oficial militar la autoriza con un solo clic táctico.</p>
           </div>
         </div>
-        <div class="grid-2" style="margin-top: 10px;">
+        <div class="grid-2">
           <div class="box">
             <div class="stat-huge">&lt; 15 s</div>
             <div class="stat-desc">Tiempo de respuesta total desde el primer evento hostil hasta la regla activa en el firewall.</div>
           </div>
           <div class="box">
             <div class="stat-huge">99.4%</div>
-            <div class="stat-desc">Reducción del Tiempo de Contención (MTTR) respecto al procedimiento manual de 45 minutos.</div>
+            <div class="stat-desc">Reducción drástica del Tiempo de Contención (MTTR) comparado con el procedimiento manual de 45 minutos.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 4 -->
+    <!-- SLIDE 4: Arquitectura Soberana Air-Gapped -->
     <div class="slide" id="slide-4">
       <div class="slide-header">
-        <div class="slide-meta">Entregable 6 | Soberanía Operativa</div>
-        <h1 class="slide-title">Arquitectura Air-Gapped y Cadena de Custodia</h1>
-        <p class="slide-subtitle">Diseñado exclusivamente para enclaves clasificados sin acceso a Internet</p>
+        <div class="slide-meta">ENCLAVE CLASIFICADO // OPERACIÓN 100% AIR-GAPPED</div>
+        <h1 class="slide-title">Arquitectura Soberana y Cadena de Custodia</h1>
+        <p class="slide-subtitle">Diseñado exclusivamente para redes militares aisladas sin salida a Internet</p>
       </div>
       <div class="slide-body">
         <div class="diagram">
@@ -432,7 +522,7 @@
 │  [Regla Activa UFW] ◀────── [Clic Operador] ◀────── [Consola SOC Táctica Next.js]     │
 │   (Conexión Cortada)     (Human-in-the-Loop)         (Hash SHA-256 Inmutable)          │
 └────────────────────────────────────────────────────────────────────────────────────────┘</div>
-        <div class="grid-3" style="margin-top: 12px;">
+        <div class="grid-3">
           <div class="box">
             <h3>🔒 Cero Filtración</h3>
             <p>Sin llamadas a OpenAI o APIs externas. Inferencia local con pesos abiertos.</p>
@@ -442,29 +532,29 @@
             <p>Cada lote y cada mitigación aprobada genera un hash criptográfico SHA-256 pericial.</p>
           </div>
           <div class="box">
-            <h3>🛡️ Fail-Safe Mode</h3>
-            <p>Si la IA o el LLM se degradan, el sistema pasa a reglas estáticas sin bloquear la defensa.</p>
+            <h3>🛡️ Modo Fail-Safe</h3>
+            <p>Si la IA o el LLM se degradan, el sistema conmuta a reglas estáticas sin interrumpir la defensa.</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 5 -->
+    <!-- SLIDE 5: Guardrails OWASP LLM 2025 -->
     <div class="slide" id="slide-5">
       <div class="slide-header">
-        <div class="slide-meta">Entregable 4 | Seguridad Defensiva</div>
-        <h1 class="slide-title">Guardrails Deterministas (OWASP LLM 2025)</h1>
+        <div class="slide-meta">CONTROL Y RESILIENCIA // 4 GUARDRAILS DETERMINISTAS OWASP</div>
+        <h1 class="slide-title">Seguridad Defensiva y Contención de Riesgos</h1>
         <p class="slide-subtitle">“No permitimos que el modelo ejecute comandos libres: 4 barreras matemáticas”</p>
       </div>
       <div class="slide-body">
         <div class="grid-4">
           <div class="box highlight">
             <h3>1. Aislamiento Semántico (Anti-LLM01)</h3>
-            <p>Logs crudos encapsulados en <code>&lt;raw_logs&gt;</code>. Neutraliza inyecciones indirectas en User-Agents, nombres de usuario o payloads HTTP.</p>
+            <p>Logs crudos confinados en <code>&lt;raw_logs&gt;</code>. Neutraliza inyecciones indirectas en User-Agents, nombres de usuario o payloads HTTP maliciosos.</p>
           </div>
           <div class="box highlight">
             <h3>2. Salida Estructurada Tipada (Anti-LLM02)</h3>
-            <p>Validación estricta contra JSON Schema predefinido. Prohíbe emisión de sintaxis bash o campos no autorizados (ej. <code>execute_command</code>).</p>
+            <p>Validación estricta contra JSON Schema predefinido. Prohíbe la emisión de sintaxis shell o campos no autorizados (ej. <code>execute_command</code>).</p>
           </div>
           <div class="box highlight">
             <h3>3. Whitelist de Infraestructura (Anti-DoS)</h3>
@@ -472,128 +562,147 @@
           </div>
           <div class="box highlight">
             <h3>4. Comando Parametrizado (Anti-LLM08)</h3>
-            <p>El backend ensambla la regla fija (<code>ufw insert 1 deny from {ip} to any</code>) sin jamás invocar <code>shell=True</code> ni subshells.</p>
+            <p>El backend ensambla la regla fija (<code>ufw insert 1 deny from {ip} to any</code>) sin invocar <code>shell=True</code> ni scripts arbitrarios.</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 6 -->
+    <!-- SLIDE 6: Demostración en Vivo (Hero Layout) -->
     <div class="slide" id="slide-6">
       <div class="slide-header">
-        <div class="slide-meta">Entregable 7 | Demostración en Vivo y Flujo Operativo</div>
-        <h1 class="slide-title">Coreografía de la Demo en Vivo (3 Minutos)</h1>
-        <p class="slide-subtitle">Simulación de intrusión, triaje soberano, Human-in-the-Loop y corte pericial</p>
+        <div class="slide-meta">DEMOSTRACIÓN TÁCTICA // FLUJO OPERATIVO EN VIVO (3 MINUTOS)</div>
+        <h1 class="slide-title">Neutralización Hostil en Tiempo Real</h1>
+        <p class="slide-subtitle">De la agresión perimetral a la contención verificada con Human-in-the-Loop</p>
       </div>
-      <div class="slide-body" style="gap: 16px;">
-        <div class="grid-2" style="align-items: center; gap: 20px;">
-          <!-- Columna Izquierda: Cronograma y Guion -->
-          <div style="display: flex; flex-direction: column; gap: 8px;">
-            <div class="box" style="padding: 10px 14px;">
-              <h3 style="font-size: 0.9rem; margin-bottom: 2px;">⏱️ 00:00 - 00:35 | Apertura</h3>
-              <p style="font-size: 0.8rem;">Marco expone la asimetría temporal del SOC y la doctrina soberana.</p>
-            </div>
-            <div class="box" style="padding: 10px 14px;">
-              <h3 style="font-size: 0.9rem; margin-bottom: 2px;">⏱️ 00:35 - 01:15 | Ráfaga Hostil</h3>
-              <p style="font-size: 0.8rem;">15 intentos de fuerza bruta SSH (<code>185.220.101.5</code>) en terminal.</p>
-            </div>
-            <div class="box" style="padding: 10px 14px;">
-              <h3 style="font-size: 0.9rem; margin-bottom: 2px;">⏱️ 01:15 - 02:00 | Consola SOC</h3>
-              <p style="font-size: 0.8rem;">Alerta roja, mapeo MITRE T1110.001 y 4 guardrails OWASP verificados.</p>
-            </div>
-            <div class="box highlight" style="padding: 10px 14px;">
-              <h3 style="font-size: 0.9rem; margin-bottom: 2px; color: var(--accent);">⏱️ 02:00 - 02:35 | Human-in-the-Loop</h3>
-              <p style="font-size: 0.8rem;">Clic en <strong>[Aprobar Mitigación]</strong>. Contención en 184ms y hash SHA-256.</p>
-            </div>
-            <div class="box highlight" style="padding: 10px 14px;">
-              <h3 style="font-size: 0.9rem; margin-bottom: 2px; color: var(--accent);">⏱️ 02:35 - 03:00 | Verificación</h3>
-              <p style="font-size: 0.8rem;"><code>--verify-blocked</code>: paquetes rechazados por el kernel. Cierre.</p>
-            </div>
-          </div>
-
-          <!-- Columna Derecha: Video WebP Animado de la Demo -->
-          <div style="background: #000000; border: 2px solid var(--accent); border-radius: 8px; overflow: hidden; box-shadow: 0 10px 25px -5px var(--accent-glow);">
-            <div style="background: #111827; padding: 6px 12px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1f2937; font-family: var(--font-mono); font-size: 0.75rem;">
-              <span style="color: #10b981; font-weight: bold;">● SIMULACIÓN OPERATIVA EN VIVO</span>
-              <span style="color: #9ca3af;">DEMO LOOP (WebP)</span>
-            </div>
-            <img src="assets/cyber_soar_demo.webp" alt="Demostración Animada CyberSOAR-AR" style="width: 100%; height: auto; display: block;">
-          </div>
+      <div class="slide-body" style="gap: 12px; align-items: center;">
+        
+        <!-- Progression Bar -->
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; width: 100%;">
+          <span style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; padding: 4px 10px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.78rem;">1. Ráfaga SSH (185.220.101.5)</span>
+          <span style="color: var(--text-muted); font-size: 0.8rem;">➔</span>
+          <span style="background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.4); color: #93c5fd; padding: 4px 10px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.78rem;">2. Buffer n8n & Correlación</span>
+          <span style="color: var(--text-muted); font-size: 0.8rem;">➔</span>
+          <span style="background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); color: #fde68a; padding: 4px 10px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.78rem;">3. Ollama + 4 Guardrails OWASP</span>
+          <span style="color: var(--text-muted); font-size: 0.8rem;">➔</span>
+          <span style="background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: #86efac; padding: 4px 10px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.78rem; font-weight: bold;">4. Clic Human-in-the-Loop</span>
+          <span style="color: var(--text-muted); font-size: 0.8rem;">➔</span>
+          <span style="background: rgba(16, 185, 129, 0.25); border: 1px solid #10b981; color: #ffffff; padding: 4px 10px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.78rem; font-weight: bold;">5. Corte Kernel Netfilter (184ms)</span>
         </div>
+
+        <!-- Large Crisp Demo Showcase -->
+        <div style="width: 100%; max-width: 900px; background: #000000; border: 2px solid var(--accent); border-radius: 8px; overflow: hidden; box-shadow: 0 12px 30px var(--accent-glow);">
+          <div style="background: #111827; padding: 6px 14px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1f2937; font-family: var(--font-mono); font-size: 0.78rem;">
+            <span style="color: #10b981; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+              <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10b981;"></span>
+              SIMULACIÓN OPERATIVA EN VIVO // TERMINAL Y CONSOLA SOC TÁCTICA
+            </span>
+            <span style="color: #9ca3af;">LOOP CONTINUO (WebP)</span>
+          </div>
+          <img src="assets/cyber_soar_demo.webp" alt="Demostración Animada CyberSOAR-AR" style="width: 100%; max-height: 44vh; object-fit: contain; display: block; margin: 0 auto;">
+        </div>
+
+        <!-- Quick Summary Bar -->
+        <div style="display: flex; gap: 16px; align-items: center; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted);">
+          <span>⚡ MTTR: <strong style="color: #10b981;">184 ms</strong></span>
+          <span>•</span>
+          <span>🛡️ Mando: <strong style="color: #ffffff;">Operador Militar</strong></span>
+          <span>•</span>
+          <span>📜 Evidencia: <strong style="color: #facc15;">SHA-256 Inmutable</strong></span>
+          <button class="nav-btn" style="padding: 4px 12px; font-size: 0.75rem; margin-left: 8px;" onclick="window.open('http://localhost:3000', '_blank')">🚀 Abrir Consola SOC Real (:3000)</button>
+        </div>
+
       </div>
     </div>
 
-    <!-- SLIDE 7 -->
+    <!-- SLIDE 7: Métricas e Impacto -->
     <div class="slide" id="slide-7">
       <div class="slide-header">
-        <div class="slide-meta">Entregable 5 | Impacto y Valor Agregado</div>
-        <h1 class="slide-title">Retorno Operativo y Métricas Clave</h1>
-        <p class="slide-subtitle">Resultados tangibles para la ciberdefensa nacional</p>
+        <div class="slide-meta">MÉTRICAS TÁCTICAS // RETORNO DE INVERSIÓN OPERATIVO (ROI)</div>
+        <h1 class="slide-title">Impacto Tangible en la Ciberdefensa</h1>
+        <p class="slide-subtitle">Resultados medibles para la protección de infraestructura estratégica</p>
       </div>
       <div class="slide-body">
         <div class="grid-3">
           <div class="box highlight">
             <div class="stat-huge">15 s</div>
-            <div class="stat-desc">Tiempo de respuesta verificado (frente a los 45 min del triaje tradicional).</div>
+            <div class="stat-desc">Tiempo de contención real verificado (frente a los 45 minutos del procedimiento manual).</div>
           </div>
           <div class="box highlight">
             <div class="stat-huge">0 %</div>
-            <div class="stat-desc">Falsos positivos de bloqueo en infraestructura crítica gracias a la Whitelist.</div>
+            <div class="stat-desc">Falsos positivos de corte en activos protegidos gracias a la Whitelist matemática.</div>
           </div>
           <div class="box highlight">
             <div class="stat-huge">$ 0</div>
-            <div class="stat-desc">Costo en licencias privativas o consumo de tokens en nubes extranjeras.</div>
+            <div class="stat-desc">Cero costo en licencias comerciales de software privativo o consumo de APIs en nubes externas.</div>
           </div>
         </div>
-        <div class="box" style="margin-top: 14px;">
-          <h3>⚖️ Auditabilidad Jurídico-Militar</h3>
-          <p>A diferencia de los SOAR comerciales de caja negra, cada decisión genera un <strong>Acta Pericial Criptográfica (SHA-256)</strong> con sello temporal, operador responsable y regla ejecutada, apta para sumarios y peritajes judiciales.</p>
+        <div class="box">
+          <h3>⚖️ Auditabilidad Jurídico-Militar Inmutable</h3>
+          <p>A diferencia de las soluciones comerciales de caja negra, cada decisión aprobada genera un <strong>Acta Pericial Criptográfica (SHA-256)</strong> con marca temporal certificada, operador responsable y regla ejecutada, con validez probatoria para sumarios administrativos y peritajes judiciales.</p>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 8 -->
+    <!-- SLIDE 8: Estrategia de Adopción Real -->
     <div class="slide" id="slide-8">
       <div class="slide-header">
-        <div class="slide-meta">Bases Técnicas | Proyección Estratégica</div>
-        <h1 class="slide-title">Estrategia de Adopción Real Post-Hackathon</h1>
-        <p class="slide-subtitle">Plan de integración modular en la estructura de defensa nacional</p>
+        <div class="slide-meta">ESCALABILIDAD Y ADOPCIÓN // ESTRATEGIA NACIONAL</div>
+        <h1 class="slide-title">Plan de Integración en las Fuerzas Armadas</h1>
+        <p class="slide-subtitle">Hoja de ruta modular para el despliegue en la infraestructura de defensa</p>
       </div>
       <div class="slide-body">
         <div class="grid-3">
           <div class="box">
             <h3>Fase 1: Corto Plazo (1-3 Meses)</h3>
-            <p>• Conexión vía Syslog con SIEM ya instalados en las FF.AA. (Wazuh, OSSEC, Suricata).</p>
-            <p>• Despliegue en laboratorios de prueba de la Escuela Superior de Guerra y FIE.</p>
+            <p>• Conexión vía Syslog con agentes SIEM existentes en las FF.AA. (Wazuh, Suricata, OSSEC).</p>
+            <p>• Despliegue experimental en laboratorios de ciberdefensa de la FIE y la Escuela Superior de Guerra.</p>
           </div>
           <div class="box highlight">
             <h3>Fase 2: Mediano Plazo (3-6 Meses)</h3>
-            <p>• Fine-tuning del modelo local con datasets desclasificados del Comando Conjunto de Ciberdefensa (CCCD).</p>
-            <p>• Adaptación a taxonomía y protocolos tácticos militares propios.</p>
+            <p>• Fine-tuning del modelo LLM local con telemetría desclasificada del Comando Conjunto de Ciberdefensa (CCCD).</p>
+            <p>• Adaptación a la taxonomía operacional y perfiles de amenaza regionales.</p>
           </div>
           <div class="box">
             <h3>Fase 3: Largo Plazo (6-12 Meses)</h3>
-            <p>• Malla federada de nodos CyberSOAR-AR en infraestructura crítica nacional (red eléctrica, comunicaciones).</p>
-            <p>• Alerta temprana distribuida y defensa coordinada soberana.</p>
+            <p>• Malla federada de agentes SOAR soberanos para infraestructura crítica nacional (red eléctrica, agua, comando y control).</p>
+            <p>• Alerta temprana coordinada y defensa colectiva inter-fuerzas.</p>
           </div>
         </div>
-        <div class="quote-box" style="margin-top: 14px; font-size: 1.05rem;">
-          “CyberSOAR-AR no es solo un prototipo: es una arquitectura soberana y viable para la defensa del ciberespacio argentino.”
+        <div class="quote-box" style="font-size: 1.05rem;">
+          “CyberSOAR-AR no es un ejercicio teórico: es una arquitectura soberana, modular y lista para robustecer la defensa del ciberespacio argentino.”
         </div>
       </div>
     </div>
 
   </main>
 
-  <!-- Footer Navigation -->
+  <!-- Bottom Sticky Navigation Bar -->
   <footer>
-    <div>
-      <span>Diapositiva <strong id="currentSlideNum">1</strong> de <strong>8</strong></span>
-      <span style="margin-left: 16px; color: var(--text-muted);">(Usa flechas ◀ ▶ o Espacio para navegar)</span>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <button class="nav-btn" onclick="prevSlide()" title="Retroceder (Tecla ◀ o Backspace)">
+        ◀ Anterior
+      </button>
+      <span style="color: var(--text-muted); font-size: 0.8rem;">(Tecla ◀)</span>
     </div>
-    <div class="controls">
-      <button onclick="prevSlide()">◀ Anterior</button>
-      <button onclick="nextSlide()" class="primary">Siguiente ▶</button>
+
+    <!-- Direct Slide Jumpers -->
+    <div class="slide-indicators">
+      <div class="slide-dot active" onclick="showSlide(1)" title="Slide 1: Portada">1</div>
+      <div class="slide-dot" onclick="showSlide(2)" title="Slide 2: El Problema">2</div>
+      <div class="slide-dot" onclick="showSlide(3)" title="Slide 3: La Solución">3</div>
+      <div class="slide-dot" onclick="showSlide(4)" title="Slide 4: Arquitectura Air-Gapped">4</div>
+      <div class="slide-dot" onclick="showSlide(5)" title="Slide 5: Guardrails OWASP">5</div>
+      <div class="slide-dot" onclick="showSlide(6)" title="Slide 6: Demostración en Vivo">6</div>
+      <div class="slide-dot" onclick="showSlide(7)" title="Slide 7: Métricas y ROI">7</div>
+      <div class="slide-dot" onclick="showSlide(8)" title="Slide 8: Adopción Real">8</div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <span style="color: var(--text-muted); font-size: 0.8rem;">(Tecla ▶ o Espacio)</span>
+      <button class="nav-btn primary" onclick="nextSlide()" title="Avanzar (Tecla ▶ o Barra Espaciadora)">
+        Siguiente ▶
+      </button>
     </div>
   </footer>
 
@@ -602,11 +711,16 @@
     const totalSlides = 8;
 
     function showSlide(n) {
+      if (n < 1 || n > totalSlides) return;
       document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
-      const target = document.getElementById(`slide-${n}`);
-      if (target) {
-        target.classList.add('active');
-        document.getElementById('currentSlideNum').textContent = n;
+      document.querySelectorAll('.slide-dot').forEach(d => d.classList.remove('active'));
+
+      const targetSlide = document.getElementById(`slide-${n}`);
+      const targetDot = document.querySelectorAll('.slide-dot')[n - 1];
+
+      if (targetSlide) {
+        targetSlide.classList.add('active');
+        if (targetDot) targetDot.classList.add('active');
         currentSlide = n;
       }
     }
@@ -626,9 +740,13 @@
     // Keyboard navigation
     window.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
         nextSlide();
       } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'Backspace') {
+        e.preventDefault();
         prevSlide();
+      } else if (e.key >= '1' && e.key <= '8') {
+        showSlide(parseInt(e.key));
       } else if (e.key === 'f' || e.key === 'F') {
         toggleFullScreen();
       }
@@ -658,8 +776,8 @@
       el.textContent = `⏱️ ${formatted}`;
       if (timerRemaining <= 30) {
         el.style.color = '#ef4444';
-        el.style.borderColor = 'rgba(239, 68, 68, 0.4)';
-        el.style.backgroundColor = 'rgba(239, 68, 68, 0.1)';
+        el.style.borderColor = 'rgba(239, 68, 68, 0.5)';
+        el.style.backgroundColor = 'rgba(239, 68, 68, 0.15)';
       } else {
         el.style.color = '#facc15';
         el.style.borderColor = 'rgba(250, 204, 21, 0.3)';

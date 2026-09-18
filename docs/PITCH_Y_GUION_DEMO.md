@@ -2,7 +2,7 @@
 
 > **Hackathon de CyberDefensa Argentina 2026 — FIE / UNDEF**  
 > **Eje 2:** Inteligencia Artificial para la Defensa de Redes e Infraestructura  
-> **Entregable 7 (Segunda Parte) y Fase 4 (Tasks 4.1 y 4.2 de `task.md`)**  
+> **Presentación Oficial para el Jurado (Pitch y Demostración Operativa)**  
 > **Pitcher / Orador:** Marco Ungaro  
 > **Diapositivas Proyectables (100% Offline):** [`docs/slides.html`](slides.html)  
 > **Duración total:** 3 minutos de presentación y demo + 1 minuto de preguntas del jurado.
