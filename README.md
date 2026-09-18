@@ -22,7 +22,7 @@
 - [Guardrails Defensivos (OWASP LLM)](#guardrails-defensivos-owasp-llm)
 - [Instalación y Uso Rápido (Entregable 3)](#instalación-y-uso-rápido-entregable-3)
   - [Ejecución Asistida con Google Antigravity](#-ejecución-asistida-con-google-antigravity)
-- [Guía Operativa para la Demo en Vivo (3 min - Pitch Marco)](#demo-en-vivo)
+- [🎯 Centro de Comando de Pitch — Luciano Lisachi (3 min)](#demo-en-vivo)
 - [Estrategia de Adopción y Soberanía Air-Gapped](#estrategia-de-adopción)
 - [Matriz de Entregables Oficiales (CyberAr 2026)](#matriz-de-entregables-oficiales-reglamento-cyberar-2026)
 - [Equipo](#equipo)
@@ -269,50 +269,72 @@ Si estás explorando o evaluando este repositorio dentro del entorno de **Google
 
 #### 4. 🛡️ Auditoría de Guardrails y Entrenamiento Oral
 * **Tests de Guardrails:** Pídele *"Ejecutá las pruebas unitarias de los 4 guardrails OWASP"* para correr `python3 guardrails.py`.
-* **Simulación de Defensa (Q&A Jurado):** Podés usar el comando `/grill-me` o pedirle *"Tomame examen técnico para defender el proyecto ante el jurado"* basándose en la guía [`docs/GUIA_DEFENSA_MARCO.md`](docs/GUIA_DEFENSA_MARCO.md).
+* **Simulación de Defensa (Q&A Jurado):** Podés usar el comando `/grill-me` o pedirle *"Tomame examen técnico para defender el proyecto ante el jurado"* basándose en los apuntes de [`docs/GUIA_DEFENSA_LUCIANO.md`](docs/GUIA_DEFENSA_LUCIANO.md).
 
 ---
 
 <a id="demo-en-vivo"></a>
-## 🎬 Guía Operativa para la Demo en Vivo (3 Minutos - Pitch Marco)
+## 🎯 Centro de Comando de Pitch — Luciano Lisachi (3 Minutos)
 
-> **Documento de ejecución en vivo a prueba de fallos para Marco Ungaro (Pitcher) o evaluadores del jurado.**  
-> Diseñado para ejecutarse con máxima fluidez durante los **3 minutos cronometrados** de exposición ante el Comité Evaluador de CyberAr 2026.
-> 📹 **Demostración Operativa en Video:**
-> * 📺 **[Video Demo Oficial en YouTube (60s Guiado y Explicado)](https://youtu.be/AmBrMdtl2VQ):** Demostración interactiva guiada con la Consola SOC táctica en vivo a la izquierda y el panel explicativo paso a paso a la derecha (5 fases operativas, guardrails OWASP, clasificación MITRE, corte en kernel y acta SHA-256).
-> * ⚡ **Generación local automatizada:** Los videos se generan en Full HD 1080p con `python3 scripts/record_demo_explained.py` (60s) y `python3 scripts/record_demo.py` (22s) para reproducción offline sin conexión.
+> **Documento de ejecución rápida a prueba de fallos y estrés para Luciano Lisachi (Pitcher & Orador Oficial).**  
+> Diseñado para operar con máxima fluidez durante los **3 minutos cronometrados** de exposición ante el Comité Evaluador de CyberAr 2026.
 
-```
-┌─────────────────────────────────────────────────────────────────────────────────────────────┐
-│               CyberSOAR-AR — Pipeline Operativo de la Demo en Vivo (3 Minutos)             │
-└─────────────────────────────────────────────────────────────────────────────────────────────┘
-  [1. Sensor Hostil]          [2. Ingesta Segura]          [3. Análisis IA Local]
-  attack_simulator.py  ───▶   Buffer n8n (5-10s)    ───▶   Ollama (Llama 3.1)
-  (15 intentos SSH)           delimitado <raw_logs>        + 4 Guardrails OWASP
-                                                                  │
-  [5. Aislamiento Kernel]     [4. Mando y Control]                │
-  Kernel Netfilter (UFW) ◀─── Consola SOC :3000     ◀─────────────┘
-  (DROP en 184ms + SHA-256)   [APROBAR MITIGACIÓN] (Human-in-the-Loop)
-```
+---
+
+### 📁 Los 3 Documentos Sagrados a Mano (Clic Directo)
+
+1. 📊 **[Diapositivas Oficiales del Pitch (`docs/slides.html`)](docs/slides.html)**  
+   *Presentación interactiva de 8 diapositivas proyectable en pantalla completa (`F11` o tecla `F`), con cronómetro militar de 3 minutos integrado (`T`) y reproductor de video conmutable.*
+2. 🧠 **[Apuntes de Estudio y Defensa Oral para Luciano (`docs/GUIA_DEFENSA_LUCIANO.md`)](docs/GUIA_DEFENSA_LUCIANO.md)**  
+   *La analogía clave de 30 segundos, el glosario táctico militar esencial, el desglose de los 4 guardrails OWASP y las **10 respuestas blindadas** para las preguntas trampa del jurado.*
+3. ⏱️ **[Guion Cronometrado Segundo a Segundo (`docs/PITCH_Y_GUION_DEMO.md`)](docs/PITCH_Y_GUION_DEMO.md)**  
+   *Coreografía exacta de 180 segundos: qué decir en cada diapositiva, en qué segundo cambiar de pantalla y cuándo hacer clic.*
+
+> 📺 **Video Demo Oficial en YouTube:** [https://youtu.be/AmBrMdtl2VQ](https://youtu.be/AmBrMdtl2VQ) *(60 segundos guiados con panel táctico explicativo).*
+
+---
+
+### 🟢 Garantía 100% Offline ("Haya o no haya Internet en la sala")
+
+CyberSOAR-AR fue concebido bajo doctrina militar de soberanía tecnológica estricta: **no requiere conexión a Internet para funcionar al 100%**:
+
+* ⚡ **La Consola SOC (`npm run dev`) es 100% Offline:**  
+  Ejecuta Next.js sobre `http://localhost:3000` con el motor Webpack estable (`next dev --webpack`) y tipografías del sistema local. No descarga Google Fonts, no invoca CDNs externas y arranca en menos de 500 ms.
+* 📊 **Las Diapositivas (`docs/slides.html`) son 100% Offline:**  
+  Es un archivo HTML/CSS/JS autocontenido. Se abre directamente en cualquier navegador (Chrome, Brave, Safari) con doble clic o con `open docs/slides.html` sin necesitar un servidor web ni internet.
+* 🛡️ **Simulador Hostil y Guardrails son 100% Offline:**  
+  `attack_simulator.py` y `guardrails.py` están escritos en Python puro con librerías nativas estándar (cero `pip install` obligatorios).
+
+---
+
+### 🤖 Comandos para Google Antigravity (En la compu de Luciano)
+
+Como Luciano tiene instalado **Google Antigravity**, puede gestionar todo el entorno sin tener que tipear comandos manuales en la terminal si los nervios apuran:
+
+| Qué necesita Luciano | Qué escribirle a Google Antigravity | Qué hace el agente en segundo plano |
+|---|---|---|
+| **Iniciar la Consola SOC** | *"Levantá el servidor local de la consola SOC para el pitch"* | Ejecuta `cd dashboard && npm run dev` y entrega el link `http://localhost:3000`. |
+| **Abrir las Diapositivas** | *"Abrí las diapositivas slides.html en el navegador"* | Abre `docs/slides.html` en tu navegador por defecto. |
+| **Lanzar la Agresión Hostil** | *"Dispará la ráfaga de ataque SSH de 15 intentos"* | Ejecuta `python3 attack_simulator.py --scenario ssh --count 15`. |
+| **Verificar el Corte en Kernel** | *"Verificá que la IP hostil esté bloqueada en el firewall"* | Ejecuta `python3 attack_simulator.py --verify-blocked --ip 185.220.101.5`. |
+| **Practicar preguntas del Jurado** | `/grill-me` *(o "Tomame examen técnico para el jurado")* | Inicia una simulación interactiva con las 10 preguntas de la guía de defensa. |
 
 ---
 
 ### 📋 1. Checklist de Preparación Previa (5 min antes de subir al estrado)
 
-Antes de que comience el cronómetro del pitch, tener listas dos ventanas en la notebook de presentación:
+Tener listas dos ventanas en la notebook de presentación:
 
 1. **Ventana 1 (Navegador Web - 2 pestañas abiertas):**
    - **Pestaña A:** `http://localhost:3000` — Consola Táctica SOC en estado pasivo (`DEFCON 4 // NORMAL`).
-   - **Pestaña B:** `docs/slides.html` — Diapositivas oficiales en pantalla completa (presionar `F11` o tecla `F`).
-2. **Ventana 2 (Terminal de Comandos - Raíz del repositorio):**
-   - Ubicada en `/cyber_ar_hack2026`.
+   - **Pestaña B:** `docs/slides.html` — Diapositivas oficiales en pantalla completa (presionar tecla `F` o `F11`).
+2. **Ventana 2 (Terminal de Comandos o Antigravity):**
    - Con el comando de ataque pre-tipeado y listo para presionar `[ENTER]`:
      ```bash
      python3 attack_simulator.py --scenario ssh --count 15
      ```
-3. **Servicios en segundo plano (Ya iniciados y verificados):**
+3. **Servicio SOC iniciado previamente:**
    ```bash
-   # En una terminal de soporte (o pestaña oculta):
    cd dashboard && npm run dev
    ```
 
@@ -320,10 +342,10 @@ Antes de que comience el cronómetro del pitch, tener listas dos ventanas en la 
 
 ### ⏱️ 2. Protocolo de Ejecución Minuto a Minuto (00:00 a 03:00)
 
-| Tiempo | Dónde Opera Marco | Acción Concreta y Comandos | Qué Decir al Jurado |
+| Tiempo | Dónde Opera Luciano | Acción Concreta y Comandos | Qué Decir al Jurado |
 |---|---|---|---|
 | **00:00 - 00:45**<br>*(Bloque 1)* | **Navegador**<br>(Pestaña `slides.html`) | Proyectar diapositivas 1 a 4 con flecha `→`. | *"Un analista SOC procesa 50 alertas/hora; un ataque coordinado genera 5.000 en 3 minutos. La respuesta manual tarda 45 minutos. Presentamos CyberSOAR-AR: respuesta automatizada soberana y air-gapped con IA."* |
-| **00:45 - 01:20**<br>*(Bloque 2)* | **Terminal**<br>(Ventana de comandos) | Ejecutar el simulador de agresión hostil:<br>`python3 attack_simulator.py --scenario ssh --count 15` | *"Lanzamos una ráfaga hostil de fuerza bruta SSH (15 intentos). Noten que los logs viajan encapsulados en `<raw_logs>` hacia el buffer temporal del agente: **Guardrail 1 (Aislamiento Anti-Prompt Injection)**."* |
+| **00:45 - 01:20**<br>*(Bloque 2)* | **Terminal** o Antigravity | Ejecutar el simulador de agresión hostil:<br>`python3 attack_simulator.py --scenario ssh --count 15` | *"Lanzamos una ráfaga hostil de fuerza bruta SSH (15 intentos). Noten que los logs viajan encapsulados en `<raw_logs>` hacia el buffer temporal del agente: **Guardrail 1 (Aislamiento Anti-Prompt Injection)**."* |
 | **01:20 - 02:05**<br>*(Bloque 3)* | **Navegador**<br>(Pestaña `localhost:3000`) | Cambiar a la pestaña de la Consola Táctica. Se observa la alarma roja parpadeante (`DEFCON 2`). | *"El agente correlaciona los eventos y clasifica la agresión bajo MITRE **T1110.001** con 95% de certeza. La IA no corre comandos libres: propone una regla fija JSON (**Guardrail 2**) y el validador en Python ya confirmó que la IP no es de nuestro gateway ni de infraestructura crítica (**Guardrail 3 - Anti-Auto-DoS)**."* |
 | **02:05 - 02:35**<br>*(Bloque 4)* | **Navegador**<br>(Pestaña `localhost:3000`) | **Hacer clic en el botón central:**<br>`[ APROBAR MITIGACIÓN AUTOMÁTICA ]`<br>*(Luego clic opcional en `[ GENERAR ACTA PERICIAL ]`)* | *"Doctrina militar: **Human-in-the-Loop**. La máquina asiste, el oficial de guardia comanda. Presiono confirmar: regla inyectada en **184 milisegundos**. Se emite el acta forense con su **hash SHA-256 inmutable** para la cadena de custodia pericial."* |
 | **02:35 - 03:00**<br>*(Bloque 5)* | **Terminal** y **Navegador**<br>(Slide de cierre) | En terminal, verificar el bloqueo:<br>`python3 attack_simulator.py --verify-blocked --ip 185.220.101.5`<br>Volver a la Diapositiva 8 de las slides. | *"El kernel Linux netfilter ya descarta todos los paquetes hostiles (Connection Refused). La red está a salvo en menos de 15 segundos. La IA propone y asiste; el operador decide y comanda. Muchas gracias."* |
@@ -349,7 +371,7 @@ Si el tiempo apremia o la pantalla del proyector no permite alternar ventanas:
 Si la notebook del congreso no permite alternar terminales o se pide exponer 100% desde las diapositivas:
 1. Abrir `docs/slides.html`.
 2. Avanzar a la **Diapositiva 6 ("Protocolo de Neutralización en Tiempo Real")**.
-3. La diapositiva presenta la arquitectura operativa de los 5 pasos con los comandos exactos y el botón de acceso directo `[ABRIR CONSOLA SOC TÁCTICA EN VIVO (:3000)]`.
+3. La diapositiva presenta el video rápido de la consola, los comandos de terminal, el botón para abrir la consola local y el botón directo a YouTube.
 
 #### Modo D: Auditoría y Verificación Técnica de Código (Para el Jurado Evaluador)
 Si el jurado técnico solicita verificar la solidez algorítmica y los artefactos de código:
@@ -365,8 +387,8 @@ python3 attack_simulator.py --scenario all --no-send --output data/dataset_sinte
 
 ### 🛡️ 4. Guía de Estudio y Defensa Oral para Preguntas del Jurado
 
-Para preparar a Marco en las preguntas difíciles que puedan realizar los evaluadores (mandos militares, especialistas en IA o ingenieros de redes/criptografía):
-👉 **Consultar la guía completa de respuestas en:** [`docs/GUIA_DEFENSA_MARCO.md`](docs/GUIA_DEFENSA_MARCO.md)  
+Para preparar a Luciano en las preguntas difíciles que puedan realizar los evaluadores (mandos militares, especialistas en IA o ingenieros de redes/criptografía):  
+👉 **Consultar la guía completa de respuestas en:** [`docs/GUIA_DEFENSA_LUCIANO.md`](docs/GUIA_DEFENSA_LUCIANO.md)  
 *(Incluye la analogía de 30 segundos, el glosario táctico militar y las 10 preguntas trampa simuladas con respuestas exactas).*
 
 ---
@@ -411,7 +433,7 @@ CyberSOAR-AR está diseñado para operar en **redes air-gapped**:
 | 6 | **Privacidad, ética, accesibilidad y continuidad** | [`docs/SOBERANIA_Y_ETICA.md`](docs/SOBERANIA_Y_ETICA.md) | Soberanía air-gapped, WCAG 2.1 AA, modo fail-safe y declaración de IA |
 | 7 | **Pitch deck, guion de demo y herramientas** | [`docs/PITCH_Y_GUION_DEMO.md`](docs/PITCH_Y_GUION_DEMO.md), [`docs/slides.html`](docs/slides.html) | 8 diapositivas interactivas, guion de 3 min y banco de preguntas |
 | 📄 | **Ficha Ejecutiva de Entrega (One-Pager)** | [`docs/FICHA_ENTREGA.md`](docs/FICHA_ENTREGA.md) | Resumen oficial para el jurado, datos de equipo, ROI y verificación en 60s |
-| 🎖️ | **Guía de Defensa Oral y Glosario para el Pitcher** | [`docs/GUIA_DEFENSA_MARCO.md`](docs/GUIA_DEFENSA_MARCO.md) | Cheat-sheet para Marco: glosario táctico y 10 preguntas trampa del jurado |
+| 🎖️ | **Guía de Defensa Oral y Glosario para el Pitcher** | [`docs/GUIA_DEFENSA_LUCIANO.md`](docs/GUIA_DEFENSA_LUCIANO.md) | Cheat-sheet para Luciano Lisachi: glosario táctico militar y 10 preguntas trampa del jurado |
 
 ---
 
@@ -423,8 +445,8 @@ CyberSOAR-AR está diseñado para operar en **redes air-gapped**:
 |---|---|---|
 | **Ricardo Gabriel Díaz** | Fullstack / UI Engineering | Consola Táctica SOC Next.js, Topología de Red y Cadena de Custodia |
 | **Dennis Ferraro** | Telemetría & Automatización | Simulador de Ataques Hostiles, Esquema JSON y Pipeline n8n |
-| **Luciano Lisachi** | Seguridad & Modelos LLM | Guardrails OWASP LLM, Threat Modeling STRIDE y Soberanía Tecnológica |
-| **Marco Ungaro** | Pitcher & Estrategia de Defensa | Pitch y Defensa ante el Jurado (3 min), Oratoria y Relaciones Institucionales |
+| **Luciano Lisachi** | Pitcher & Seguridad LLM | Pitch Oficial ante el Jurado (3 min), Guardrails OWASP LLM y Soberanía Tecnológica |
+| **Marco Ungaro** | Estrategia de Defensa | Estrategia Doctrinaria, Relaciones Institucionales y Soporte Táctico del Pitch |
 
 ---
 
