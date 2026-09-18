@@ -12,7 +12,7 @@
 - [Arquitectura de Componentes](#arquitectura-de-componentes)
 - [Guardrails Defensivos (OWASP LLM)](#guardrails-defensivos-owasp-llm)
 - [Instalación y Uso Rápido (Entregable 3)](#instalación-y-uso-rápido-entregable-3)
-- [Guía de Reproducción de Demo en Vivo (3 min)](#-guía-de-reproducción-de-demo-en-vivo-3-minutos)
+- [Guía Operativa para la Demo en Vivo (3 min - Pitch Marco)](#demo-en-vivo)
 - [Estrategia de Adopción y Soberanía Air-Gapped](#estrategia-de-adopción)
 - [Matriz de Entregables Oficiales (CyberAr 2026)](#matriz-de-entregables-oficiales-reglamento-cyberar-2026)
 - [Equipo](#equipo)
@@ -218,31 +218,89 @@ docker run -it --rm --name n8n -p 5678:5678 n8nio/n8n
 python attack_simulator.py --scenario ssh --webhook http://localhost:5678/webhook-test/security-events
 ```
 
-### 🚀 Guía de Reproducción de Demo en Vivo (3 Minutos)
+<a id="demo-en-vivo"></a>
+## 🎬 Guía Operativa para la Demo en Vivo (3 Minutos - Pitch Marco)
+
+> **Documento de ejecución en vivo a prueba de fallos para Marco Ungaro (Pitcher) o evaluadores del jurado.**  
+> Diseñado para ejecutarse con máxima fluidez durante los **3 minutos cronometrados** de exposición ante el Comité Evaluador de CyberAr 2026.
 
 <p align="center">
-  <img src="docs/assets/cyber_soar_demo.webp" alt="Demostración Animada de CyberSOAR-AR" width="850" />
+  <img src="docs/assets/cyber_soar_demo.webp" alt="Demostración Operativa CyberSOAR-AR en Vivo" width="850" />
 </p>
 
-Para reproducir exactamente el flujo evaluado ante el jurado del congreso:
+---
 
-1. **Paso 1 — Iniciar la Consola SOC:**
+### 📋 1. Checklist de Preparación Previa (5 min antes de subir al estrado)
+
+Antes de que comience el cronómetro del pitch, tener listas dos ventanas en la notebook de presentación:
+
+1. **Ventana 1 (Navegador Web - 2 pestañas abiertas):**
+   - **Pestaña A:** `http://localhost:3000` — Consola Táctica SOC en estado pasivo (`DEFCON 4 // NORMAL`).
+   - **Pestaña B:** `docs/slides.html` — Diapositivas oficiales en pantalla completa (presionar `F11` o tecla `F`).
+2. **Ventana 2 (Terminal de Comandos - Raíz del repositorio):**
+   - Ubicada en `/cyber_ar_hack2026`.
+   - Con el comando de ataque pre-tipeado y listo para presionar `[ENTER]`:
+     ```bash
+     python3 attack_simulator.py --scenario ssh --count 15
+     ```
+3. **Servicios en segundo plano (Ya iniciados y verificados):**
    ```bash
+   # En una terminal de soporte (o pestaña oculta):
    cd dashboard && npm run dev
    ```
-   Abrir en el navegador `http://localhost:3000`. Se desplegará la consola táctica en modo de vigilancia.
-2. **Paso 2 — Disparar la Agresión Hostil:**
-   ```bash
-   python attack_simulator.py --scenario ssh --count 15
-   ```
-3. **Paso 3 — Decisión Táctica (Human-in-the-Loop):**
-   En la interfaz web, verificar la correlación temporal y la clasificación MITRE (**T1110.001**). Hacer clic en el botón central: **`[APROBAR MITIGACIÓN AUTOMÁTICA]`**.
-   La consola transiciona a estado *"AMENAZA NEUTRALIZADA"* y emite el Acta Pericial con su hash **SHA-256 inmutable**.
-4. **Paso 4 — Verificación de Contención Activa:**
-   En la terminal, confirmar que el tráfico hostil es descartado por el firewall:
-   ```bash
-   python attack_simulator.py --verify-blocked --ip 185.220.101.5
-   ```
+
+---
+
+### ⏱️ 2. Protocolo de Ejecución Minuto a Minuto (00:00 a 03:00)
+
+| Tiempo | Dónde Opera Marco | Acción Concreta y Comandos | Qué Decir al Jurado |
+|---|---|---|---|
+| **00:00 - 00:45**<br>*(Bloque 1)* | **Navegador**<br>(Pestaña `slides.html`) | Proyectar diapositivas 1 a 4 con flecha `→`. | *"Un analista SOC procesa 50 alertas/hora; un ataque coordinado genera 5.000 en 3 minutos. La respuesta manual tarda 45 minutos. Presentamos CyberSOAR-AR: respuesta automatizada soberana y air-gapped con IA."* |
+| **00:45 - 01:20**<br>*(Bloque 2)* | **Terminal**<br>(Ventana de comandos) | Ejecutar el simulador de agresión hostil:<br>`python3 attack_simulator.py --scenario ssh --count 15` | *"Lanzamos una ráfaga hostil de fuerza bruta SSH (15 intentos). Noten que los logs viajan encapsulados en `<raw_logs>` hacia el buffer temporal del agente: **Guardrail 1 (Aislamiento Anti-Prompt Injection)**."* |
+| **01:20 - 02:05**<br>*(Bloque 3)* | **Navegador**<br>(Pestaña `localhost:3000`) | Cambiar a la pestaña de la Consola Táctica. Se observa la alarma roja parpadeante (`DEFCON 2`). | *"El agente correlaciona los eventos y clasifica la agresión bajo MITRE **T1110.001** con 95% de certeza. La IA no corre comandos libres: propone una regla fija JSON (**Guardrail 2**) y el validador en Python ya confirmó que la IP no es de nuestro gateway ni de infraestructura crítica (**Guardrail 3 - Anti-Auto-DoS)**."* |
+| **02:05 - 02:35**<br>*(Bloque 4)* | **Navegador**<br>(Pestaña `localhost:3000`) | **Hacer clic en el botón central:**<br>`[ APROBAR MITIGACIÓN AUTOMÁTICA ]`<br>*(Luego clic opcional en `[ GENERAR ACTA PERICIAL ]`)* | *"Doctrina militar: **Human-in-the-Loop**. La máquina asiste, el oficial de guardia comanda. Presiono confirmar: regla inyectada en **184 milisegundos**. Se emite el acta forense con su **hash SHA-256 inmutable** para la cadena de custodia pericial."* |
+| **02:35 - 03:00**<br>*(Bloque 5)* | **Terminal** y **Navegador**<br>(Slide de cierre) | En terminal, verificar el bloqueo:<br>`python3 attack_simulator.py --verify-blocked --ip 185.220.101.5`<br>Volver a la Diapositiva 8 de las slides. | *"El kernel Linux netfilter ya descarta todos los paquetes hostiles (Connection Refused). La red está a salvo en menos de 15 segundos. La IA propone y asiste; el operador decide y comanda. Muchas gracias."* |
+
+---
+
+### 🎛️ 3. Modos Alternativos de Demostración (Adaptabilidad en el Escenario)
+
+CyberSOAR-AR ofrece 4 modalidades para adaptarse a cualquier imprevisto de tiempo, conectividad o requisitos del jurado:
+
+#### Modo A: Terminal + Consola SOC (Estándar Recomendado - 3 minutos)
+El flujo completo interactivo detallado arriba con terminal viva y consola web sincronizada.
+
+#### Modo B: Demostración Rápida 100% Web (90 segundos - Ideal si no hay espacio de terminal)
+Si el tiempo apremia o la pantalla del proyector no permite alternar ventanas:
+1. Abrir `http://localhost:3000`.
+2. En el encabezado superior, seleccionar escenario: `Esc. A: SSH Brute Force` (o `APT C2 Exfiltración`).
+3. Hacer clic en el botón rojo superior: **`[STREAM EN VIVO]`** (o botón **`[RÁPIDO]`** para carga instantánea).
+4. Ver los eventos entrar en tiempo real en la topología de red y el timeline forense.
+5. Hacer clic en **`[ APROBAR MITIGACIÓN AUTOMÁTICA ]`** y abrir el acta pericial con su hash SHA-256.
+
+#### Modo C: Modo Contingencia Offline en Diapositivas (Plan B sin terminales)
+Si la notebook del congreso no permite ejecutar código o no dispone de Node.js/Python:
+1. Abrir `docs/slides.html`.
+2. Avanzar a la **Diapositiva 6 ("Demostración Operativa en Vivo")**.
+3. La diapositiva reproduce automáticamente en bucle de alta resolución el video demo animado (`cyber_soar_demo.webp`) con el ciclo operativo completo: ingesta, alerta roja MITRE, clic de mitigación y neutralización pericial.
+
+#### Modo D: Auditoría y Verificación Técnica de Código (Para el Jurado Evaluador)
+Si el jurado técnico solicita verificar la solidez algorítmica y los artefactos de código:
+```bash
+# 1. Ejecución de los 4 Guardrails deterministas OWASP (Tests Unitarios):
+python3 guardrails.py
+
+# 2. Generación del Dataset Sintético reproducible y verificación de integridad criptográfica:
+python3 attack_simulator.py --scenario all --no-send --output data/dataset_sintetico.json
+```
+
+---
+
+### 🛡️ 4. Guía de Estudio y Defensa Oral para Preguntas del Jurado
+
+Para preparar a Marco en las preguntas difíciles que puedan realizar los evaluadores (mandos militares, especialistas en IA o ingenieros de redes/criptografía):
+👉 **Consultar la guía completa de respuestas en:** [`docs/GUIA_DEFENSA_MARCO.md`](docs/GUIA_DEFENSA_MARCO.md)  
+*(Incluye la analogía de 30 segundos, el glosario táctico militar y las 10 preguntas trampa simuladas con respuestas exactas).*
 
 ---
 
