@@ -220,6 +220,10 @@ python attack_simulator.py --scenario ssh --webhook http://localhost:5678/webhoo
 
 ### 🚀 Guía de Reproducción de Demo en Vivo (3 Minutos)
 
+<p align="center">
+  <img src="docs/assets/cyber_soar_demo.webp" alt="Demostración Animada de CyberSOAR-AR" width="850" />
+</p>
+
 Para reproducir exactamente el flujo evaluado ante el jurado del congreso:
 
 1. **Paso 1 — Iniciar la Consola SOC:**

@@ -481,33 +481,43 @@
     <!-- SLIDE 6 -->
     <div class="slide" id="slide-6">
       <div class="slide-header">
-        <div class="slide-meta">Entregable 7 | Demostración en Vivo</div>
+        <div class="slide-meta">Entregable 7 | Demostración en Vivo y Flujo Operativo</div>
         <h1 class="slide-title">Coreografía de la Demo en Vivo (3 Minutos)</h1>
-        <p class="slide-subtitle">Secuencia operativa exacta coordinada entre terminal y Consola SOC</p>
+        <p class="slide-subtitle">Simulación de intrusión, triaje soberano, Human-in-the-Loop y corte pericial</p>
       </div>
-      <div class="slide-body">
-        <div class="grid-3">
-          <div class="box">
-            <h3>⏱️ 00:00 - 00:35</h3>
-            <p><strong>Apertura:</strong> Marco expone la asimetría temporal del SOC militar y la misión soberana de CyberSOAR-AR.</p>
+      <div class="slide-body" style="gap: 16px;">
+        <div class="grid-2" style="align-items: center; gap: 20px;">
+          <!-- Columna Izquierda: Cronograma y Guion -->
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div class="box" style="padding: 10px 14px;">
+              <h3 style="font-size: 0.9rem; margin-bottom: 2px;">⏱️ 00:00 - 00:35 | Apertura</h3>
+              <p style="font-size: 0.8rem;">Marco expone la asimetría temporal del SOC y la doctrina soberana.</p>
+            </div>
+            <div class="box" style="padding: 10px 14px;">
+              <h3 style="font-size: 0.9rem; margin-bottom: 2px;">⏱️ 00:35 - 01:15 | Ráfaga Hostil</h3>
+              <p style="font-size: 0.8rem;">15 intentos de fuerza bruta SSH (<code>185.220.101.5</code>) en terminal.</p>
+            </div>
+            <div class="box" style="padding: 10px 14px;">
+              <h3 style="font-size: 0.9rem; margin-bottom: 2px;">⏱️ 01:15 - 02:00 | Consola SOC</h3>
+              <p style="font-size: 0.8rem;">Alerta roja, mapeo MITRE T1110.001 y 4 guardrails OWASP verificados.</p>
+            </div>
+            <div class="box highlight" style="padding: 10px 14px;">
+              <h3 style="font-size: 0.9rem; margin-bottom: 2px; color: var(--accent);">⏱️ 02:00 - 02:35 | Human-in-the-Loop</h3>
+              <p style="font-size: 0.8rem;">Clic en <strong>[Aprobar Mitigación]</strong>. Contención en 184ms y hash SHA-256.</p>
+            </div>
+            <div class="box highlight" style="padding: 10px 14px;">
+              <h3 style="font-size: 0.9rem; margin-bottom: 2px; color: var(--accent);">⏱️ 02:35 - 03:00 | Verificación</h3>
+              <p style="font-size: 0.8rem;"><code>--verify-blocked</code>: paquetes rechazados por el kernel. Cierre.</p>
+            </div>
           </div>
-          <div class="box">
-            <h3>⏱️ 00:35 - 01:15</h3>
-            <p><strong>Disparo de Ataque:</strong> Se inyectan 15 intentos de fuerza bruta SSH (<code>185.220.101.5</code>) en terminal.</p>
-          </div>
-          <div class="box">
-            <h3>⏱️ 01:15 - 02:00</h3>
-            <p><strong>Consola SOC:</strong> Alerta crítica en pantalla, mapeo MITRE T1110.001 y 95% de confianza analítica.</p>
-          </div>
-        </div>
-        <div class="grid-2" style="margin-top: 12px;">
-          <div class="box highlight">
-            <h3>⏱️ 02:00 - 02:35 | El Momento Human-in-the-Loop</h3>
-            <p>El operador presiona <strong>[APROBAR MITIGACIÓN]</strong>. La consola pasa a verde, confirma contención y emite el hash SHA-256 pericial.</p>
-          </div>
-          <div class="box highlight">
-            <h3>⏱️ 02:35 - 03:00 | Verificación Forense</h3>
-            <p>Ejecución de <code>--verify-blocked</code>: el kernel descarta los paquetes del atacante. Agresión neutralizada.</p>
+
+          <!-- Columna Derecha: Video WebP Animado de la Demo -->
+          <div style="background: #000000; border: 2px solid var(--accent); border-radius: 8px; overflow: hidden; box-shadow: 0 10px 25px -5px var(--accent-glow);">
+            <div style="background: #111827; padding: 6px 12px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1f2937; font-family: var(--font-mono); font-size: 0.75rem;">
+              <span style="color: #10b981; font-weight: bold;">● SIMULACIÓN OPERATIVA EN VIVO</span>
+              <span style="color: #9ca3af;">DEMO LOOP (WebP)</span>
+            </div>
+            <img src="assets/cyber_soar_demo.webp" alt="Demostración Animada CyberSOAR-AR" style="width: 100%; height: auto; display: block;">
           </div>
         </div>
       </div>
