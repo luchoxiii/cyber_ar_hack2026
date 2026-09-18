@@ -64,18 +64,24 @@
 
 ---
 
-### 📊 Diapositiva 7: Impacto Operativo y Retorno de Inversión (ROI)
-* **Tiempo de Contención:** Reducción del **99.4%** (de 45 minutos a 15 segundos).
+### 📊 Diapositiva 7: Impacto Operativo y Continuidad Técnica
+* **Tiempo de Contención:** Reducción del **99.4%** (de 45 minutos manuales a <15 segundos de ciclo total y 184 ms de latencia en kernel).
 * **Precisión:** Cero falsos positivos en infraestructura vital gracias a la whitelist inmutable.
 * **Auditabilidad Forense:** Toda acción aprobada genera un hash SHA-256 apto para peritaje judicial o sumario militar.
-* **Costo e Independencia:** Cero dólares en licencias privativas de nubes extranjeras.
+* **Continuidad e Integración Abierta:** Ingesta estándar vía Syslog/Webhook compatible con SIEM existentes (Wazuh, Suricata, OSSEC).
+* **Costo e Independencia:** Cero dólares en licencias privativas o consumo de tokens en nubes extranjeras.
 
 ---
 
-### 📊 Diapositiva 8: Estrategia de Adopción Real y Escalabilidad
-* **Fase 1 (Corto plazo):** Conector directo con agentes SIEM existentes en las FF.AA. (Wazuh, OSSEC, Syslog).
-* **Fase 2 (Mediano plazo):** Fine-tuning de modelos LLM con datasets desclasificados del Comando Conjunto de Ciberdefensa (CCCD).
-* **Fase 3 (Largo plazo):** Red distribuida de agentes SOAR soberanos para la protección coordinada de infraestructura crítica nacional (energía, transporte, comando y control).
+### 📊 Diapositiva 8: ¡Muchas Gracias! (Equipo y Preguntas del Jurado)
+* **Lema Final:** *"La IA propone y asiste; el operador de defensa decide y comanda."*
+* **Nómina Oficial del Equipo (Orden alfabético por apellido):**
+  - **Ricardo Gabriel Díaz** (Consola Táctica SOC Next.js)
+  - **Dennis Ferraro** (Telemetría Hostil & Pipeline n8n)
+  - **Luciano (Lucho)** (Guardrails OWASP & Threat Modeling)
+  - **Marco Ungaro** (Pitcher & Estrategia de Defensa)
+* **Repositorio Oficial:** `github.com/luchoxiii/cyber_ar_hack2026`
+* **Transición:** Marco invita al jurado a la ronda de preguntas y respuestas (1 minuto).
 
 ---
 
@@ -158,7 +164,8 @@ DISTRIBUCIÓN:
 * **Presentador (Cierre con impacto):**
   > *"Como pueden observar en la terminal, el adversario intenta reconectarse y el kernel descarta sus paquetes de inmediato.*  
   > *Hemos llevado el tiempo de respuesta de **45 minutos a 15 segundos**, con un sistema 100% soberano, ejecutable en redes air-gapped, con código abierto y cadena de custodia forense inmutable.*  
-  > *CyberSOAR-AR: ciberdefensa asistida por IA con mando y soberanía nacional. Muchas gracias, quedamos a disposición del jurado."*
+  > *CyberSOAR-AR: ciberdefensa asistida por IA con mando y soberanía nacional. ¡Muchas gracias! El equipo queda a disposición del jurado para responder sus preguntas."*
+* **Acción:** Marco pasa a la **Diapositiva 8 (¡Muchas Gracias! y Nómina del Equipo)**, que queda proyectada en pantalla con el repositorio oficial durante el minuto de preguntas.
 
 ---
 
