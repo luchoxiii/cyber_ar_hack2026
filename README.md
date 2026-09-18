@@ -1,5 +1,13 @@
 # 🛡️ CyberSOAR-AR — Agente SOAR con IA para Ciberdefensa Soberana
 
+<p align="left">
+  <img src="https://img.shields.io/badge/Hackathon-CyberAr_2026-blue?style=for-the-badge&logo=shield" alt="CyberAr 2026" />
+  <img src="https://img.shields.io/badge/Eje_2-IA_y_Ciberdefensa-red?style=for-the-badge" alt="Eje 2" />
+  <img src="https://img.shields.io/badge/Entorno-100%25_Air--Gapped-emerald?style=for-the-badge" alt="Air-Gapped" />
+  <img src="https://img.shields.io/badge/Guardrails-OWASP_Top_10_LLM-amber?style=for-the-badge" alt="OWASP" />
+  <img src="https://img.shields.io/badge/Consola-Next.js_16_React-cyan?style=for-the-badge" alt="Next.js" />
+</p>
+
 > **Hackathon de CyberDefensa Argentina 2026 — Eje 2: Ciberdefensa e Inteligencia Artificial**
 >
 > Plataforma SOAR (Security Orchestration, Automation and Response) impulsada por IA con guardrails defensivos alineados a OWASP Top 10 for LLM Applications, diseñada para operar en enclaves air-gapped de la defensa nacional.
@@ -194,17 +202,22 @@ cd cyber_ar_hack2026
 # 2. Instalar dependencias Python
 pip install requests
 
-# 3. Probar Guardrails deterministas
-python guardrails.py
+# 3. Probar Guardrails deterministas OWASP (Tests Unitarios)
+python3 guardrails.py
 
-# 4. Generar dataset de ataque y verificar integridad SHA-256
-python attack_simulator.py --scenario all --no-send --output dataset_sintetico.json
+# 4. Generar dataset sintético y verificar integridad SHA-256
+python3 attack_simulator.py --scenario all --no-send --output data/dataset_sintetico.json
 
-# 5. Iniciar la Consola SOC Táctica (Dashboard Next.js)
+# 5. Iniciar la Consola SOC Táctica (Dashboard Next.js 16)
 cd dashboard
 npm install
 npm run dev
-# Acceder a http://localhost:3000
+# Acceder a http://localhost:3000 (Consola Táctica en vivo)
+
+# 6. Abrir la Presentación Oficial de Diapositivas (Pitch Deck)
+open docs/slides.html          # En macOS
+# xdg-open docs/slides.html    # En Linux
+# O servir localmente: python3 -m http.server 8080 --directory docs
 ```
 
 ### Con Orquestador n8n (Opcional / Modo Integrado)
@@ -216,7 +229,7 @@ docker run -it --rm --name n8n -p 5678:5678 n8nio/n8n
 # Importar el flujo táctico desde n8n/cyber_soar_workflow.json en http://localhost:5678
 
 # Disparar eventos hacia el webhook de n8n
-python attack_simulator.py --scenario ssh --webhook http://localhost:5678/webhook-test/security-events
+python3 attack_simulator.py --scenario ssh --webhook http://localhost:5678/webhook-test/security-events
 ```
 
 ### 🤖 Ejecución Asistida con Google Antigravity
