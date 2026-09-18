@@ -616,11 +616,11 @@
         </div>
 
         <!-- Sector Central: Video Demo Rápido a la izquierda + Consola Táctica / Acciones a la derecha -->
-        <div style="display: grid; grid-template-columns: 1.55fr 1fr; gap: 14px; width: 100%; align-items: stretch;">
+        <div style="display: grid; grid-template-columns: 1.95fr 1fr; gap: 14px; width: 100%; align-items: stretch;">
           
           <!-- Columna Izquierda: Video Demo Rápido Oficial (1080p Full HD) -->
           <div style="background: #020617; border: 1.5px solid var(--accent); border-radius: 8px; overflow: hidden; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.2); display: flex; flex-direction: column;">
-            <div style="background: #0f172a; padding: 7px 12px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; font-family: var(--font-mono); font-size: 0.74rem;">
+            <div style="background: #0f172a; padding: 6px 12px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; font-family: var(--font-mono); font-size: 0.74rem;">
               <span style="color: #10b981; font-weight: bold; display: flex; align-items: center; gap: 6px;">
                 <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10b981;"></span>
                 DEMOSTRACIÓN OPERATIVA RÁPIDA (CONSOLA SOC)
@@ -635,50 +635,50 @@
             </div>
           </div>
 
-          <!-- Columna Derecha: Consola Táctica, YouTube y Comandos (Resumido) -->
-          <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--card-border); border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; justify-content: space-between; gap: 10px;">
+          <!-- Columna Derecha: Consola Táctica, YouTube y Comandos (Estrecha y Resumida) -->
+          <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--card-border); border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px;">
             
             <!-- Encabezado y Accesos Directos -->
-            <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; flex-direction: column; gap: 6px;">
               <div style="display: flex; align-items: center; justify-content: space-between;">
-                <div style="display: flex; align-items: center; gap: 6px;">
-                  <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981;"></span>
-                  <span style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: #ffffff;">CONSOLA SOC TÁCTICA</span>
+                <div style="display: flex; align-items: center; gap: 5px;">
+                  <span style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #10b981; box-shadow: 0 0 6px #10b981;"></span>
+                  <span style="font-family: var(--font-mono); font-size: 0.76rem; font-weight: 700; color: #ffffff;">CONSOLA SOC</span>
                 </div>
-                <span style="font-family: var(--font-mono); font-size: 0.7rem; color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 2px 6px; border-radius: 4px;">:3000 ACTIVA</span>
+                <span style="font-family: var(--font-mono); font-size: 0.67rem; color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 1px 5px; border-radius: 4px;">:3000 ACTIVA</span>
               </div>
               
               <button 
                 class="nav-btn primary" 
-                style="width: 100%; font-size: 0.82rem; padding: 8px 12px; border-radius: 6px; font-weight: 700; box-shadow: 0 0 12px rgba(16, 185, 129, 0.3); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"
+                style="width: 100%; font-size: 0.78rem; padding: 7px 10px; border-radius: 5px; font-weight: 700; box-shadow: 0 0 10px rgba(16, 185, 129, 0.25); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;"
                 onclick="window.open('http://localhost:3000', '_blank')"
               >
-                <span>🚀 ABRIR CONSOLA EN VIVO (:3000)</span>
+                <span>🚀 ABRIR CONSOLA (:3000)</span>
               </button>
 
               <button 
-                style="width: 100%; font-size: 0.82rem; padding: 8px 12px; border-radius: 6px; font-weight: 700; background: #b91c1c; color: #ffffff; border: 1px solid #ef4444; box-shadow: 0 0 12px rgba(239, 68, 68, 0.3); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;"
+                style="width: 100%; font-size: 0.78rem; padding: 7px 10px; border-radius: 5px; font-weight: 700; background: #b91c1c; color: #ffffff; border: 1px solid #ef4444; box-shadow: 0 0 10px rgba(239, 68, 68, 0.25); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;"
                 onclick="window.open('https://youtu.be/AmBrMdtl2VQ', '_blank')"
               >
-                <span>📺 VER DEMO EN YOUTUBE (60s)</span>
+                <span>📺 DEMO EN YOUTUBE (60s)</span>
               </button>
             </div>
 
             <!-- Comandos Rápidos Resumidos -->
-            <div style="background: rgba(0, 0, 0, 0.55); border: 1px solid var(--card-border); border-radius: 6px; padding: 8px 10px; font-family: var(--font-mono); font-size: 0.71rem;">
-              <div style="color: #f87171; margin-bottom: 2px; font-weight: 600;"># 1. Inyección de ataque hostil:</div>
-              <div style="color: #e2e8f0; word-break: break-all; margin-bottom: 6px; font-size: 0.72rem;">python3 attack_simulator.py --scenario ssh --count 15</div>
-              <div style="color: #34d399; margin-bottom: 2px; font-weight: 600;"># 2. Verificación de corte pericial:</div>
-              <div style="color: #e2e8f0; word-break: break-all; font-size: 0.72rem;">python3 attack_simulator.py --verify-blocked --ip 185.220.101.5</div>
+            <div style="background: rgba(0, 0, 0, 0.55); border: 1px solid var(--card-border); border-radius: 5px; padding: 6px 8px; font-family: var(--font-mono); font-size: 0.67rem; line-height: 1.35;">
+              <div style="color: #f87171; margin-bottom: 2px; font-weight: 600;"># Inyectar ataque:</div>
+              <div style="color: #e2e8f0; word-break: break-all; margin-bottom: 5px;">python3 attack_simulator.py --scenario ssh --count 15</div>
+              <div style="color: #34d399; margin-bottom: 2px; font-weight: 600;"># Verificar corte:</div>
+              <div style="color: #e2e8f0; word-break: break-all;">python3 attack_simulator.py --verify-blocked --ip 185.220.101.5</div>
             </div>
 
             <!-- Métricas Clave -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-family: var(--font-mono); font-size: 0.7rem; text-align: center;">
-              <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 4px; padding: 4px;">
-                <span style="color: #94a3b8;">MTTR:</span> <strong style="color: #10b981;">&lt; 15 seg</strong>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px; font-family: var(--font-mono); font-size: 0.67rem; text-align: center;">
+              <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 4px; padding: 3px;">
+                <span style="color: #94a3b8;">MTTR:</span> <strong style="color: #10b981;">&lt; 15s</strong>
               </div>
-              <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 4px; padding: 4px;">
-                <span style="color: #94a3b8;">Kernel:</span> <strong style="color: #10b981;">184 ms</strong>
+              <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 4px; padding: 3px;">
+                <span style="color: #94a3b8;">Kernel:</span> <strong style="color: #10b981;">184ms</strong>
               </div>
             </div>
 
