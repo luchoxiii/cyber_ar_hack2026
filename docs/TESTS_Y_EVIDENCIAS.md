@@ -11,8 +11,8 @@ CyberSOAR-AR emplea tres niveles de validación:
 | Nivel | Tipo | Herramienta | Estado |
 |---|---|---|---|
 | L1 | Pruebas de componente | `attack_simulator.py` | ✅ Implementado |
-| L2 | Pruebas de integración | n8n workflow + LLM | 🔄 En desarrollo |
-| L3 | Pruebas de guardrails | Scripts de validación | ✅ Documentado |
+| L2 | Pruebas de integración | n8n workflow (`n8n/cyber_soar_workflow.json`) + LLM | ✅ Validado y exportado |
+| L3 | Pruebas de guardrails | `guardrails.py` (4 barreras OWASP) | ✅ 100% pasando |
 
 ---
 
