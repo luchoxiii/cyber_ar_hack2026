@@ -8,12 +8,13 @@
 
 ## 📋 Tabla de Contenidos
 
-- [Problema y Pertinencia](#problema-y-pertinencia)
+- [Problema y Pertinencia (Entregable 1)](#problema-y-pertinencia)
 - [Arquitectura de Componentes](#arquitectura-de-componentes)
 - [Guardrails Defensivos (OWASP LLM)](#guardrails-defensivos-owasp-llm)
-- [Instalación y Uso Rápido](#instalación-y-uso-rápido)
-- [Estrategia de Adopción](#estrategia-de-adopción)
-- [Documentación Detallada](#documentación-detallada)
+- [Instalación y Uso Rápido (Entregable 3)](#instalación-y-uso-rápido-entregable-3)
+- [Guía de Reproducción de Demo en Vivo (3 min)](#-guía-de-reproducción-de-demo-en-vivo-3-minutos)
+- [Estrategia de Adopción y Soberanía Air-Gapped](#estrategia-de-adopción)
+- [Matriz de Entregables Oficiales (CyberAr 2026)](#matriz-de-entregables-oficiales-reglamento-cyberar-2026)
 - [Equipo](#equipo)
 - [Licencia](#licencia)
 
@@ -82,14 +83,15 @@ Los Centros de Operaciones de Seguridad (SOC) de la defensa argentina enfrentan 
                        └──────────────────┘
 ```
 
-### Componentes Clave
+### Componentes Clave Integrados
 
-| Componente | Tecnología | Rama |
-|---|---|---|
-| Simulador de Telemetría | Python 3.11+ / `requests` | `rama-1-all-task-1` |
-| Motor de Orquestación | n8n (self-hosted) | `rama-2-all-task-2` |
-| Consola SOC (Dashboard) | Next.js + Tailwind CSS | `rama-3-all-task-3` |
-| **Documentación y Guardrails** | **Markdown + Python** | **`rama-4-all-task-4`** |
+| Componente | Tecnología | Ubicación en el Repositorio | Estado |
+|---|---|---|---|
+| **Simulador de Telemetría** | Python 3.11+ | [`attack_simulator.py`](attack_simulator.py) | ✅ Integrado y funcional |
+| **Guardrails Defensivos** | Python 3.11+ / stdlib | [`guardrails.py`](guardrails.py) | ✅ 4 barreras deterministas |
+| **Motor de Orquestación** | n8n (self-hosted) | [`n8n/cyber_soar_workflow.json`](n8n/cyber_soar_workflow.json) | ✅ Flujo exportado |
+| **Consola SOC (Dashboard)** | Next.js 16 + Tailwind CSS | [`dashboard/`](dashboard/) | ✅ 100% Air-gapped |
+| **Pitch Deck y Guion de Demo** | Markdown | [`docs/PITCH_Y_GUION_DEMO.md`](docs/PITCH_Y_GUION_DEMO.md) | ✅ 3 minutos cronometrados |
 
 ---
 
@@ -215,6 +217,28 @@ docker run -it --rm --name n8n -p 5678:5678 n8nio/n8n
 # Disparar eventos hacia el webhook de n8n
 python attack_simulator.py --scenario ssh --webhook http://localhost:5678/webhook-test/security-events
 ```
+
+### 🚀 Guía de Reproducción de Demo en Vivo (3 Minutos)
+
+Para reproducir exactamente el flujo evaluado ante el jurado del congreso:
+
+1. **Paso 1 — Iniciar la Consola SOC:**
+   ```bash
+   cd dashboard && npm run dev
+   ```
+   Abrir en el navegador `http://localhost:3000`. Se desplegará la consola táctica en modo de vigilancia.
+2. **Paso 2 — Disparar la Agresión Hostil:**
+   ```bash
+   python attack_simulator.py --scenario ssh --count 15
+   ```
+3. **Paso 3 — Decisión Táctica (Human-in-the-Loop):**
+   En la interfaz web, verificar la correlación temporal y la clasificación MITRE (**T1110.001**). Hacer clic en el botón central: **`[APROBAR MITIGACIÓN AUTOMÁTICA]`**.
+   La consola transiciona a estado *"AMENAZA NEUTRALIZADA"* y emite el Acta Pericial con su hash **SHA-256 inmutable**.
+4. **Paso 4 — Verificación de Contención Activa:**
+   En la terminal, confirmar que el tráfico hostil es descartado por el firewall:
+   ```bash
+   python attack_simulator.py --verify-blocked --ip 185.220.101.5
+   ```
 
 ---
 
