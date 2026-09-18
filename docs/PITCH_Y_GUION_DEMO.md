@@ -5,6 +5,7 @@
 > **Presentación Oficial para el Jurado (Pitch y Demostración Operativa)**  
 > **Pitcher / Orador:** Marco Ungaro  
 > **Diapositivas Proyectables (100% Offline):** [`docs/slides.html`](slides.html)  
+> **Guía de Estudio y Defensa Oral para Marco:** [`docs/GUIA_DEFENSA_MARCO.md`](GUIA_DEFENSA_MARCO.md)  
 > **Duración total:** 3 minutos de presentación y demo + 1 minuto de preguntas del jurado.
 
 ---

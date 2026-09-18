@@ -286,6 +286,7 @@ CyberSOAR-AR está diseñado para operar en **redes air-gapped**:
 | 6 | **Privacidad, ética, accesibilidad y continuidad** | [`docs/SOBERANIA_Y_ETICA.md`](docs/SOBERANIA_Y_ETICA.md) | Soberanía air-gapped, WCAG 2.1 AA, modo fail-safe y declaración de IA |
 | 7 | **Pitch deck, guion de demo y herramientas** | [`docs/PITCH_Y_GUION_DEMO.md`](docs/PITCH_Y_GUION_DEMO.md), [`docs/slides.html`](docs/slides.html) | 8 diapositivas interactivas, guion de 3 min y banco de preguntas |
 | 📄 | **Ficha Ejecutiva de Entrega (One-Pager)** | [`docs/FICHA_ENTREGA.md`](docs/FICHA_ENTREGA.md) | Resumen oficial para el jurado, datos de equipo, ROI y verificación en 60s |
+| 🎖️ | **Guía de Defensa Oral y Glosario para el Pitcher** | [`docs/GUIA_DEFENSA_MARCO.md`](docs/GUIA_DEFENSA_MARCO.md) | Cheat-sheet para Marco: glosario táctico y 10 preguntas trampa del jurado |
 
 ---
 
