@@ -284,9 +284,15 @@ CyberSOAR-AR está diseñado para operar en **redes air-gapped**:
 
 ---
 
-## Equipo
+## 👥 Equipo
 
-**Hackathon de CyberDefensa Argentina 2026**
+**Hackathon de Ciberdefensa Argentina 2026 — FIE / UNDEF (Eje 2: IA y Ciberdefensa)**
+
+| Integrante | Rol / Especialidad | Responsabilidad Principal |
+|---|---|---|
+| **Gabriel Díaz (Gabo)** | Fullstack / UI Engineering | Consola Táctica SOC Next.js, Topología de Red y Cadena de Custodia |
+| **Luciano (Lucho)** | Seguridad & Modelos LLM | Guardrails OWASP LLM, Threat Modeling STRIDE y Soberanía Tecnológica |
+| **Dennis Ferraro** | Telemetría & Automatización | Simulador de Ataques Hostiles, Esquema JSON y Pipeline n8n |
 
 ---
 
