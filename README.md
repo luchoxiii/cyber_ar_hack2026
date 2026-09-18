@@ -22,7 +22,7 @@
 - [Guardrails Defensivos (OWASP LLM)](#guardrails-defensivos-owasp-llm)
 - [Instalación y Uso Rápido (Entregable 3)](#instalación-y-uso-rápido-entregable-3)
   - [Ejecución Asistida con Google Antigravity](#-ejecución-asistida-con-google-antigravity)
-- [🎯 Centro de Comando de Pitch — Luciano Lisachi (3 min)](#demo-en-vivo)
+- [🎯 Centro de Comando de Pitch y Demostración (3 min)](#demo-en-vivo)
 - [Estrategia de Adopción y Soberanía Air-Gapped](#estrategia-de-adopción)
 - [Matriz de Entregables Oficiales (CyberAr 2026)](#matriz-de-entregables-oficiales-reglamento-cyberar-2026)
 - [Equipo](#equipo)
@@ -274,9 +274,9 @@ Si estás explorando o evaluando este repositorio dentro del entorno de **Google
 ---
 
 <a id="demo-en-vivo"></a>
-## 🎯 Centro de Comando de Pitch — Luciano Lisachi (3 Minutos)
+## 🎯 Centro de Comando de Pitch y Demostración en Vivo (3 Minutos)
 
-> **Documento de ejecución rápida a prueba de fallos y estrés para Luciano Lisachi (Pitcher & Orador Oficial).**  
+> **Documento de ejecución rápida a prueba de fallos y estrés para el Pitcher / Orador ante el Jurado.**  
 > Diseñado para operar con máxima fluidez durante los **3 minutos cronometrados** de exposición ante el Comité Evaluador de CyberAr 2026.
 
 ---
@@ -307,11 +307,11 @@ CyberSOAR-AR fue concebido bajo doctrina militar de soberanía tecnológica estr
 
 ---
 
-### 🤖 Comandos para Google Antigravity (En la compu de Luciano)
+### 🤖 Comandos para Google Antigravity (Para operar la presentación)
 
-Como Luciano tiene instalado **Google Antigravity**, puede gestionar todo el entorno sin tener que tipear comandos manuales en la terminal si los nervios apuran:
+Si se opera la presentación usando **Google Antigravity**, es posible gestionar todo el entorno sin tener que tipear comandos manuales en la terminal si los nervios apuran:
 
-| Qué necesita Luciano | Qué escribirle a Google Antigravity | Qué hace el agente en segundo plano |
+| Qué necesita el operador | Qué escribirle a Google Antigravity | Qué hace el agente en segundo plano |
 |---|---|---|
 | **Iniciar la Consola SOC** | *"Levantá el servidor local de la consola SOC para el pitch"* | Ejecuta `cd dashboard && npm run dev` y entrega el link `http://localhost:3000`. |
 | **Abrir las Diapositivas** | *"Abrí las diapositivas slides.html en el navegador"* | Abre `docs/slides.html` en tu navegador por defecto. |
@@ -342,7 +342,7 @@ Tener listas dos ventanas en la notebook de presentación:
 
 ### ⏱️ 2. Protocolo de Ejecución Minuto a Minuto (00:00 a 03:00)
 
-| Tiempo | Dónde Opera Luciano | Acción Concreta y Comandos | Qué Decir al Jurado |
+| Tiempo | Dónde Opera el Orador | Acción Concreta y Comandos | Qué Decir al Jurado |
 |---|---|---|---|
 | **00:00 - 00:45**<br>*(Bloque 1)* | **Navegador**<br>(Pestaña `slides.html`) | Proyectar diapositivas 1 a 4 con flecha `→`. | *"Un analista SOC procesa 50 alertas/hora; un ataque coordinado genera 5.000 en 3 minutos. La respuesta manual tarda 45 minutos. Presentamos CyberSOAR-AR: respuesta automatizada soberana y air-gapped con IA."* |
 | **00:45 - 01:20**<br>*(Bloque 2)* | **Terminal** o Antigravity | Ejecutar el simulador de agresión hostil:<br>`python3 attack_simulator.py --scenario ssh --count 15` | *"Lanzamos una ráfaga hostil de fuerza bruta SSH (15 intentos). Noten que los logs viajan encapsulados en `<raw_logs>` hacia el buffer temporal del agente: **Guardrail 1 (Aislamiento Anti-Prompt Injection)**."* |
@@ -445,8 +445,8 @@ CyberSOAR-AR está diseñado para operar en **redes air-gapped**:
 |---|---|---|
 | **Ricardo Gabriel Díaz** | Fullstack / UI Engineering | Consola Táctica SOC Next.js, Topología de Red y Cadena de Custodia |
 | **Dennis Ferraro** | Telemetría & Automatización | Simulador de Ataques Hostiles, Esquema JSON y Pipeline n8n |
-| **Luciano Lisachi** | Pitcher & Seguridad LLM | Pitch Oficial ante el Jurado (3 min), Guardrails OWASP LLM y Soberanía Tecnológica |
-| **Marco Ungaro** | Estrategia de Defensa | Estrategia Doctrinaria, Relaciones Institucionales y Soporte Táctico del Pitch |
+| **Luciano Lisachi** | Seguridad & Modelos LLM | Guardrails OWASP LLM, Threat Modeling STRIDE y Soberanía Tecnológica |
+| **Marco Ungaro** | Pitcher & Estrategia de Defensa | Pitch Oficial ante el Jurado (3 min), Oratoria y Relaciones Institucionales |
 
 ---
 

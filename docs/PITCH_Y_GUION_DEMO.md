@@ -3,7 +3,7 @@
 > **Hackathon de CyberDefensa Argentina 2026 — FIE / UNDEF**  
 > **Eje 2:** Inteligencia Artificial para la Defensa de Redes e Infraestructura  
 > **Presentación Oficial para el Jurado (Pitch y Demostración Operativa)**  
-> **Pitcher / Orador:** Luciano Lisachi  
+> **Pitcher / Orador:** Marco Ungaro  
 > **Diapositivas Proyectables (100% Offline):** [`docs/slides.html`](slides.html)  
 > **Guía de Estudio y Defensa Oral ante el Jurado:** [`docs/GUIA_DEFENSA.md`](GUIA_DEFENSA.md)  
 > **Video Demo Oficial en YouTube:** [https://youtu.be/AmBrMdtl2VQ](https://youtu.be/AmBrMdtl2VQ)  
@@ -81,10 +81,10 @@
 * **Nómina Oficial del Equipo (Orden alfabético por apellido):**
   - **Ricardo Gabriel Díaz** (Consola Táctica SOC Next.js)
   - **Dennis Ferraro** (Telemetría Hostil & Pipeline n8n)
-  - **Luciano Lisachi** (Pitcher / Seguridad & Modelos LLM)
-  - **Marco Ungaro** (Estrategia de Defensa & Relaciones Institucionales)
+  - **Luciano Lisachi** (Seguridad & Modelos LLM)
+  - **Marco Ungaro** (Pitcher & Estrategia de Defensa)
 * **Repositorio Oficial:** `github.com/luchoxiii/cyber_ar_hack2026`
-* **Transición:** Luciano invita al jurado a la ronda de preguntas y respuestas (1 minuto).
+* **Transición:** El orador invita al jurado a la ronda de preguntas y respuestas (1 minuto).
 
 ---
 
@@ -168,7 +168,7 @@ DISTRIBUCIÓN:
   > *"Como pueden observar en la terminal, el adversario intenta reconectarse y el kernel descarta sus paquetes de inmediato.*  
   > *Hemos llevado el tiempo de respuesta de **45 minutos a 15 segundos**, con un sistema 100% soberano, ejecutable en redes air-gapped, con código abierto y cadena de custodia forense inmutable.*  
   > *CyberSOAR-AR: ciberdefensa asistida por IA con mando y soberanía nacional. ¡Muchas gracias! El equipo queda a disposición del jurado para responder sus preguntas."*
-* **Acción:** Luciano pasa a la **Diapositiva 8 (¡Muchas Gracias! y Nómina del Equipo)**, que queda proyectada en pantalla con el repositorio oficial durante el minuto de preguntas.
+* **Acción:** El presentador pasa a la **Diapositiva 8 (¡Muchas Gracias! y Nómina del Equipo)**, que queda proyectada en pantalla con el repositorio oficial durante el minuto de preguntas.
 
 ---
 

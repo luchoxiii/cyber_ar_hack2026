@@ -24,8 +24,8 @@
 |---|---|---|
 | **Ricardo Gabriel Díaz** | Fullstack / UI Engineering | Consola Táctica SOC Next.js, Topología de Red y Cadena de Custodia |
 | **Dennis Ferraro** | Telemetría & Automatización | Simulador de Ataques Hostiles, Esquema JSON y Pipeline n8n |
-| **Luciano Lisachi** | Pitcher & Seguridad LLM | Pitch y Defensa ante el Jurado (3 min), Guardrails OWASP LLM y Soberanía |
-| **Marco Ungaro** | Estrategia de Defensa | Estrategia Doctrinaria, Relaciones Institucionales y Soporte del Pitch |
+| **Luciano Lisachi** | Seguridad & Modelos LLM | Guardrails OWASP LLM, Threat Modeling STRIDE y Soberanía Tecnológica |
+| **Marco Ungaro** | Pitcher & Estrategia de Defensa | Pitch y Defensa ante el Jurado (3 min), Oratoria y Relaciones Institucionales |
 
 ---
 
