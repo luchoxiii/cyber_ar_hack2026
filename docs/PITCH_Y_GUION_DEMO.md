@@ -102,6 +102,35 @@ DISTRIBUCIÓN:
   • 02:35 - 03:00 : Verificación de Corte y Conclusión
 ```
 
+### 📋 Checklist de Preparación Previa (5 minutos antes de subir al estrado)
+
+Tener listas dos ventanas en la notebook de presentación:
+
+1. **Ventana 1 (Navegador Web - 2 pestañas abiertas):**
+   - **Pestaña A:** `http://localhost:3000` — Consola Táctica SOC en estado pasivo (`DEFCON 4 // NORMAL`).
+   - **Pestaña B:** `docs/slides.html` — Diapositivas oficiales en pantalla completa (presionar tecla `F` o `F11`).
+2. **Ventana 2 (Terminal de Comandos o Google Antigravity):**
+   - Con el comando de ataque pre-tipeado y listo para presionar `[ENTER]`:
+     ```bash
+     python3 attack_simulator.py --scenario ssh --count 15
+     ```
+3. **Servidor local SOC iniciado previamente:**
+   ```bash
+   cd dashboard && npm run dev
+   ```
+
+### 🤖 Asistencia Operativa con Google Antigravity
+
+Para quien opere la notebook con **Google Antigravity**, puede gestionar todo el entorno mediante lenguaje natural sin tener que tipear comandos manuales en la terminal si los nervios apuran:
+
+| Qué necesita el operador | Qué escribirle a Google Antigravity | Qué hace el agente en segundo plano |
+|---|---|---|
+| **Iniciar la Consola SOC** | *"Levantá el servidor local de la consola SOC para el pitch"* | Ejecuta `cd dashboard && npm run dev` y entrega el link `http://localhost:3000`. |
+| **Abrir las Diapositivas** | *"Abrí las diapositivas slides.html en el navegador"* | Abre `docs/slides.html` en tu navegador por defecto. |
+| **Lanzar la Agresión Hostil** | *"Dispará la ráfaga de ataque SSH de 15 intentos"* | Ejecuta `python3 attack_simulator.py --scenario ssh --count 15`. |
+| **Verificar el Corte en Kernel** | *"Verificá que la IP hostil esté bloqueada en el firewall"* | Ejecuta `python3 attack_simulator.py --verify-blocked --ip 185.220.101.5`. |
+| **Simular Preguntas del Jurado** | `/grill-me` *(o "Tomame examen técnico para el jurado")* | Inicia una simulación interactiva con las 10 preguntas de la guía de defensa. |
+
 ---
 
 ### ⏱️ [00:00 - 00:35] Apertura y Declaración de Misión
@@ -201,4 +230,37 @@ Si durante la presentación en la FIE/UNDEF surgieran fallas de conectividad, co
    python guardrails.py
    ```
    Muestra en consola las 4 pruebas unitarias pasando con éxito ante el jurado.
+
+---
+
+## PARTE V: MODOS ALTERNATIVOS DE DEMOSTRACIÓN (ADAPTABILIDAD EN EL ESCENARIO)
+
+CyberSOAR-AR ofrece 4 modalidades para adaptarse a cualquier imprevisto de tiempo, conectividad o requisitos del jurado:
+
+### Modo A: Terminal + Consola SOC (Estándar Recomendado — 3 minutos)
+El flujo completo interactivo detallado arriba con terminal viva y consola web sincronizada.
+
+### Modo B: Demostración Rápida 100% Web (90 segundos — Ideal si el tiempo apremia)
+Si el cronómetro apura o la pantalla del proyector no permite alternar ventanas:
+1. Abrir `http://localhost:3000`.
+2. En el encabezado superior, seleccionar escenario: `Esc. A: SSH Brute Force` (o `APT C2 Exfiltración`).
+3. Hacer clic en el botón superior: **`[STREAM EN VIVO]`** (o botón **`[RÁPIDO]`** para carga instantánea).
+4. Ver los eventos entrar en tiempo real en la topología de red y el timeline forense.
+5. Hacer clic en **`[ APROBAR MITIGACIÓN AUTOMÁTICA ]`** y abrir el acta pericial con su hash SHA-256.
+
+### Modo C: Modo Presentación en Diapositivas (Plan B sin terminales)
+Si la notebook del congreso no permite alternar terminales o se pide exponer 100% desde las diapositivas:
+1. Abrir `docs/slides.html`.
+2. Avanzar a la **Diapositiva 6 ("Protocolo de Neutralización en Tiempo Real")**.
+3. La diapositiva presenta el video rápido de la consola, los comandos de terminal, el botón para abrir la consola local y el enlace directo a YouTube.
+
+### Modo D: Auditoría y Verificación Técnica de Código (Para el Jurado Evaluador)
+Si el jurado técnico solicita verificar la solidez algorítmica y los artefactos de código:
+```bash
+# 1. Ejecución de los 4 Guardrails deterministas OWASP (Tests Unitarios):
+python3 guardrails.py
+
+# 2. Generación del Dataset Sintético reproducible y verificación criptográfica:
+python3 attack_simulator.py --scenario all --no-send --output data/dataset_sintetico.json
+```
 
